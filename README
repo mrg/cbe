@@ -1,5 +1,7 @@
-CayenneByExample is a book along with example code which provides an introduction
-into using the Apache Cayenne ORM framework.
+[NOTE: This project is unfinished.]
+
+Cayenne By Example is a book with numerous examples (runnable projects) which
+provides an introduction into using the Apache Cayenne ORM framework.
 
 The live version of the book can be viewed here:
 
@@ -8,4 +10,6 @@ https://docs.google.com/Doc?docid=0Achb4sWOsH7yZGNzaGM5ZGNfOGM1eGo3aGZ6&hl=en
 The source code for the book is inside the folders of this project, organized by
 chapter title.
 
-Published versions of the book and source code will appear at the top-level folder.
+Published versions of the book and source code will appear at the top-level folder
+over time.
+
