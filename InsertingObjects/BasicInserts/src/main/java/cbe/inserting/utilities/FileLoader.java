@@ -1,11 +1,9 @@
 package cbe.inserting.utilities;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,50 +14,46 @@ import java.util.List;
  */
 public class FileLoader
 {
-    protected List<String> load(String filename)
-    {
-        List<String> items            = new ArrayList<String>();
-        URL          resourceAsStream = getClass().getResource("/" + filename);
+    private static FileLoader instance = null;
 
-//        URL findResource = getClass().getClassLoader().findResource("path");
+    private FileLoader() { }
+
+    public static FileLoader getInstance()
+    {
+        if (instance == null)
+            instance = new FileLoader();
+
+        return instance;
+    }
+
+    public List<String> loadLines(String filename)
+    {
+        BufferedReader    bufferedReader    = null;
+        InputStream       inputStream       = null;
+        InputStreamReader inputStreamReader = null;
+        List<String>      lines             = new ArrayList<String>();
 
         try
         {
-            File file = new File(resourceAsStream.toURI());
+            inputStream       = getClass().getClassLoader().getResourceAsStream(filename);
+            inputStreamReader = new InputStreamReader(inputStream);
+            bufferedReader    = new BufferedReader(inputStreamReader);
 
-            BufferedReader bufferedReader = null;
-            FileReader     fileReader     = null;
+            String line = null;
 
-            try
-            {
-                fileReader     = new FileReader(file);
-                bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null)
+                lines.add(line);
 
-                String line = null;
-
-                while ((line = bufferedReader.readLine()) != null)
-                    items.add(line);
-            }
-            finally
-            {
-               if (fileReader != null)
-                   fileReader.close();
-
-               if (bufferedReader != null)
-                   bufferedReader.close();
-            }
+            inputStream.close();
+            inputStreamReader.close();
+            bufferedReader.close();
         }
-        catch (IOException exception)
+        catch (IOException e)
         {
             System.err.println("Failed to read and/or close file:");
-            exception.printStackTrace();
-        }
-        catch (URISyntaxException exception)
-        {
-            // TODO Auto-generated catch block
-            exception.printStackTrace();
+            e.printStackTrace();
         }
 
-        return items;
+        return lines;
     }
 }

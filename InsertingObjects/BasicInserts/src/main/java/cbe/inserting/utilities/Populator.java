@@ -12,7 +12,7 @@ public class Populator
     private static List<String> firstNames = null;
     private static List<String> lastNames  = null;
 
-    private static FileLoader fileLoader = new FileLoader();
+    private static FileLoader fileLoader = FileLoader.getInstance();
 
 
     /**
@@ -21,7 +21,7 @@ public class Populator
     public static List<String> getFirstNames()
     {
         if (firstNames == null)
-            firstNames = fileLoader.load("FirstNames.txt");
+            firstNames = fileLoader.loadLines("FirstNames.txt");
 
         return firstNames;
     }
@@ -32,7 +32,7 @@ public class Populator
     public static List<String> getLastNames()
     {
         if (lastNames == null)
-            lastNames = fileLoader.load("LastNames.txt");
+            lastNames = fileLoader.loadLines("LastNames.txt");
 
         return lastNames;
     }
