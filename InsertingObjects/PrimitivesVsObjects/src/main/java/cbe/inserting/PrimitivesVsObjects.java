@@ -10,7 +10,7 @@ import cbe.inserting.utilities.Populator;
  *
  * @author mrg
  */
-public class PrimitivesVsObjects1
+public class PrimitivesVsObjects
 {
     public static void main(String[] arguments)
     {
