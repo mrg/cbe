@@ -4,7 +4,7 @@ import org.apache.cayenne.ExtendedEnumeration;
 
 public enum RoleType implements ExtendedEnumeration
 {
-    ADMIN("A"), DISABLED("D"), USER("U");
+    ADMIN("A"), CUSTOMER("C"), MODERATOR("M");
 
     private String databaseValue;
 
