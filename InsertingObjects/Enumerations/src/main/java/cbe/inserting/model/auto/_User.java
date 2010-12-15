@@ -12,6 +12,7 @@ import cbe.inserting.constants.RoleType;
  */
 public abstract class _User extends CayenneDataObject {
 
+    public static final String ENABLED_PROPERTY = "enabled";
     public static final String FIRST_NAME_PROPERTY = "firstName";
     public static final String LAST_NAME_PROPERTY = "lastName";
     public static final String PASSWORD_PROPERTY = "password";
@@ -19,6 +20,14 @@ public abstract class _User extends CayenneDataObject {
     public static final String USERNAME_PROPERTY = "username";
 
     public static final String ID_PK_COLUMN = "id";
+
+    public void setEnabled(boolean enabled) {
+        writeProperty("enabled", enabled);
+    }
+	public boolean isEnabled() {
+        Boolean value = (Boolean)readProperty("enabled");
+        return (value != null) ? value.booleanValue() : false;
+    }
 
     public void setFirstName(String firstName) {
         writeProperty("firstName", firstName);

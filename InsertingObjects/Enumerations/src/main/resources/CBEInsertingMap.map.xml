@@ -6,6 +6,7 @@
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.inserting.model"/>
 	<db-entity name="Users">
+		<db-attribute name="enabled" type="BIT" isMandatory="true"/>
 		<db-attribute name="first_name" type="VARCHAR" length="25"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="last_name" type="VARCHAR" length="25"/>
@@ -14,6 +15,7 @@
 		<db-attribute name="username" type="VARCHAR" length="26"/>
 	</db-entity>
 	<obj-entity name="User" className="cbe.inserting.model.User" lock-type="optimistic" dbEntityName="Users">
+		<obj-attribute name="enabled" type="boolean" lock="true" db-attribute-path="enabled"/>
 		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
 		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
 		<obj-attribute name="password" type="java.lang.String" lock="true" db-attribute-path="password"/>
