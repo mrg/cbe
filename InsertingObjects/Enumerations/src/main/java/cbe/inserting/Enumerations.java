@@ -28,6 +28,7 @@ public class Enumerations
         user.setLastName("Administrator");
         user.setUsername("admin");
         user.setPassword("admin123");
+        user.setEnabled(true);
         user.setRole(RoleType.ADMIN);
 
         // Loop over all the names in our resources file and create users
@@ -61,8 +62,14 @@ public class Enumerations
 
         // Don't enable accounts whose last name starts with an "A".
         if (lastName.startsWith("A"))
-            user.setRole(RoleType.DISABLED);
+            user.setEnabled(false);
         else
-            user.setRole(RoleType.USER);
+            user.setEnabled(true);
+
+        // Accounts whose last name starts with a "B" are moderators.
+        if (lastName.startsWith("B"))
+            user.setRole(RoleType.MODERATOR);
+        else
+            user.setRole(RoleType.CUSTOMER);
     }
 }
