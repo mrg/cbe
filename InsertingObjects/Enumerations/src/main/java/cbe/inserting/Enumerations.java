@@ -7,7 +7,7 @@ import cbe.inserting.model.User;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example inserts a single User object into the database.
+ * This example illustrates using enumerations.
  *
  * @author mrg
  */
@@ -34,8 +34,8 @@ public class Enumerations
         // Loop over all the names in our resources file and create users
         // for each of them.
         for (String firstName : Populator.getFirstNames())
-          for (String lastName : Populator.getLastNames())
-            createUser(dataContext, firstName, lastName);
+            for (String lastName : Populator.getLastNames())
+                createUser(dataContext, firstName, lastName);
 
         // Commit the changes to the database.
         dataContext.commitChanges();
