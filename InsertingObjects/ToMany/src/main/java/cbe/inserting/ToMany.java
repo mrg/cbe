@@ -119,41 +119,51 @@ public class ToMany
         DataContext dataContext = (DataContext) user.getObjectContext();
 
         // Create some settings
-        Setting fontSize      = dataContext.newObject(Setting.class);
-        Setting passwordReset = dataContext.newObject(Setting.class);
+        Setting fontSize              = dataContext.newObject(Setting.class);
+        Setting passwordResetQuestion = dataContext.newObject(Setting.class);
+        Setting passwordResetAnswer   = dataContext.newObject(Setting.class);
 
         switch (new Random().nextInt(3))
         {
             case 0:
                 fontSize.setKey("fontSize");
                 fontSize.setValue("small");
-                passwordReset.setKey("What is your favorite color?");
-                passwordReset.setValue("red");
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite color?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("red");
                 break;
             case 1:
                 fontSize.setKey("fontSize");
                 fontSize.setValue("medium");
-                passwordReset.setKey("What is your favorite activity?");
-                passwordReset.setValue("biking");
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite activity?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("biking");
                 break;
             case 2:
                 fontSize.setKey("fontSize");
                 fontSize.setValue("large");
-                passwordReset.setKey("What is your favorite breakfast?");
-                passwordReset.setValue("eggs");
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite breakfast?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("eggs");
                 break;
             default:
                 fontSize.setKey("fontSize");
                 fontSize.setValue("medium");
-                passwordReset.setKey("What is your favorite color?");
-                passwordReset.setValue("black");
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setKey("What is your favorite color?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("black");
         }
 
         // Add the settings to the user.  Cayenne will figure out how
         // to map the relationship based upon the model and also create
         // the primary keys and foreign keys.
         user.addToSettings(fontSize);
-        user.addToSettings(passwordReset);
+        user.addToSettings(passwordResetQuestion);
+        user.addToSettings(passwordResetAnswer);
     }
 
     /**
