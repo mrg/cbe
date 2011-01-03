@@ -42,7 +42,7 @@ public class ToMany
                 createUser(dataContext, firstName, lastName);
 
         // Commit the changes to the database.  This includes User
-        // and Address records.
+        // and Setting records.
         dataContext.commitChanges();
     }
 
@@ -111,6 +111,11 @@ public class ToMany
         user.setAddress(address);
     }
 
+    /**
+     * Create settings for the give user.
+     * 
+     * @param user
+     */
     private static void createSettings(User user)
     {
         // Extract the DataContext from the user.  We are creating a
@@ -118,46 +123,16 @@ public class ToMany
         // in the same DataContext, so be sure to use the same one.
         DataContext dataContext = (DataContext) user.getObjectContext();
 
-        // Create some settings
+        // Create some settings.
         Setting fontSize              = dataContext.newObject(Setting.class);
         Setting passwordResetQuestion = dataContext.newObject(Setting.class);
         Setting passwordResetAnswer   = dataContext.newObject(Setting.class);
 
-        switch (new Random().nextInt(3))
-        {
-            case 0:
-                fontSize.setKey("fontSize");
-                fontSize.setValue("small");
-                passwordResetQuestion.setKey("passwordResetQuestion");
-                passwordResetQuestion.setValue("What is your favorite color?");
-                passwordResetAnswer.setKey("passwordResetAnswer");
-                passwordResetAnswer.setValue("red");
-                break;
-            case 1:
-                fontSize.setKey("fontSize");
-                fontSize.setValue("medium");
-                passwordResetQuestion.setKey("passwordResetQuestion");
-                passwordResetQuestion.setValue("What is your favorite activity?");
-                passwordResetAnswer.setKey("passwordResetAnswer");
-                passwordResetAnswer.setValue("biking");
-                break;
-            case 2:
-                fontSize.setKey("fontSize");
-                fontSize.setValue("large");
-                passwordResetQuestion.setKey("passwordResetQuestion");
-                passwordResetQuestion.setValue("What is your favorite breakfast?");
-                passwordResetAnswer.setKey("passwordResetAnswer");
-                passwordResetAnswer.setValue("eggs");
-                break;
-            default:
-                fontSize.setKey("fontSize");
-                fontSize.setValue("medium");
-                passwordResetQuestion.setKey("passwordResetQuestion");
-                passwordResetQuestion.setKey("What is your favorite color?");
-                passwordResetAnswer.setKey("passwordResetAnswer");
-                passwordResetAnswer.setValue("black");
-        }
-
+        // Set random values for the settings.
+        setRandomFontSize(fontSize);
+        setRandomPasswordResetQuestionAndAnswer
+        	(passwordResetQuestion, passwordResetAnswer);
+        
         // Add the settings to the user.  Cayenne will figure out how
         // to map the relationship based upon the model and also create
         // the primary keys and foreign keys.
@@ -185,5 +160,59 @@ public class ToMany
         }
 
         return number + " " + street;
+    }
+    
+    /**
+     * Set a random font size setting.
+     * 
+     * @param fontSize
+     */
+    private static void setRandomFontSize(Setting fontSize)
+    {
+        switch (new Random().nextInt(3))
+        {
+            case 0:
+                fontSize.setKey("fontSize");
+                fontSize.setValue("small");
+                break;
+            case 1:
+                fontSize.setKey("fontSize");
+                fontSize.setValue("medium");
+                break;
+            case 2:
+                fontSize.setKey("fontSize");
+                fontSize.setValue("large");
+                break;
+        }
+    }
+
+	/**
+	 * Set a random password reset question.
+	 * 
+	 * @param passwordResetQuestion
+	 */
+	private static void setRandomPasswordResetQuestionAndAnswer
+		(Setting passwordResetQuestion, Setting passwordResetAnswer)
+    {
+        switch (new Random().nextInt(3))
+        {
+            case 0:
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite color?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("red");
+                break;
+            case 1:
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite activity?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("biking");
+                break;
+            case 2:
+                passwordResetQuestion.setKey("passwordResetQuestion");
+                passwordResetQuestion.setValue("What is your favorite breakfast?");
+                passwordResetAnswer.setKey("passwordResetAnswer");
+                passwordResetAnswer.setValue("eggs");
+        }
     }
 }
