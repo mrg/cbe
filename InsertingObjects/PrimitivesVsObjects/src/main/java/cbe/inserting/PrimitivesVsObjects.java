@@ -6,7 +6,10 @@ import cbe.inserting.model.User;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example inserts a single User object into the database.
+ * This example inserts multiple User objects into the database.  It is
+ * similar to the BasicInserts examples, but adds using a Boolean object
+ * and a boolean primitive to the User object to show the difference
+ * between the two.
  *
  * @author mrg
  */
@@ -27,10 +30,12 @@ public class PrimitivesVsObjects
         user.setLastName("Administrator");
         user.setUsername("admin");
         user.setPassword("admin123");
-        user.setAdmin(true); // Autoboxing here.
+        // "admin" is a Boolean, "enabled" is a boolean.
+        user.setAdmin(true); // Autoboxing to a Boolean here.
 
         // Loop over all the names in our resources file and create users
-        // for each of them.
+        // for each of them.  The Populator reads first and last names from
+        // a data file in the resources directory.
         for (String firstName : Populator.getFirstNames())
           for (String lastName : Populator.getLastNames())
             createUser(dataContext, firstName, lastName);

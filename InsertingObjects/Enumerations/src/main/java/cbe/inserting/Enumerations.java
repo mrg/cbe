@@ -32,7 +32,8 @@ public class Enumerations
         user.setRole(RoleType.ADMIN);
 
         // Loop over all the names in our resources file and create users
-        // for each of them.
+        // for each of them.  The Populator reads first and last names from
+        // a data file in the resources directory.
         for (String firstName : Populator.getFirstNames())
             for (String lastName : Populator.getLastNames())
                 createUser(dataContext, firstName, lastName);
