@@ -6,7 +6,7 @@ import cbe.inserting.model.User;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example inserts many User objects into the database within a single
+ * This example inserts multiple User objects into the database within a single
  * commit/transaction.
  *
  * @author mrg
@@ -29,7 +29,8 @@ public class BasicInserts2
         user.setUsername("admin");
 
         // Loop over all the names in our resources file and create users
-        // for each of them.
+        // for each of them.  The Populator reads first and last names from
+        // a data file in the resources directory.
         for (String firstName : Populator.getFirstNames())
           for (String lastName : Populator.getLastNames())
             createUser(dataContext, firstName, lastName);
