@@ -11,6 +11,7 @@ public class Populator
 {
     private static List<String> firstNames = null;
     private static List<String> lastNames  = null;
+    private static List<String> people     = null;
 
     private static FileLoader fileLoader = FileLoader.getInstance();
 
@@ -35,5 +36,16 @@ public class Populator
             lastNames = fileLoader.loadLines("LastNames.txt");
 
         return lastNames;
+    }
+
+    /**
+     * @return All the first names from src/main/resources/People.txt.
+     */
+    public static List<String> getPeople()
+    {
+        if (people == null)
+            people = fileLoader.loadLines("People.txt");
+
+        return people;
     }
 }
