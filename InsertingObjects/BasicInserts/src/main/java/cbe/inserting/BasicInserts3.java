@@ -6,9 +6,8 @@ import cbe.inserting.model.User;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example inserts multiple User objects into the database within a single
- * commit/transaction.  This is identical to BasicInserts2, but adds setting a
- * password into the mix.
+ * This example inserts many User objects into the database within a single
+ * commit/transaction.
  *
  * @author mrg
  */
@@ -31,14 +30,12 @@ public class BasicInserts3
         user.setPassword("admin123");
 
         // Loop over all the names in our resources file and create users
-        // for each of them.  The Populator reads first and last names from
-        // a data file in the resources directory.
+        // for each of them.
         for (String firstName : Populator.getFirstNames())
           for (String lastName : Populator.getLastNames())
             createUser(dataContext, firstName, lastName);
 
-        // Commit the changes to the database.  Note that the password is no
-        // longer in plain text when committed.
+        // Commit the changes to the database.
         dataContext.commitChanges();
     }
 
@@ -55,9 +52,7 @@ public class BasicInserts3
         User user = dataContext.newObject(User.class);
 
         // Set values for the new user. Defaults the password to the username
-        // with "123" appended.  Note that the password is being set in
-        // plain text format.  The setPassword() method, however, is overridden
-        // and does not store the password as plain text.
+        // with "123" appended.
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername((firstName.substring(0, 1) + lastName).toLowerCase());
