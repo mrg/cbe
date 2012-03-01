@@ -2,10 +2,10 @@ package cbe.inserting;
 
 import org.apache.cayenne.access.DataContext;
 
-import cbe.inserting.model.User;
+import cbe.inserting.model.Person;
 
 /**
- * This example inserts a single User object into the database.
+ * This example inserts a single Person object into the database.
  *
  * @author mrg
  */
@@ -17,13 +17,13 @@ public class BasicInserts1
         // Framework.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Create a new User object tracked by the DataContext.
-        User user = dataContext.newObject(User.class);
+        // Create a new Person object tracked by the DataContext.
+        Person person = dataContext.newObject(Person.class);
 
-        // Set values for the new user.
-        user.setFirstName("System");
-        user.setLastName("Administrator");
-        user.setUsername("admin");
+        // Set values for the new person.
+        person.setFirstName("System");
+        person.setLastName("Administrator");
+        person.setUsername("admin");
 
         // Commit the changes to the database.
         dataContext.commitChanges();

@@ -1,5 +1,6 @@
 package cbe.inserting.utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,43 +10,27 @@ import java.util.List;
  */
 public class Populator
 {
-    private static List<String> firstNames = null;
-    private static List<String> lastNames  = null;
-    private static List<String> people     = null;
+	// Constants for index positions into data.
+	public static int PERSON_FIRST_NAME = 0;
+	public static int PERSON_LAST_NAME  = 1;
+	
+    private static FileLoader   fileLoader = FileLoader.getInstance();
+    private static List<String[]> people = null;
 
-    private static FileLoader fileLoader = FileLoader.getInstance();
-
-
-    /**
-     * @return All the first names from src/main/resources/firstNames.txt.
-     */
-    public static List<String> getFirstNames()
-    {
-        if (firstNames == null)
-            firstNames = fileLoader.loadLines("FirstNames.txt");
-
-        return firstNames;
-    }
-
-    /**
-     * @return All the last names from src/main/resources/lastNames.txt.
-     */
-    public static List<String> getLastNames()
-    {
-        if (lastNames == null)
-            lastNames = fileLoader.loadLines("LastNames.txt");
-
-        return lastNames;
-    }
 
     /**
      * @return All the first names from src/main/resources/People.txt.
      */
-    public static List<String> getPeople()
+    public static List<String[]> getPeople()
     {
         if (people == null)
-            people = fileLoader.loadLines("People.txt");
-
+        {
+        	people = new ArrayList<String[]>();
+        	
+        	for (String line : fileLoader.loadLines("People.txt"))
+        		people.add(line.split("\\|"));
+        }
+        
         return people;
     }
 }
