@@ -12,8 +12,6 @@ public abstract class _Person extends CayenneDataObject {
 
     public static final String FIRST_NAME_PROPERTY = "firstName";
     public static final String LAST_NAME_PROPERTY = "lastName";
-    public static final String PASSWORD_PROPERTY = "password";
-    public static final String USERNAME_PROPERTY = "username";
 
     public static final String ID_PK_COLUMN = "id";
 
@@ -29,20 +27,6 @@ public abstract class _Person extends CayenneDataObject {
     }
     public String getLastName() {
         return (String)readProperty("lastName");
-    }
-
-    public void setPassword(String password) {
-        writeProperty("password", password);
-    }
-    public String getPassword() {
-        return (String)readProperty("password");
-    }
-
-    public void setUsername(String username) {
-        writeProperty("username", username);
-    }
-    public String getUsername() {
-        return (String)readProperty("username");
     }
 
 }
