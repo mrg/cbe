@@ -15,8 +15,8 @@ public class Populator
 	public static int PERSON_LAST_NAME     = 1;
 	public static int PERSON_EMAIL_ADDRESS = 2;
 	
-    private static FileLoader   fileLoader = FileLoader.getInstance();
-    private static List<String[]> people = null;
+    private static FileLoader     fileLoader = FileLoader.getInstance();
+    private static List<String[]> people     = null;
 
 
     /**
