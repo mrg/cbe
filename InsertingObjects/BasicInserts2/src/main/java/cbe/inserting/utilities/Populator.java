@@ -13,7 +13,7 @@ public class Populator
 	// Constants for index positions into data.
 	public static int PERSON_FIRST_NAME    = 0;
 	public static int PERSON_LAST_NAME     = 1;
-	public static int PERSON_EMAIL_ADDRESS = 1;
+	public static int PERSON_EMAIL_ADDRESS = 2;
 	
     private static FileLoader   fileLoader = FileLoader.getInstance();
     private static List<String[]> people = null;
