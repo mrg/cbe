@@ -8,10 +8,12 @@ import cbe.inserting.utilities.Populator;
 /**
  * Cayenne By Example
  *     https://github.com/mrg/cbe
- *
- * This example inserts many Person objects into the database within a single
- * commit/transaction.
- *
+ * 
+ * This example builds upon BasicInserts1 and inserts many Person objects into
+ * the database within a single commit/transaction. The data is read from
+ * People.txt under resources (loaded by Populator). Also adds an email address
+ * field.
+ * 
  * @author mrg
  */
 public class BasicInserts2
@@ -22,24 +24,10 @@ public class BasicInserts2
         // Framework.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Create a new Person object tracked by the DataContext.
-        Person person = dataContext.newObject(Person.class);
-
-        // Set values for the new person. In this case, we are initializing
-        // an administrator.
-        person.setFirstName("System");
-        person.setLastName("Administrator");
-        person.setUsername("admin");
-
         // Loop over all the names in our resources file and create Persons
         // for each of them.
         for (String[] personFields : Populator.getPeople())
-        {
-        	String firstName = personFields[Populator.PERSON_FIRST_NAME];
-        	String lastName  = personFields[Populator.PERSON_LAST_NAME];
-
-            createPerson(dataContext, firstName, lastName);
-        }
+            createPerson(dataContext, personFields);
 
         // Commit the changes to the database.
         dataContext.commitChanges();
@@ -52,14 +40,19 @@ public class BasicInserts2
      * @param firstName The person's first name.
      * @param lastName The person's last name.
      */
-    private static void createPerson(DataContext dataContext, String firstName, String lastName)
+    private static void createPerson(DataContext dataContext, String[] fields)
     {
+    	// Extract field values.
+    	String firstName    = fields[Populator.PERSON_FIRST_NAME];
+    	String lastName     = fields[Populator.PERSON_LAST_NAME];
+    	String emailAddress = fields[Populator.PERSON_EMAIL_ADDRESS];
+
         // Create a new Person object tracked by the DataContext.
     	Person person = dataContext.newObject(Person.class);
 
         // Set values for the new person.
         person.setFirstName(firstName);
         person.setLastName(lastName);
-        person.setUsername((firstName.substring(0, 1) + lastName).toLowerCase());
+        person.setEmailAddress(emailAddress);
     }
 }
