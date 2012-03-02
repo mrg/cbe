@@ -54,6 +54,6 @@ public class BasicInserts3
         person.setFirstName(firstName);
         person.setLastName(lastName);
         person.setEmailAddress(emailAddress);
-        person.setPassword(person.getEmailAddress() + "123");
+        person.setPassword(emailAddress + "123");
     }
 }
