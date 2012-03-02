@@ -37,8 +37,7 @@ public class BasicInserts2
      * Helper method to create and initialize a person in a DataContext.
      *
      * @param dataContext The DataContext to register the person.
-     * @param firstName The person's first name.
-     * @param lastName The person's last name.
+     * @param fields The data fields from the People.txt file.
      */
     private static void createPerson(DataContext dataContext, String[] fields)
     {
