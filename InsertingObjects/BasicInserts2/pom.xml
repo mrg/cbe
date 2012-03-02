@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cbe</groupId>
-    <artifactId>BasicInserts</artifactId>
+    <artifactId>BasicInserts2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>BasicInserts</name>
+    <name>BasicInserts2</name>
     <url>https://github.com/mrg/cbe</url>
 
     <properties>
