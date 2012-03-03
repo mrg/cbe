@@ -1,0 +1,7 @@
+System|Administrator|admin@example.com|ADMIN
+Aaron|Caldwell|acaldwell@example.com|AUTHOR
+Heidi|Freeman|hfreeman@example.com|EDITOR
+Marcus|Kerr|mkerr@example.com|MODERATOR
+Rose|Newton|rnewton@example.com|EDITOR
+Ulric|Reeves|ureeves@example.com|NONE
+Victoria|Waters|vwaters@example.com|AUTHOR

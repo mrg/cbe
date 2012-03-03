@@ -1,14 +1,25 @@
 package cbe.inserting;
 
 import org.apache.cayenne.access.DataContext;
+import org.h2.engine.User;
 
 import cbe.inserting.constants.RoleType;
-import cbe.inserting.model.User;
+import cbe.inserting.model.Person;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example illustrates using enumerations.
- *
+ * Cayenne By Example - https://github.com/mrg/cbe
+ * 
+ * This example builds upon BasicInserts3.
+ * 
+ * It inserts many Person objects into the database within a single
+ * commit/transaction.
+ * 
+ * The data is read from 'People.txt' under resources (loaded by Populator) and
+ * a Role is added in order to illustrate mapping Java enumerations to database
+ * values. Cayenne uses the RoleType enumeration to handle the translation
+ * values (look at the Java Type in the modeler).
+ * 
  * @author mrg
  */
 public class Enumerations
@@ -19,24 +30,10 @@ public class Enumerations
         // Framework.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Create a new User object tracked by the DataContext.
-        User user = dataContext.newObject(User.class);
-
-        // Set values for the new user. In this case, we are initializing
-        // an administrator.
-        user.setFirstName("System");
-        user.setLastName("Administrator");
-        user.setUsername("admin");
-        user.setPassword("admin123");
-        user.setEnabled(true);
-        user.setRole(RoleType.ADMIN);
-
-        // Loop over all the names in our resources file and create users
-        // for each of them.  The Populator reads first and last names from
-        // a data file in the resources directory.
-        for (String firstName : Populator.getFirstNames())
-            for (String lastName : Populator.getLastNames())
-                createUser(dataContext, firstName, lastName);
+        // Loop over all the names in our resources file and create Persons
+        // for each of them.
+        for (String[] personFields : Populator.getPeople())
+            createPerson(dataContext, personFields);
 
         // Commit the changes to the database.
         dataContext.commitChanges();
@@ -45,32 +42,26 @@ public class Enumerations
     /**
      * Helper method to create and initialize a user in a DataContext.
      *
-     * @param dataContext The DataContext to register the user.
-     * @param firstName The user's first name.
-     * @param lastName The user's last name.
+     * @param dataContext The DataContext to register the person.
+     * @param fields The data fields from the People.txt file.
      */
-    private static void createUser(DataContext dataContext, String firstName, String lastName)
+    private static void createPerson(DataContext dataContext, String[] fields)
     {
-        // Create a new User object tracked by the DataContext.
-        User user = dataContext.newObject(User.class);
+    	// Extract field values.
+    	String firstName    = fields[Populator.PERSON_FIRST_NAME];
+    	String lastName     = fields[Populator.PERSON_LAST_NAME];
+    	String emailAddress = fields[Populator.PERSON_EMAIL_ADDRESS];
+    	String roleType     = fields[Populator.PERSON_ROLE_TYPE];
 
-        // Set values for the new user. Defaults the password to the username
-        // with "123" appended.
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUsername((firstName.substring(0, 1) + lastName).toLowerCase());
-        user.setPassword(user.getUsername() + "123");
+        // Create a new Person object tracked by the DataContext.
+    	Person person = dataContext.newObject(Person.class);
 
-        // Don't enable accounts whose last name starts with an "A".
-        if (lastName.startsWith("A"))
-            user.setEnabled(false);
-        else
-            user.setEnabled(true);
-
-        // Accounts whose last name starts with a "B" are moderators.
-        if (lastName.startsWith("B"))
-            user.setRole(RoleType.MODERATOR);
-        else
-            user.setRole(RoleType.CUSTOMER);
+        // Set values for the new person. Defaults the password to the e-mail
+        // address with "123" appended.
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setEmailAddress(emailAddress);
+        person.setPassword(emailAddress + "123");
+        person.setRole(RoleType.valueOf(roleType));
     }
 }

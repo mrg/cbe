@@ -6,13 +6,15 @@ import cbe.inserting.model.Person;
 import cbe.inserting.utilities.Populator;
 
 /**
- * Cayenne By Example
- *     https://github.com/mrg/cbe
+ * Cayenne By Example - https://github.com/mrg/cbe
  * 
- * This example builds upon BasicInserts1 and inserts many Person objects into
- * the database within a single commit/transaction. The data is read from
- * People.txt under resources (loaded by Populator). Also adds an email address
- * field.
+ * This example builds upon BasicInserts1.
+ * 
+ * It inserts many Person objects into the database within a single
+ * commit/transaction.
+ * 
+ * The data is read from 'People.txt' under resources (loaded by Populator)
+ * and adds an email address field.
  * 
  * @author mrg
  */
