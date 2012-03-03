@@ -5,11 +5,10 @@ import org.apache.cayenne.access.DataContext;
 import cbe.inserting.model.Person;
 
 /**
- * Cayenne By Example
- *     https://github.com/mrg/cbe
- *
+ * Cayenne By Example - https://github.com/mrg/cbe
+ * 
  * This example inserts a single Person object into the database.
- *
+ * 
  * @author mrg
  */
 public class BasicInserts1

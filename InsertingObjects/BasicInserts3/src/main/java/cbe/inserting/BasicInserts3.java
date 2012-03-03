@@ -6,14 +6,16 @@ import cbe.inserting.model.Person;
 import cbe.inserting.utilities.Populator;
 
 /**
- * Cayenne By Example
- *     https://github.com/mrg/cbe
- *
+ * Cayenne By Example - https://github.com/mrg/cbe
+ * 
  * This example builds upon BasicInserts2 and inserts many Person objects into
- * the database within a single commit/transaction.  Adds setting a password
- * which demonstrates a custom cover method in the Person.java subclass, which
- * automatically hashes the value passed in.
- *
+ * the database within a single commit/transaction.
+ * 
+ * It adds setting a person's password to demonstrate overriding the
+ * setPassword() method in the Person.java subclass, which automatically hashes
+ * the value passed in (so that the person's password is not saved in plain
+ * text).
+ * 
  * @author mrg
  */
 public class BasicInserts3
