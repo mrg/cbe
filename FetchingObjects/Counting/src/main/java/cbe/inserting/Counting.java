@@ -1,8 +1,12 @@
 package cbe.inserting;
 
 import org.apache.cayenne.access.DataContext;
+import org.apache.cayenne.exp.Expression;
+import org.apache.cayenne.exp.ExpressionFactory;
+import org.apache.cayenne.query.SelectQuery;
 
 import cbe.inserting.model.Person;
+import cbe.inserting.utilities.CountHelper;
 import cbe.inserting.utilities.Populator;
 
 /**
@@ -37,6 +41,15 @@ public class Counting
 
         // Commit the changes to the database.
         dataContext.commitChanges();
+
+        SelectQuery query = new SelectQuery(Person.class);
+
+        System.out.println("Number of persons: " + CountHelper.count(dataContext, query));
+
+        Expression expression = ExpressionFactory.likeIgnoreCaseExp(Person.FIRST_NAME_PROPERTY, "A%");
+        query.setQualifier(expression);
+
+        System.out.println("Number of persons: " + CountHelper.count(dataContext, query));
     }
 
     /**
