@@ -1,9 +1,9 @@
 
-package cbe.inserting.model;
+package cbe.fetching.model;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import cbe.inserting.model.auto._Person;
+import cbe.fetching.model.auto._Person;
 
 public class Person extends _Person
 {

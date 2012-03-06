@@ -1,4 +1,4 @@
-package cbe.inserting.utilities;
+package cbe.fetching.utilities;
 
 import java.io.BufferedReader;
 import java.io.IOException;

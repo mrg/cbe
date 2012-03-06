@@ -1,4 +1,4 @@
-package cbe.inserting.model.auto;
+package cbe.fetching.model.auto;
 
 
 

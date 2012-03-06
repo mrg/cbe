@@ -1,4 +1,4 @@
-package cbe.inserting.utilities;
+package cbe.fetching.utilities;
 
 import org.apache.cayenne.access.trans.SelectTranslator;
 

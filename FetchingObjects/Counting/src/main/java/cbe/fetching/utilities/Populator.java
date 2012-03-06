@@ -1,4 +1,4 @@
-package cbe.inserting.utilities;
+package cbe.fetching.utilities;
 
 import java.util.ArrayList;
 import java.util.List;

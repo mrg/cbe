@@ -1,13 +1,13 @@
-package cbe.inserting;
+package cbe.fetching;
 
 import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
 
-import cbe.inserting.model.Person;
-import cbe.inserting.utilities.CountHelper;
-import cbe.inserting.utilities.Populator;
+import cbe.fetching.model.Person;
+import cbe.fetching.utilities.CountHelper;
+import cbe.fetching.utilities.Populator;
 
 /**
  * Cayenne By Example - https://github.com/mrg/cbe

@@ -1,7 +1,7 @@
 
-package cbe.inserting.model;
+package cbe.fetching.model;
 
-import cbe.inserting.model.auto._CBEInsertingMap;
+import cbe.fetching.model.auto._CBEInsertingMap;
 
 public class CBEInsertingMap extends _CBEInsertingMap
 {

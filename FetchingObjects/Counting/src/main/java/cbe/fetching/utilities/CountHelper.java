@@ -1,4 +1,4 @@
-package cbe.inserting.utilities;
+package cbe.fetching.utilities;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
