@@ -8,14 +8,37 @@ import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.access.DataNode;
 import org.apache.cayenne.query.SelectQuery;
 
+/**
+ * Utility to count the number of records in the database matching a
+ * Cayenne-based query.
+ *
+ * Inspired by Andrey Razumovsky (where "inspired by" means
+ * "mostly stolen from") who posted the code on the Cayenne mailing list.
+ *
+ * @author mrg
+ */
 public class CountHelper
 {
+    /**
+     * Perform a SELECT COUNT(*) for a Cayenne-based query.
+     *
+     * @param context The DataContext to use to find the DataNode.
+     * @param query The Cayenne Query.
+     * @return Number of records matching query.
+     */
     public static long count(DataContext context, SelectQuery query)
     {
-        return count(context, query, context.getParentDataDomain().getDataNodes().iterator().next());
+        return count(context.getParentDataDomain().getDataNodes().iterator().next(), query);
     }
 
-    public static long count(DataContext context, SelectQuery query, DataNode node)
+    /**
+     * Perform a SELECT COUNT(*) for a Cayenne-based query.
+     *
+     * @param context The DataNode to use to get the database connection.
+     * @param query The Cayenne Query.
+     * @return Number of records matching query.
+     */
+    public static long count(DataNode node, SelectQuery query)
     {
         Connection        connection        = null;
         PreparedStatement preparedStatement = null;
@@ -25,10 +48,9 @@ public class CountHelper
             connection = node.getDataSource().getConnection();
 
             CountTranslator translator = new CountTranslator();
-
             translator.setAdapter(node.getAdapter());
             translator.setConnection(connection);
-            translator.setEntityResolver(context.getEntityResolver());
+            translator.setEntityResolver(node.getEntityResolver());
             translator.setQuery(query);
 
             preparedStatement = translator.createStatement();
