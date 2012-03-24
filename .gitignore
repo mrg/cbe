@@ -1,2 +1,8 @@
+target/
+.metadata
+tar.gz
+.classpath
+.project
+.settings/
 .DS_Store
 *~
