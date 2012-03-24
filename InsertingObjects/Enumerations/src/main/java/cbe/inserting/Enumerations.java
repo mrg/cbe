@@ -1,7 +1,6 @@
 package cbe.inserting;
 
 import org.apache.cayenne.access.DataContext;
-import org.h2.engine.User;
 
 import cbe.inserting.constants.RoleType;
 import cbe.inserting.model.Person;
@@ -40,7 +39,7 @@ public class Enumerations
     }
 
     /**
-     * Helper method to create and initialize a user in a DataContext.
+     * Helper method to create and initialize a person in a DataContext.
      *
      * @param dataContext The DataContext to register the person.
      * @param fields The data fields from the People.txt file.
