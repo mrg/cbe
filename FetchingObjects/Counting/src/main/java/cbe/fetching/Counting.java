@@ -22,49 +22,33 @@ public class Counting
 {
     public static void main(String[] arguments)
     {
-        // Create a new DataContext. This will also initialize the Cayenne
-        // Framework.
+    	// Populate the database.
+    	Populator.populateDatabase();
+
+    	// Create a new DataContext for the queries.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Loop over all the names in our resources file and create Persons
-        // for each of them.
-        for (String[] personFields : Populator.getPeople())
-            createPerson(dataContext, personFields);
-
-        // Commit the changes to the database.
-        dataContext.commitChanges();
-
+        // Create a Query for Person records.
         SelectQuery query = new SelectQuery(Person.class);
 
-        System.out.println("Number of persons: " + CountHelper.count(dataContext, query));
+        // Count the number of Person records based upon the Query.
+        // Since the Query is unrestricted, it will return the count
+        // of all Person records.
+        long allPersons = CountHelper.count(dataContext, query);
 
-        Expression expression = ExpressionFactory.likeIgnoreCaseExp(Person.FIRST_NAME_PROPERTY, "A%");
+        // Create an Expression to restrict Person records to first
+        // names beginning with an "A".
+        Expression expression =
+            ExpressionFactory.likeIgnoreCaseExp(Person.FIRST_NAME_PROPERTY, "A%");
+
+        // Add the Expression to the Person query.
         query.setQualifier(expression);
 
-        System.out.println("Number of persons: " + CountHelper.count(dataContext, query));
-    }
+        // Count the number of Person records based upon the query.
+        long restrictedPersons = CountHelper.count(dataContext, query);
 
-    /**
-     * Helper method to create and initialize a person in a DataContext.
-     *
-     * @param dataContext The DataContext to register the person.
-     * @param fields The data fields from the People.txt file.
-     */
-    private static void createPerson(DataContext dataContext, String[] fields)
-    {
-    	// Extract field values.
-    	String firstName    = fields[Populator.PERSON_FIRST_NAME];
-    	String lastName     = fields[Populator.PERSON_LAST_NAME];
-    	String emailAddress = fields[Populator.PERSON_EMAIL_ADDRESS];
-
-        // Create a new Person object tracked by the DataContext.
-    	Person person = dataContext.newObject(Person.class);
-
-        // Set values for the new person. Defaults the password to the e-mail
-        // address with "123" appended.
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setEmailAddress(emailAddress);
-        person.setPassword(emailAddress + "123");
+        // Print the results.
+        System.out.println("Number of Person records: " + allPersons);
+        System.out.println("Number of 'A' Person records: " + restrictedPersons);
     }
 }
