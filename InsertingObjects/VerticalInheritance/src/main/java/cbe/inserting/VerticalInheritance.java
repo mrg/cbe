@@ -47,7 +47,7 @@ public class VerticalInheritance
         e2.setFormat(ElectronicBookFormat.EPUB);
         e2.setIsbn("123");
         e2.setType(BookType.ELECTRONIC_BOOK);
-        e1.setSize(1000);
+        e2.setSize(1000);
         e2.setAuthor("Tad Williams");
         e2.setTitle("River of Blue Fire");
         e2.setSeries("Otherland");
@@ -57,7 +57,7 @@ public class VerticalInheritance
         e3.setFormat(ElectronicBookFormat.EPUB);
         e3.setIsbn("123");
         e3.setType(BookType.ELECTRONIC_BOOK);
-        e1.setSize(950);
+        e3.setSize(950);
         e3.setAuthor("Tad Williams");
         e3.setTitle("Mountain of Black Glass");
         e3.setSeries("Otherland");
@@ -67,7 +67,7 @@ public class VerticalInheritance
         e4.setFormat(ElectronicBookFormat.EPUB);
         e4.setIsbn("123");
         e4.setType(BookType.ELECTRONIC_BOOK);
-        e1.setSize(1050);
+        e4.setSize(1050);
         e4.setAuthor("Tad Williams");
         e4.setTitle("Sea of Silver Light");
         e4.setSeries("Otherland");
