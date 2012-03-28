@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.inserting.model"/>
+	<db-entity name="BOOK">
+		<db-attribute name="author" type="VARCHAR" isMandatory="true" length="75"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="isbn" type="VARCHAR" isMandatory="true" length="25"/>
+		<db-attribute name="sequence" type="INTEGER"/>
+		<db-attribute name="series" type="VARCHAR" length="75"/>
+		<db-attribute name="sub_title" type="VARCHAR" length="75"/>
+		<db-attribute name="title" type="VARCHAR" isMandatory="true" length="75"/>
+		<db-attribute name="type" type="VARCHAR" isMandatory="true" length="1"/>
+	</db-entity>
+	<db-entity name="ELECTRONIC_BOOK">
+		<db-attribute name="format" type="VARCHAR" isMandatory="true" length="10"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="size" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="PAPER_BOOK">
+		<db-attribute name="format" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="Book" className="cbe.inserting.model.Book" lock-type="optimistic" dbEntityName="BOOK">
+		<obj-attribute name="author" type="java.lang.String" db-attribute-path="author"/>
+		<obj-attribute name="isbn" type="java.lang.String" db-attribute-path="isbn"/>
+		<obj-attribute name="sequence" type="java.lang.Integer" db-attribute-path="sequence"/>
+		<obj-attribute name="series" type="java.lang.String" db-attribute-path="series"/>
+		<obj-attribute name="subTitle" type="java.lang.String" db-attribute-path="sub_title"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="type" type="cbe.inserting.constants.BookType" db-attribute-path="type"/>
+	</obj-entity>
+	<obj-entity name="ElectronicBook" superEntityName="Book" className="cbe.inserting.model.ElectronicBook" lock-type="optimistic" dbEntityName="BOOK">
+		<qualifier><![CDATA[type = "E"]]></qualifier>
+		<obj-attribute name="format" type="cbe.inserting.constants.ElectronicBookFormat" db-attribute-path="electronic_book.format"/>
+		<obj-attribute name="size" type="java.lang.Integer" db-attribute-path="electronic_book.size"/>
+	</obj-entity>
+	<obj-entity name="PaperBook" superEntityName="Book" className="cbe.inserting.model.PaperBook" lock-type="optimistic" dbEntityName="BOOK">
+		<qualifier><![CDATA[type = "P"]]></qualifier>
+		<obj-attribute name="format" type="cbe.inserting.constants.PaperBookFormat" db-attribute-path="paper_book.format"/>
+	</obj-entity>
+	<db-relationship name="electronic_book" source="BOOK" target="ELECTRONIC_BOOK" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+	<db-relationship name="paper_book" source="BOOK" target="PAPER_BOOK" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+	<db-relationship name="book" source="ELECTRONIC_BOOK" target="BOOK" toMany="false">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+	<db-relationship name="book" source="PAPER_BOOK" target="BOOK" toMany="false">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+</data-map>
