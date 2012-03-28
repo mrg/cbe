@@ -7,7 +7,7 @@
 	<property name="defaultPackage" value="cbe.inserting.model"/>
 	<db-entity name="BOOK">
 		<db-attribute name="author" type="VARCHAR" isMandatory="true" length="75"/>
-		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="isbn" type="VARCHAR" isMandatory="true" length="25"/>
 		<db-attribute name="sequence" type="INTEGER"/>
 		<db-attribute name="series" type="VARCHAR" length="75"/>
@@ -17,12 +17,12 @@
 	</db-entity>
 	<db-entity name="ELECTRONIC_BOOK">
 		<db-attribute name="format" type="VARCHAR" isMandatory="true" length="10"/>
-		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
-		<db-attribute name="size" type="INTEGER"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="size" type="INTEGER" isMandatory="true"/>
 	</db-entity>
 	<db-entity name="PAPER_BOOK">
 		<db-attribute name="format" type="CHAR" isMandatory="true" length="1"/>
-		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 	</db-entity>
 	<obj-entity name="Book" className="cbe.inserting.model.Book" lock-type="optimistic" dbEntityName="BOOK">
 		<obj-attribute name="author" type="java.lang.String" db-attribute-path="author"/>
