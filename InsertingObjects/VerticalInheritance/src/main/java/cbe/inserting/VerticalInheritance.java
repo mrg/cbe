@@ -13,16 +13,6 @@ import cbe.inserting.model.PaperBook;
  *
  * This example shows how to use vertical inheritance.
  *
- * It inserts many Person objects into the database within a single
- * commit/transaction.
- *
- * The data is read from 'People.txt' under resources (loaded by Populator).
- *
- * It adds setting a person's password to demonstrate overriding the
- * setPassword() method in the Person.java subclass, which automatically hashes
- * the value passed in (so that the person's password is not saved in plain
- * text).
- *
  * @author mrg
  */
 public class VerticalInheritance
