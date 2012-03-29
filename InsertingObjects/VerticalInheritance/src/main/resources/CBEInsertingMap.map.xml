@@ -24,7 +24,7 @@
 		<db-attribute name="format" type="CHAR" isMandatory="true" length="1"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 	</db-entity>
-	<obj-entity name="Book" className="cbe.inserting.model.Book" lock-type="optimistic" dbEntityName="BOOK">
+	<obj-entity name="Book" abstract="true" className="cbe.inserting.model.Book" lock-type="optimistic" dbEntityName="BOOK">
 		<obj-attribute name="author" type="java.lang.String" db-attribute-path="author"/>
 		<obj-attribute name="isbn" type="java.lang.String" db-attribute-path="isbn"/>
 		<obj-attribute name="sequence" type="java.lang.Integer" db-attribute-path="sequence"/>
@@ -32,6 +32,7 @@
 		<obj-attribute name="subTitle" type="java.lang.String" db-attribute-path="sub_title"/>
 		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
 		<obj-attribute name="type" type="cbe.inserting.constants.BookType" db-attribute-path="type"/>
+		<post-add method-name="initializeType"/>
 	</obj-entity>
 	<obj-entity name="ElectronicBook" superEntityName="Book" className="cbe.inserting.model.ElectronicBook" lock-type="optimistic" dbEntityName="BOOK">
 		<qualifier><![CDATA[type = "E"]]></qualifier>

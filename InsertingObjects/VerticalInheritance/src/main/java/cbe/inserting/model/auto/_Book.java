@@ -71,4 +71,6 @@ public abstract class _Book extends CayenneDataObject {
         return (BookType)readProperty("type");
     }
 
+    protected abstract void initializeType();
+
 }
