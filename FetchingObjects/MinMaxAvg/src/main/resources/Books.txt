@@ -1,0 +1,6 @@
+Arthur C. Clarke|2001: A Space Odyssey|10.20
+Suzanne Collins|The Hunger Games|5.01
+Robert Heinlein|Stranger in a Strange Land|12.24
+J. K. Rowling|Harry Potter and the Sorcerer's Stone|8.79
+J. R. R. Tolkien|The Hobbit|16.50
+Tad Williams|The Dragonbone Chair|10.85

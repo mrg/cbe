@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.fetching.model"/>
+	<db-entity name="Books">
+		<db-attribute name="author" type="VARCHAR" length="75"/>
+		<db-attribute name="book_price" type="NUMERIC" length="6" scale="2"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="title" type="VARCHAR" length="75"/>
+	</db-entity>
+	<obj-entity name="Book" className="cbe.fetching.model.Book" lock-type="optimistic" dbEntityName="Books">
+		<obj-attribute name="author" type="java.lang.String" db-attribute-path="author"/>
+		<obj-attribute name="price" type="java.math.BigDecimal" db-attribute-path="book_price"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+	</obj-entity>
+</data-map>
