@@ -21,7 +21,7 @@ import org.apache.cayenne.query.SelectQuery;
  *
  * @author mrg
  */
-public class Aggregates
+public class AggregatesUtil
 {
     private static final String MAX = "MAX";
     private static final String MIN = "MIN";
