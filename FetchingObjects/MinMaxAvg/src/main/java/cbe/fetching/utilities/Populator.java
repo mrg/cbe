@@ -33,8 +33,8 @@ public class Populator
         {
             books = new ArrayList<String[]>();
 
-        	for (String line : fileLoader.loadLines("Books.txt"))
-        	    books.add(line.split("\\|"));
+            for (String line : fileLoader.loadLines("Books.txt"))
+                books.add(line.split("\\|"));
         }
 
         return books;
@@ -63,13 +63,13 @@ public class Populator
      */
     private static void createPerson(DataContext dataContext, String[] fields)
     {
-    	// Extract field values.
-    	String author = fields[Populator.BOOK_AUTHOR];
-    	String title  = fields[Populator.BOOK_TITLE];
-    	String price  = fields[Populator.BOOK_PRICE];
+        // Extract field values.
+        String author = fields[Populator.BOOK_AUTHOR];
+        String title  = fields[Populator.BOOK_TITLE];
+        String price  = fields[Populator.BOOK_PRICE];
 
         // Create a new Person object tracked by the DataContext.
-    	Book book = dataContext.newObject(Book.class);
+        Book book = dataContext.newObject(Book.class);
 
         book.setAuthor(author);
         book.setTitle(title);
