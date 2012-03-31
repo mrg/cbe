@@ -12,13 +12,9 @@ import cbe.fetching.utilities.Populator;
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
  *
- * This example builds upon BasicInserts3.
- *
- * It counts how many Person objects are in the database.
- *
  * @author mrg
  */
-public class MinMaxAvg
+public class AggregatesExample
 {
     public static void main(String[] arguments)
     {
