@@ -14,7 +14,7 @@ import cbe.fetching.utilities.Populator;
  *
  * @author mrg
  */
-public class AggregatesExample
+public class Aggregates
 {
     public static void main(String[] arguments)
     {
