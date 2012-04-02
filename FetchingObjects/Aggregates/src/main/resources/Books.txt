@@ -4,3 +4,7 @@ Robert Heinlein|Stranger in a Strange Land|12.24
 J. K. Rowling|Harry Potter and the Sorcerer's Stone|8.79
 J. R. R. Tolkien|The Hobbit|16.50
 Tad Williams|The Dragonbone Chair|10.85
+Dan Brown|The Da Vinci Code|11.21
+Nelson Mandela|Conversations with Myself|12.48
+Salman Rushdie|The Satanic Verses|10.88
+Caralyn Buehner|Snowmen at Night|9.10
