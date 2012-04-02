@@ -23,32 +23,73 @@ import org.apache.cayenne.query.SelectQuery;
  */
 public class AggregatesUtil
 {
+    // Aggregate function names.
     private static final String MAX = "MAX";
     private static final String MIN = "MIN";
     private static final String AVG = "AVG";
     private static final String SUM = "SUM";
     private static final String COUNT = "COUNT";
 
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @param objectAttribute The Java attribute of the column to sum.
+     * @return The database SUM of the attribute matching the query.
+     */
     public static BigDecimal sum(DataContext context, SelectQuery query, String objectAttribute)
     {
         return sum(findDataNode(context, query), query, objectAttribute);
     }
+
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @param objectAttribute The Java attribute of the column to sum.
+     * @return The database AVG of the attribute matching the query.
+     */
     public static BigDecimal avg(DataContext context, SelectQuery query, String objectAttribute)
     {
         return avg(findDataNode(context, query), query, objectAttribute);
     }
+
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @param objectAttribute The Java attribute of the column to sum.
+     * @return The database MIN of the attribute matching the query.
+     */
     public static BigDecimal min(DataContext context, SelectQuery query, String objectAttribute)
     {
         return min(findDataNode(context, query), query, objectAttribute);
     }
+
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @param objectAttribute The Java attribute of the column to sum.
+     * @return The database MAX of the attribute matching the query.
+     */
     public static BigDecimal max(DataContext context, SelectQuery query, String objectAttribute)
     {
         return max(findDataNode(context, query), query, objectAttribute);
     }
+
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @return The database COUNT of the rows matching the query.
+     */
     public static long count(DataContext context, SelectQuery query)
     {
         return count(context, query, null);
     }
+
+    /**
+     * @param context The DataContext used to perform the query.
+     * @param query The SelectQuery to perform the query against.
+     * @param objectAttribute The Java attribute of the column to sum.
+     * @return The database COUNT of the attribute matching the query.
+     */
     public static long count(DataContext context, SelectQuery query, String objectAttribute)
     {
         return count(findDataNode(context, query), query, objectAttribute);
@@ -101,14 +142,21 @@ public class AggregatesUtil
 
     private static BigDecimal getResultForFunction(DataNode node, SelectQuery query, String objectAttribute, String function)
     {
-        String databaseColumn;
+        String  databaseColumn;
+        boolean distinct;
 
         if (function.equals(COUNT) && objectAttribute == null)
+        {
             databaseColumn = "*"; // Allow COUNT(*) with no attribute.
+            distinct       = false;
+        }
         else
+        {
             databaseColumn = getDatabaseColumn(node, query, objectAttribute);
+            distinct       = query.isDistinct();
+        }
 
-        return getResultUsingTranslator(node, query,  new AggregateTranslator(function, databaseColumn));
+        return getResultUsingTranslator(node, query,  new AggregateTranslator(function, databaseColumn, distinct));
     }
 
     private static BigDecimal getResultUsingTranslator(DataNode node, SelectQuery query, AggregateTranslator translator)
