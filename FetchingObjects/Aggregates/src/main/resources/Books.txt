@@ -8,3 +8,6 @@ Dan Brown|The Da Vinci Code|11.21
 Nelson Mandela|Conversations with Myself|12.48
 Salman Rushdie|The Satanic Verses|10.88
 Caralyn Buehner|Snowmen at Night|9.10
+J. R. R. Tolkien|The Fellowship of the Ring|9.20
+J. R. R. Tolkien|The Two Towers|8.76
+J. R. R. Tolkien|The Return of the King|8.76
