@@ -24,59 +24,31 @@ import org.apache.cayenne.query.SelectQuery;
 public class AggregatesUtil
 {
     // Aggregate function names.
-    private static final String MAX = "MAX";
-    private static final String MIN = "MIN";
-    private static final String AVG = "AVG";
-    private static final String SUM = "SUM";
-    private static final String COUNT = "COUNT";
+    public static final String AVG   = "AVG";
+    public static final String COUNT = "COUNT";
+    public static final String MAX   = "MAX";
+    public static final String MIN   = "MIN";
+    public static final String SUM   = "SUM";
 
     /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
-     * @param objectAttribute The Java attribute of the column to sum.
-     * @return The database SUM of the attribute matching the query.
-     */
-    public static BigDecimal sum(DataContext context, SelectQuery query, String objectAttribute)
-    {
-        return sum(findDataNode(context, query), query, objectAttribute);
-    }
-
-    /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
-     * @param objectAttribute The Java attribute of the column to sum.
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute of the column to sum.
      * @return The database AVG of the attribute matching the query.
      */
     public static BigDecimal avg(DataContext context, SelectQuery query, String objectAttribute)
     {
-        return avg(findDataNode(context, query), query, objectAttribute);
+        return getResultForFunction(findDataNode(context, query), query, objectAttribute, AVG);
     }
 
     /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
-     * @param objectAttribute The Java attribute of the column to sum.
-     * @return The database MIN of the attribute matching the query.
-     */
-    public static BigDecimal min(DataContext context, SelectQuery query, String objectAttribute)
-    {
-        return min(findDataNode(context, query), query, objectAttribute);
-    }
-
-    /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
-     * @param objectAttribute The Java attribute of the column to sum.
-     * @return The database MAX of the attribute matching the query.
-     */
-    public static BigDecimal max(DataContext context, SelectQuery query, String objectAttribute)
-    {
-        return max(findDataNode(context, query), query, objectAttribute);
-    }
-
-    /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
      * @return The database COUNT of the rows matching the query.
      */
     public static long count(DataContext context, SelectQuery query)
@@ -85,38 +57,74 @@ public class AggregatesUtil
     }
 
     /**
-     * @param context The DataContext used to perform the query.
-     * @param query The SelectQuery to perform the query against.
-     * @param objectAttribute The Java attribute of the column to sum.
-     * @return The database COUNT of the attribute matching the query.
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute of the column to sum. Much more useful if
+     *            DISTINCT is set for the query.
+     * @return The database COUNT of the rows matching the attribute for the query.
      */
     public static long count(DataContext context, SelectQuery query, String objectAttribute)
     {
-        return count(findDataNode(context, query), query, objectAttribute);
+        return getResultForFunction(findDataNode(context, query), query, objectAttribute, COUNT).longValue();
     }
 
-    public static BigDecimal sum(DataNode node, SelectQuery query, String objectAttribute)
+    /**
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute of the column to sum.
+     * @return The database MAX of the attribute matching the query.
+     */
+    public static BigDecimal max(DataContext context, SelectQuery query, String objectAttribute)
     {
-        return getResultForFunction(node, query, objectAttribute, SUM);
-    }
-    public static BigDecimal avg(DataNode node, SelectQuery query, String objectAttribute)
-    {
-        return getResultForFunction(node, query, objectAttribute, AVG);
-    }
-    public static BigDecimal min(DataNode node, SelectQuery query, String objectAttribute)
-    {
-        return getResultForFunction(node, query, objectAttribute, MIN);
-    }
-    public static BigDecimal max(DataNode node, SelectQuery query, String objectAttribute)
-    {
-        return getResultForFunction(node, query, objectAttribute, MAX);
-    }
-    public static long count(DataNode node, SelectQuery query, String objectAttribute)
-    {
-        return getResultForFunction(node, query, objectAttribute, COUNT).longValue();
+        return getResultForFunction(findDataNode(context, query), query, objectAttribute, MAX);
     }
 
-    private static String getDatabaseColumn(DataNode node, SelectQuery query, String objectAttribute)
+    /**
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute of the column to sum.
+     * @return The database MIN of the attribute matching the query.
+     */
+    public static BigDecimal min(DataContext context, SelectQuery query, String objectAttribute)
+    {
+        return getResultForFunction(findDataNode(context, query), query, objectAttribute, MIN);
+    }
+
+    /**
+     * @param context
+     *            The DataContext used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute of the column to sum.
+     * @return The database SUM of the attribute matching the query.
+     */
+    public static BigDecimal sum(DataContext context, SelectQuery query, String objectAttribute)
+    {
+        return getResultForFunction(findDataNode(context, query), query, objectAttribute, SUM);
+    }
+
+    /**
+     * @param node
+     *            The DataNode used to find the database column.
+     * @param query
+     *            The SelectQuery used to extract the root ObjEntity of the
+     *            query.
+     * @param objectAttribute
+     *            The Java attribute to map to a database column.
+     * @return The name of the database column for the given Java attribute.
+     * @throws RuntimeException If the Java attribute is invalid.
+     */
+    public static String getDatabaseColumn(DataNode node, SelectQuery query, String objectAttribute)
     {
         ObjEntity    objEntity    = node.getEntityResolver().lookupObjEntity(query.getRoot());
         ObjAttribute objAttribute = (ObjAttribute) objEntity.getAttribute(objectAttribute);
@@ -127,6 +135,14 @@ public class AggregatesUtil
         return objAttribute.getDbAttribute().getName();
     }
 
+    /**
+     * @param context
+     *            The DataContext to use to locate the DataNode.
+     * @param query
+     *            The SelectQuery used to isolate the query root and identify
+     *            the correct DataNode (if the model has multiple DataNodes).
+     * @return The DataNode for the query or null if not found.
+     */
     public static DataNode findDataNode(DataContext context, SelectQuery query)
     {
         for (DataNode node : context.getParentDataDomain().getDataNodes())
@@ -140,6 +156,19 @@ public class AggregatesUtil
         return null;
     }
 
+    /**
+     * @param node
+     *            The DataNode used to perform the query.
+     * @param query
+     *            The SelectQuery to perform the query against.
+     * @param objectAttribute
+     *            The Java attribute for the aggregate function (which will be
+     *            mapped to the database column).
+     * @param functionName
+     *            One the the aggregate functions defined above (such as MIN or
+     *            MAX).
+     * @return The result of executing the function against the database.
+     */
     private static BigDecimal getResultForFunction(DataNode node, SelectQuery query, String objectAttribute, String function)
     {
         String  databaseColumn;
@@ -147,8 +176,8 @@ public class AggregatesUtil
 
         if (function.equals(COUNT) && objectAttribute == null)
         {
-            databaseColumn = "*"; // Allow COUNT(*) with no attribute.
-            distinct       = false;
+            databaseColumn = "*";   // Allow COUNT(*) with no attribute.
+            distinct       = false; // DISTINCT does NOT apply to *.
         }
         else
         {
@@ -159,6 +188,20 @@ public class AggregatesUtil
         return getResultUsingTranslator(node, query,  new AggregateTranslator(function, databaseColumn, distinct));
     }
 
+    /**
+     * Does the dirty work of issuing a raw SELECT using the given aggregate
+     * translator and returning the result. Since this is designed for aggregate
+     * functions, it only expects and looks at the first column of the result.
+     *
+     * @param node
+     *            The DataNode used for the database connection.
+     * @param query
+     *            The SelectQuery used to root the query and provide qualifiers.
+     * @param translator
+     *            The AggregateTranslator to use to construct the SQL for the
+     *            raw query.
+     * @return The numeric result of the aggregate function.
+     */
     private static BigDecimal getResultUsingTranslator(DataNode node, SelectQuery query, AggregateTranslator translator)
     {
         Connection        connection        = null;
