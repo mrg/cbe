@@ -58,5 +58,11 @@ public class Aggregates
         System.out.println("Sum of 'J' Author Book Prices: " + sum);
         System.out.println("Average 'J' Author Book Price: " + avg);
         System.out.println("Number of 'J' Author Books: " + count);
+
+        // Make the query use DISTINCT and get a distinct count of authors whose
+        // name begins with "J" by counting on the Book's Author property.
+        query.setDistinct(true);
+        count = AggregatesUtil.count(dataContext, query, Book.AUTHOR_PROPERTY);
+        System.out.println("Number of 'J' Author Books: " + count);
     }
 }
