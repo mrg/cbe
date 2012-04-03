@@ -63,6 +63,6 @@ public class Aggregates
         // name begins with "J" by counting on the Book's Author property.
         query.setDistinct(true);
         count = AggregatesUtil.count(dataContext, query, Book.AUTHOR_PROPERTY);
-        System.out.println("Number of 'J' Author Books: " + count);
+        System.out.println("Number of 'J' Authors: " + count);
     }
 }
