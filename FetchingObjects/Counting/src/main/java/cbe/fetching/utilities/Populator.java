@@ -1,11 +1,12 @@
 package cbe.fetching.utilities;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.cayenne.access.DataContext;
 
-import cbe.fetching.model.Person;
+import cbe.fetching.model.Book;
 
 /**
  * Utility class to help populate the database with data.
@@ -14,31 +15,31 @@ import cbe.fetching.model.Person;
  */
 public class Populator
 {
-	// Constants for index positions into data.
-	public static int PERSON_FIRST_NAME    = 0;
-	public static int PERSON_LAST_NAME     = 1;
-	public static int PERSON_EMAIL_ADDRESS = 2;
-	
+    // Constants for index positions into data.
+    public static int BOOK_AUTHOR = 0;
+    public static int BOOK_TITLE  = 1;
+    public static int BOOK_PRICE  = 2;
+
     private static FileLoader     fileLoader = FileLoader.getInstance();
-    private static List<String[]> people     = null;
+    private static List<String[]> books      = null;
 
 
     /**
      * @return All the first names from src/main/resources/People.txt.
      */
-    public static List<String[]> getPeople()
+    public static List<String[]> getBooks()
     {
-        if (people == null)
+        if (books == null)
         {
-        	people = new ArrayList<String[]>();
-        	
-        	for (String line : fileLoader.loadLines("People.txt"))
-        		people.add(line.split("\\|"));
+            books = new ArrayList<String[]>();
+
+            for (String line : fileLoader.loadLines("Books.txt"))
+                books.add(line.split("\\|"));
         }
-        
-        return people;
+
+        return books;
     }
-    
+
     public static void populateDatabase()
     {
         // Create a new DataContext. This will also initialize the Cayenne
@@ -47,8 +48,8 @@ public class Populator
 
         // Loop over all the names in our resources file and create Persons
         // for each of them.
-        for (String[] personFields : Populator.getPeople())
-            createPerson(dataContext, personFields);
+        for (String[] bookFields : Populator.getBooks())
+            createPerson(dataContext, bookFields);
 
         // Commit the changes to the database.
         dataContext.commitChanges();
@@ -62,19 +63,16 @@ public class Populator
      */
     private static void createPerson(DataContext dataContext, String[] fields)
     {
-    	// Extract field values.
-    	String firstName    = fields[Populator.PERSON_FIRST_NAME];
-    	String lastName     = fields[Populator.PERSON_LAST_NAME];
-    	String emailAddress = fields[Populator.PERSON_EMAIL_ADDRESS];
+        // Extract field values.
+        String author = fields[Populator.BOOK_AUTHOR];
+        String title  = fields[Populator.BOOK_TITLE];
+        String price  = fields[Populator.BOOK_PRICE];
 
         // Create a new Person object tracked by the DataContext.
-    	Person person = dataContext.newObject(Person.class);
+        Book book = dataContext.newObject(Book.class);
 
-        // Set values for the new person. Defaults the password to the e-mail
-        // address with "123" appended.
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setEmailAddress(emailAddress);
-        person.setPassword(emailAddress + "123");
+        book.setAuthor(author);
+        book.setTitle(title);
+        book.setPrice(new BigDecimal(price));
     }
 }

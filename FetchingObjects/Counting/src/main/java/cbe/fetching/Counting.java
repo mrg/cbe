@@ -5,16 +5,14 @@ import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
 
-import cbe.fetching.model.Person;
+import cbe.fetching.model.Book;
 import cbe.fetching.utilities.CountHelper;
 import cbe.fetching.utilities.Populator;
 
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
  *
- * This example builds upon BasicInserts3.
- *
- * It counts how many Person objects are in the database.
+ * It counts how many Book objects are in the database.
  *
  * @author mrg
  */
@@ -28,27 +26,27 @@ public class Counting
     	// Create a new DataContext for the queries.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Create a Query for Person records.
-        SelectQuery query = new SelectQuery(Person.class);
+        // Create a Query for Book records.
+        SelectQuery query = new SelectQuery(Book.class);
 
-        // Count the number of Person records based upon the Query.
+        // Count the number of Book records based upon the Query.
         // Since the Query is unrestricted, it will return the count
-        // of all Person records.
-        long allPersons = CountHelper.count(dataContext, query);
+        // of all Book records.
+        long allBooks = CountHelper.count(dataContext, query);
 
-        // Create an Expression to restrict Person records to first
-        // names beginning with an "A".
+        // Create an Expression to restrict Book records to author
+        // names beginning with an "J".
         Expression expression =
-            ExpressionFactory.likeIgnoreCaseExp(Person.FIRST_NAME_PROPERTY, "A%");
+            ExpressionFactory.likeIgnoreCaseExp(Book.AUTHOR_PROPERTY, "J%");
 
-        // Add the Expression to the Person query.
+        // Add the Expression to the Book query.
         query.setQualifier(expression);
 
-        // Count the number of Person records based upon the query.
-        long restrictedPersons = CountHelper.count(dataContext, query);
+        // Count the number of Book records based upon the query.
+        long qualifiedBooks = CountHelper.count(dataContext, query);
 
         // Print the results.
-        System.out.println("Number of Person records: " + allPersons);
-        System.out.println("Number of 'A' Person records: " + restrictedPersons);
+        System.out.println("Number of Book records: " + allBooks);
+        System.out.println("Number of 'J' Book Author records: " + qualifiedBooks);
     }
 }

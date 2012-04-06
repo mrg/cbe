@@ -5,17 +5,15 @@
   project-version="3.0.0.1">
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.fetching.model"/>
-	<db-entity name="People">
-		<db-attribute name="email_address" type="VARCHAR" length="50"/>
-		<db-attribute name="first_name" type="VARCHAR" length="25"/>
+	<db-entity name="Books">
+		<db-attribute name="author" type="VARCHAR" length="75"/>
+		<db-attribute name="book_price" type="NUMERIC" length="6" scale="2"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
-		<db-attribute name="last_name" type="VARCHAR" length="25"/>
-		<db-attribute name="password" type="VARCHAR" length="40"/>
+		<db-attribute name="title" type="VARCHAR" length="75"/>
 	</db-entity>
-	<obj-entity name="Person" className="cbe.fetching.model.Person" lock-type="optimistic" dbEntityName="People">
-		<obj-attribute name="emailAddress" type="java.lang.String" lock="true" db-attribute-path="email_address"/>
-		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
-		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
-		<obj-attribute name="password" type="java.lang.String" lock="true" db-attribute-path="password"/>
+	<obj-entity name="Book" className="cbe.fetching.model.Book" lock-type="optimistic" dbEntityName="Books">
+		<obj-attribute name="author" type="java.lang.String" db-attribute-path="author"/>
+		<obj-attribute name="price" type="java.math.BigDecimal" db-attribute-path="book_price"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
 	</obj-entity>
 </data-map>
