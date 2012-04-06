@@ -1,6 +1,0 @@
-Aaron|Caldwell|acaldwell@example.com
-Heidi|Freeman|hfreeman@example.com
-Marcus|Kerr|mkerr@example.com
-Rose|Newton|rnewton@example.com
-Ulric|Reeves|ureeves@example.com
-Victoria|Waters|vwaters@example.com
