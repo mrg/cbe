@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="cbe.fetching.model"/>
+	<db-entity name="DESIGNATION">
+		<db-attribute name="COMPANY_NAME" type="VARCHAR" length="50"/>
+		<db-attribute name="CONTRACT_EXPIRATION_DATE" type="DATE"/>
+		<db-attribute name="CONTRACT_NUMBER" type="VARCHAR" length="50"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="PCS_END_DATE" type="DATE"/>
+		<db-attribute name="RANK" type="VARCHAR" length="50"/>
+		<db-attribute name="TYPE" type="VARCHAR" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="PERSON">
+		<db-attribute name="APPROVED" type="BOOLEAN"/>
+		<db-attribute name="DESIGNATION_ID" type="INTEGER"/>
+		<db-attribute name="EMAIL" type="VARCHAR" length="100"/>
+		<db-attribute name="FIRST_NAME" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="LAST_NAME" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="US_CITIZEN" type="BOOLEAN"/>
+	</db-entity>
+	<obj-entity name="Civilian" superEntityName="Designation" className="cbe.fetching.model.Civilian">
+		<qualifier><![CDATA[type = "Civilian"]]></qualifier>
+		<attribute-override name="type" db-attribute-path="TYPE"/>
+	</obj-entity>
+	<obj-entity name="Contractor" superEntityName="Designation" className="cbe.fetching.model.Contractor">
+		<qualifier><![CDATA[type = "Contractor"]]></qualifier>
+		<obj-attribute name="companyName" type="java.lang.String" db-attribute-path="COMPANY_NAME"/>
+		<obj-attribute name="contractExpirationDate" type="java.util.Date" db-attribute-path="CONTRACT_EXPIRATION_DATE"/>
+		<obj-attribute name="contractNumber" type="java.lang.String" db-attribute-path="CONTRACT_NUMBER"/>
+	</obj-entity>
+	<obj-entity name="Designation" abstract="true" className="cbe.fetching.model.Designation" lock-type="optimistic" dbEntityName="DESIGNATION">
+		<obj-attribute name="companyName" type="java.lang.String" db-attribute-path="COMPANY_NAME"/>
+		<obj-attribute name="contractExpirationDate" type="java.util.Date" db-attribute-path="CONTRACT_EXPIRATION_DATE"/>
+		<obj-attribute name="contractNumber" type="java.lang.String" db-attribute-path="CONTRACT_NUMBER"/>
+		<obj-attribute name="pcsEndDate" type="java.util.Date" db-attribute-path="PCS_END_DATE"/>
+		<obj-attribute name="rank" type="java.lang.String" db-attribute-path="RANK"/>
+		<obj-attribute name="type" type="cbe.fetching.constants.DesignationType" db-attribute-path="TYPE"/>
+		<post-add method-name="initializeType"/>
+	</obj-entity>
+	<obj-entity name="Military" superEntityName="Designation" className="cbe.fetching.model.Military">
+		<qualifier><![CDATA[type = "Military"]]></qualifier>
+		<obj-attribute name="pcsEndDate" type="java.util.Date" db-attribute-path="PCS_END_DATE"/>
+		<obj-attribute name="rank" type="java.lang.String" db-attribute-path="RANK"/>
+		<attribute-override name="pcsEndDate" db-attribute-path="PCS_END_DATE"/>
+		<attribute-override name="rank" db-attribute-path="RANK"/>
+	</obj-entity>
+	<obj-entity name="Person" className="cbe.fetching.model.Person" dbEntityName="PERSON">
+		<obj-attribute name="approved" type="java.lang.Boolean" db-attribute-path="APPROVED"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="EMAIL"/>
+		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="FIRST_NAME"/>
+		<obj-attribute name="lastName" type="java.lang.String" db-attribute-path="LAST_NAME"/>
+		<obj-attribute name="usCitizen" type="java.lang.Boolean" db-attribute-path="US_CITIZEN"/>
+	</obj-entity>
+	<db-relationship name="person" source="DESIGNATION" target="PERSON" toMany="false">
+		<db-attribute-pair source="ID" target="DESIGNATION_ID"/>
+	</db-relationship>
+	<db-relationship name="designation" source="PERSON" target="DESIGNATION" toMany="false">
+		<db-attribute-pair source="DESIGNATION_ID" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="person" source="Designation" target="Person" deleteRule="Nullify" db-relationship-path="person"/>
+	<obj-relationship name="civilian" source="Person" target="Civilian" deleteRule="Nullify" db-relationship-path="designation"/>
+	<obj-relationship name="contractor" source="Person" target="Contractor" deleteRule="Nullify" db-relationship-path="designation"/>
+	<obj-relationship name="designation" source="Person" target="Designation" deleteRule="Nullify" db-relationship-path="designation"/>
+	<obj-relationship name="military" source="Person" target="Military" deleteRule="Nullify" db-relationship-path="designation"/>
+</data-map>
