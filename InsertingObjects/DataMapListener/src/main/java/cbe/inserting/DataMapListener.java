@@ -8,17 +8,15 @@ import cbe.inserting.utilities.Populator;
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
  *
- * This example builds upon BasicInserts3.
+ * This example builds upon BasicInserts2.
  *
  * It inserts many Person objects into the database within a single
- * commit/transaction.
+ * commit/transaction. Upon commit, it logs (via Listeners.java) the pre-persist
+ * and post-persist objects through the lifecycle callbacks defined in the
+ * Cayenne model (please use Cayenne Modeler to view the DataMap listener
+ * section).
  *
  * The data is read from 'People.txt' under resources (loaded by Populator).
- *
- * It adds setting a person's password to demonstrate overriding the
- * setPassword() method in the Person.java subclass, which automatically hashes
- * the value passed in (so that the person's password is not saved in plain
- * text).
  *
  * @author mrg
  */
@@ -55,11 +53,9 @@ public class DataMapListener
         // Create a new Person object tracked by the DataContext.
     	Person person = dataContext.newObject(Person.class);
 
-        // Set values for the new person. Defaults the password to the e-mail
-        // address with "123" appended.
+        // Set values for the new person.
         person.setFirstName(firstName);
         person.setLastName(lastName);
         person.setEmailAddress(emailAddress);
-        person.setPassword(emailAddress + "123");
     }
 }
