@@ -3,7 +3,6 @@ package cbe.inserting;
 import org.apache.cayenne.access.DataContext;
 
 import cbe.inserting.model.Person;
-import cbe.inserting.utilities.Populator;
 
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
@@ -16,22 +15,25 @@ import cbe.inserting.utilities.Populator;
  * Cayenne model (please use Cayenne Modeler to view the DataMap listener
  * section).
  *
- * The data is read from 'People.txt' under resources (loaded by Populator).
- *
  * @author mrg
  */
 public class DataMapListener
 {
-    public static void main(String[] arguments)
+    DataContext dataContext = null;
+
+    public DataMapListener()
     {
         // Create a new DataContext. This will also initialize the Cayenne
         // Framework.
-        DataContext dataContext = DataContext.createDataContext();
+        dataContext = DataContext.createDataContext();
 
-        // Loop over all the names in our resources file and create Persons
-        // for each of them.
-        for (String[] personFields : Populator.getPeople())
-            createPerson(dataContext, personFields);
+        // Create People records (in the DataContext).
+        createPerson("Aaron", "Caldwell", "acaldwell@example.com");
+        createPerson("Heidi", "Freeman", "hfreeman@example.com");
+        createPerson("Marcus", "Kerr", "mkerr@example.com");
+        createPerson("Rose", "Newton", "rnewton@example.com");
+        createPerson("Ulric", "Reeves", "ureeves@example.com");
+        createPerson("Victoria", "Waters", "vwaters@example.com");
 
         // Commit the changes to the database.
         dataContext.commitChanges();
@@ -39,17 +41,9 @@ public class DataMapListener
 
     /**
      * Helper method to create and initialize a person in a DataContext.
-     *
-     * @param dataContext The DataContext to register the person.
-     * @param fields The data fields from the People.txt file.
      */
-    private static void createPerson(DataContext dataContext, String[] fields)
+    private void createPerson(String firstName, String lastName, String emailAddress)
     {
-    	// Extract field values.
-    	String firstName    = fields[Populator.PERSON_FIRST_NAME];
-    	String lastName     = fields[Populator.PERSON_LAST_NAME];
-    	String emailAddress = fields[Populator.PERSON_EMAIL_ADDRESS];
-
         // Create a new Person object tracked by the DataContext.
     	Person person = dataContext.newObject(Person.class);
 
@@ -57,5 +51,11 @@ public class DataMapListener
         person.setFirstName(firstName);
         person.setLastName(lastName);
         person.setEmailAddress(emailAddress);
+    }
+
+
+    public static void main(String[] arguments)
+    {
+        new DataMapListener();
     }
 }
