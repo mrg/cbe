@@ -32,7 +32,7 @@ public class ToOne
         person.setLastName("Administrator");
         person.setUsername("admin");
 
-        // Create the address for the person.
+        // Create the address (a to-one relationship) for the person.
         Address address = dataContext.newObject(Address.class);
 
         // Set the address attributes.
