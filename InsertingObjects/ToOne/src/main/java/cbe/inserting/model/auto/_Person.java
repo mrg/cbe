@@ -2,7 +2,6 @@ package cbe.inserting.model.auto;
 
 import org.apache.cayenne.CayenneDataObject;
 
-import cbe.inserting.constants.RoleType;
 import cbe.inserting.model.Address;
 
 /**
@@ -13,23 +12,12 @@ import cbe.inserting.model.Address;
  */
 public abstract class _Person extends CayenneDataObject {
 
-    public static final String ENABLED_PROPERTY = "enabled";
     public static final String FIRST_NAME_PROPERTY = "firstName";
     public static final String LAST_NAME_PROPERTY = "lastName";
-    public static final String PASSWORD_PROPERTY = "password";
-    public static final String ROLE_PROPERTY = "role";
     public static final String USERNAME_PROPERTY = "username";
     public static final String ADDRESS_PROPERTY = "address";
 
     public static final String ID_PK_COLUMN = "id";
-
-    public void setEnabled(boolean enabled) {
-        writeProperty("enabled", enabled);
-    }
-	public boolean isEnabled() {
-        Boolean value = (Boolean)readProperty("enabled");
-        return (value != null) ? value.booleanValue() : false;
-    }
 
     public void setFirstName(String firstName) {
         writeProperty("firstName", firstName);
@@ -43,20 +31,6 @@ public abstract class _Person extends CayenneDataObject {
     }
     public String getLastName() {
         return (String)readProperty("lastName");
-    }
-
-    public void setPassword(String password) {
-        writeProperty("password", password);
-    }
-    public String getPassword() {
-        return (String)readProperty("password");
-    }
-
-    public void setRole(RoleType role) {
-        writeProperty("role", role);
-    }
-    public RoleType getRole() {
-        return (RoleType)readProperty("role");
     }
 
     public void setUsername(String username) {

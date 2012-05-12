@@ -10,17 +10,30 @@ import cbe.inserting.model.Person;
 import cbe.inserting.utilities.Populator;
 
 /**
+ * Cayenne By Example - https://github.com/mrg/cbe
+ *
  * This example creates a to-one relationship (Person -> Address).
+ *
+ * It is based upon the BasicInserts1 example.
  *
  * @author mrg
  */
 public class ToOne
 {
-    public static void main(String[] arguments)
+    DataContext dataContext = null;
+
+    public ToOne()
     {
         // Create a new DataContext. This will also initialize the Cayenne
         // Framework.
-        DataContext dataContext = DataContext.createDataContext();
+        dataContext = DataContext.createDataContext();
+
+    }
+
+    public static void main(String[] arguments)
+    {
+
+
 
         // Create a new Person object tracked by the DataContext.
         Person admin = dataContext.newObject(Person.class);
