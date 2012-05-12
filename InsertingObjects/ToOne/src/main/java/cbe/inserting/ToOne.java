@@ -6,11 +6,11 @@ import org.apache.cayenne.access.DataContext;
 
 import cbe.inserting.constants.RoleType;
 import cbe.inserting.model.Address;
-import cbe.inserting.model.User;
+import cbe.inserting.model.Person;
 import cbe.inserting.utilities.Populator;
 
 /**
- * This example creates a to-one relationship (User -> Address).
+ * This example creates a to-one relationship (Person -> Address).
  *
  * @author mrg
  */
@@ -22,77 +22,77 @@ public class ToOne
         // Framework.
         DataContext dataContext = DataContext.createDataContext();
 
-        // Create a new User object tracked by the DataContext.
-        User user = dataContext.newObject(User.class);
+        // Create a new Person object tracked by the DataContext.
+        Person admin = dataContext.newObject(Person.class);
 
-        // Set values for the new user. In this case, we are initializing
+        // Set values for the new person. In this case, we are initializing
         // an administrator.
-        user.setFirstName("System");
-        user.setLastName("Administrator");
-        user.setUsername("admin");
-        user.setPassword("admin123");
-        user.setEnabled(true);
-        user.setRole(RoleType.ADMIN);
+        admin.setFirstName("System");
+        admin.setLastName("Administrator");
+        admin.setUsername("admin");
+        admin.setPassword("admin123");
+        admin.setEnabled(true);
+        admin.setRole(RoleType.ADMIN);
 
-        // Loop over all the names in our resources file and create users
+        // Loop over all the names in our resources file and create persons
         // for each of them.
         for (String firstName : Populator.getFirstNames())
             for (String lastName : Populator.getLastNames())
-                createUser(dataContext, firstName, lastName);
+                createPerson(dataContext, firstName, lastName);
 
-        // Commit the changes to the database.  This includes User
+        // Commit the changes to the database.  This includes Person
         // and Address records.
         dataContext.commitChanges();
     }
 
     /**
-     * Helper method to create and initialize a user in a DataContext.
+     * Helper method to create and initialize a person in a DataContext.
      *
-     * @param dataContext The DataContext to register the user.
-     * @param firstName The user's first name.
-     * @param lastName The user's last name.
+     * @param dataContext The DataContext to register the person.
+     * @param firstName The person's first name.
+     * @param lastName The person's last name.
      */
-    private static void createUser(DataContext dataContext, String firstName, String lastName)
+    private static void createPerson(DataContext dataContext, String firstName, String lastName)
     {
-        // Create a new User object tracked by the DataContext.
-        User user = dataContext.newObject(User.class);
+        // Create a new Person object tracked by the DataContext.
+        Person person = dataContext.newObject(Person.class);
 
-        // Set values for the new user. Defaults the password to the username
+        // Set values for the new person. Defaults the password to the username
         // with "123" appended.
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUsername((firstName.substring(0, 1) + lastName).toLowerCase());
-        user.setPassword(user.getUsername() + "123");
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setUsername((firstName.substring(0, 1) + lastName).toLowerCase());
+        person.setPassword(person.getUsername() + "123");
 
         // Don't enable accounts whose last name starts with an "A".
         if (lastName.startsWith("A"))
-            user.setEnabled(false);
+            person.setEnabled(false);
         else
-            user.setEnabled(true);
+            person.setEnabled(true);
 
         // Accounts whose last name starts with a "B" are moderators.
         if (lastName.startsWith("B"))
-            user.setRole(RoleType.MODERATOR);
+            person.setRole(RoleType.MODERATOR);
         else
-            user.setRole(RoleType.CUSTOMER);
+            person.setRole(RoleType.CUSTOMER);
 
-        // Create an address for this user.
-        createAddress(user);
+        // Create an address for this person.
+        createAddress(person);
     }
 
     /**
-     * Creates an address for a user.
+     * Creates an address for a person.
      *
-     * @param user The user to create the address.
+     * @param person The person to create the address.
      */
-    private static void createAddress(User user)
+    private static void createAddress(Person person)
     {
-        // Extract the DataContext from the user.  We are creating a
+        // Extract the DataContext from the person.  We are creating a
         // relationship and Cayenne requires that related objects reside
         // in the same DataContext, so be sure to use the same one.
-        DataContext dataContext = (DataContext) user.getObjectContext();
+        DataContext dataContext = (DataContext) person.getObjectContext();
 
-        // Create the new address in the user's DataContext.
+        // Create the new address in the person's DataContext.
         Address address = dataContext.newObject(Address.class);
 
         // Set the address attributes.
@@ -101,10 +101,10 @@ public class ToOne
         address.setStreet(getRandomStreet());
         address.setZip("22046");
 
-        // Assign the address to the user.  Cayenne will figure out how
+        // Assign the address to the person.  Cayenne will figure out how
         // to map the relationship based upon the model and also create
         // the primary keys and foreign keys.
-        user.setAddress(address);
+        person.setAddress(address);
     }
 
     /**

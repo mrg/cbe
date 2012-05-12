@@ -12,7 +12,7 @@
 		<db-attribute name="street" type="VARCHAR" length="80"/>
 		<db-attribute name="zip" type="VARCHAR" length="10"/>
 	</db-entity>
-	<db-entity name="Users">
+	<db-entity name="People">
 		<db-attribute name="address_fk" type="BIGINT"/>
 		<db-attribute name="enabled" type="BIT" isMandatory="true"/>
 		<db-attribute name="first_name" type="VARCHAR" length="25"/>
@@ -28,7 +28,7 @@
 		<obj-attribute name="street" type="java.lang.String" lock="true" db-attribute-path="street"/>
 		<obj-attribute name="zip" type="java.lang.String" lock="true" db-attribute-path="zip"/>
 	</obj-entity>
-	<obj-entity name="User" className="cbe.inserting.model.User" lock-type="optimistic" dbEntityName="Users">
+	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="People">
 		<obj-attribute name="enabled" type="boolean" lock="true" db-attribute-path="enabled"/>
 		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
 		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
@@ -36,12 +36,12 @@
 		<obj-attribute name="role" type="cbe.inserting.constants.RoleType" lock="true" db-attribute-path="role"/>
 		<obj-attribute name="username" type="java.lang.String" lock="true" db-attribute-path="username"/>
 	</obj-entity>
-	<db-relationship name="user" source="Addresses" target="Users" toMany="true">
+	<db-relationship name="person" source="Addresses" target="People" toMany="true">
 		<db-attribute-pair source="id" target="address_fk"/>
 	</db-relationship>
-	<db-relationship name="address" source="Users" target="Addresses" toMany="false">
+	<db-relationship name="address" source="People" target="Addresses" toMany="false">
 		<db-attribute-pair source="address_fk" target="id"/>
 	</db-relationship>
-	<obj-relationship name="user" source="Address" target="User" lock="true" deleteRule="Deny" db-relationship-path="user"/>
-	<obj-relationship name="address" source="User" target="Address" lock="true" deleteRule="Cascade" db-relationship-path="address"/>
+	<obj-relationship name="person" source="Address" target="Person" lock="true" deleteRule="Deny" db-relationship-path="person"/>
+	<obj-relationship name="address" source="Person" target="Address" lock="true" deleteRule="Cascade" db-relationship-path="address"/>
 </data-map>
