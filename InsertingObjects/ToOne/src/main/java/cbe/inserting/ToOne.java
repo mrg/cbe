@@ -27,8 +27,7 @@ public class ToOne
         // Create a new Person object tracked by the DataContext.
         Person person = dataContext.newObject(Person.class);
 
-        // Set values for the new person. In this case, we are initializing
-        // an administrator.
+        // Set values for the new person.
         person.setFirstName("System");
         person.setLastName("Administrator");
         person.setUsername("admin");
