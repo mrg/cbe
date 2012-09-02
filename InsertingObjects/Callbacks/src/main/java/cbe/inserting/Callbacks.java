@@ -40,7 +40,7 @@ public class Callbacks
         System.out.println("Persisting [1]");
 
         // Commit the changes to the database. This will cause the pre-persist
-        // callback in the Person to fire.
+        // callback in the Person to fire setting the create date.
         dataContext.commitChanges();
 
         System.out.println("Modifying objects");
@@ -50,8 +50,8 @@ public class Callbacks
 
         System.out.println("Persisting [2]");
 
-        // Commit the changes to the database. This will cause the post-persist
-        // callback in the Person to fire.
+        // Commit the changes to the database. This will cause the pre-update
+        // callback in the Person to fire setting the modification date..
         dataContext.commitChanges();
     }
 
