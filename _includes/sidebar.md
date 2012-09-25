@@ -8,6 +8,7 @@
 * [Obtaining Cayenne](obtaining-cayenne.html)
   * [Downloading Cayenne](obtaining-cayenne.html#downloading)
   * [Using Maven](obtaining-cayenne.html#maven)
+* [Cayenne Contexts](cayenne-contexts.html)
 
 {% endcapture %}
 
