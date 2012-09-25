@@ -34,7 +34,7 @@ Obviously there are many more methods associated with a DataContext, but these b
 
 As mentioned, an application isn't restricted to one DataContext, just as a VCS isn't restricted to one workspace.  An application can have as many DataContexts as needed (memory-permitting, of course), including many DataContexts for a single user.  These DataContexts can be peers or children (nested DataContexts).  A child DataContext can be created from any DataContext and is useful for isolating changes you may ultimately decide not commit, such as when creating a "wizard" interface.  You can create an object graph in the child DataContext and at the end of the wizard, commit everything to the parent and to the database or if the user abandons the wizard, discard the child DataContext and the parent DataContext is unaltered.
 
-<div style="text-align: center; font-weight: bold;">
+<div class="caption">
   <img src="images/datacontexts.png">
   <br/>
   Two Peer DataContexts and a Child DataContext

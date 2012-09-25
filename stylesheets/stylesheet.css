@@ -257,10 +257,10 @@ form {
   padding: 20px;
 }
 
-img {
+/*img {
   width: 100%;
   max-width: 100%;
-}
+}*/
 
 /*******************************************************************************
 Full-Width Styles
@@ -442,3 +442,9 @@ Small Device Styles
 
 
 h2 a { color: #222; }
+
+div.caption
+{
+  font-weight: bold;
+  text-align: center;
+}
