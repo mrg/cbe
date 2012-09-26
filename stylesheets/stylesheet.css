@@ -205,7 +205,8 @@ ul, ol, dl {
 
 ul li {
   list-style: inside;
-  padding-left: 20px;
+  padding-left: 2em;
+  text-indent: -1em;
 }
 
 ol li {
