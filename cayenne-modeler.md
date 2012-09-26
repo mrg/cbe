@@ -14,7 +14,7 @@ The main purpose of Cayenne modeler, outside of shielding humans from the XML fi
 When you run Cayenne Modeler you are presented with a splash screen.  You can create new projects, open existing projects, and also see a listing of your recent projects which you can select to open one of them.
 
 <div class="caption">
-  <img src="images/splash.png">
+  <img class="plain" src="images/splash.png">
   <br/>
   Splash Screen
 </div>
@@ -24,7 +24,7 @@ When you run Cayenne Modeler you are presented with a splash screen.  You can cr
 Once a model is open (newly created or opening an existing one), the main Cayenne Modeler window is divided into a main toolbar on the top, navigation pane (for the DataDomain, DataMap, and DataNode browser) on the left, and context-specific detail views on the right.  The main window, especially the detail views, is where the majority of interaction occurs.
 
 <div class="caption">
-  <img src="images/main_window.png">
+  <img class="plain" src="images/main_window.png">
   <br/>
   Main Window - Existing Project
 </div>
@@ -35,15 +35,84 @@ When opening an existing project the navigation pane will show the existing Data
 
 The main toolbar contains context-sensitive shortcuts for common tasks (most can be found in the menu, too).  It also contains a search field to search through the model, which can be very handy in large models.
 
+<table>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-new.gif"/>
+      <img class="plain" src="images/icon-open.gif"/>
+      <img class="plain" src="images/icon-save.gif"/>
+    </td>
+    <td class="center">
+      New Project, Open Project, Save Project
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-trash.gif"/>
+    </td>
+    <td class="center">
+      Delete Selected Item
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-cut.gif"/>
+      <img class="plain" src="images/icon-copy.gif"/>
+      <img class="plain" src="images/icon-paste.gif"/>
+    </td>
+    <td class="center">
+      Cut, Copy, Paste
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-undo.gif"/>
+      <img class="plain" src="images/icon-redo.gif"/>
+    </td>
+    <td class="center">
+      Undo, Redo
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-dom.gif"/>
+      <img class="plain" src="images/icon-node.gif"/>
+      <img class="plain" src="images/icon-datamap.gif"/>
+    </td>
+    <td class="center">
+      Create: DataDomain, DataNode, DataMap
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-dbentity.gif"/>
+      <img class="plain" src="images/icon-stored-procedure.gif"/>
+    </td>
+    <td class="center">
+      Create: DbEntity (Database Entity), Stored Procedure
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-objentity.gif"/>
+      <img class="plain" src="images/icon-embeddable.gif"/>
+      <img class="plain" src="images/icon-query.gif"/>
+    </td>
+    <td class="center">
+      Create: ObjEntity (Java Class), Embeddable, Query
+    </td>
+  </tr>
+  <tr>
+    <td class="center">
+      <img class="plain" src="images/icon-backward_nav.gif"/>
+      <img class="plain" src="images/icon-forward_nav.gif"/>
+    </td>
+    <td class="center">
+      Navigate: Backward, Forward
+    </td>
+  </tr>
+</table>
 
-*  	New Project, Open Project, Save Project
-*	Delete Selected Item
-*  	Cut, Copy, Paste
-* 	Undo, Redo
-*  	Create: DataDomain, DataNode, DataMap
-* 	Create: DbEntity (Database Entity), Stored Procedure
-*  	Create: ObjEntity (Java Class), Embeddable, Query
-* 	Navigate: Backward, Forward
 
 ### Navigation Pane
 
