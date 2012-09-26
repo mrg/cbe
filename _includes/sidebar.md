@@ -18,6 +18,7 @@
   * Reverse Engineer Schema
   * Preferences
 * [Cayenne Contexts](cayenne-contexts.html)
+* [Examples](examples.html)
 
 {% endcapture %}
 
