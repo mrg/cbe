@@ -6,17 +6,21 @@ import cbe.inserting.model.Person;
 
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
- *
+ * 
  * This example inserts a single Person object into the database and uses
  * Cayenne's lifecycle callbacks to automatically set the create and modify
- * dates in the Person. Use Cayenne Modeler to view the Person's Callbacks tab.
+ * dates in the Person. The callback is defined in the model. In Cayenne
+ * Modeler, select the Person ObjEntity (Java class) and then the Callbacks tab
+ * to see where the callbacks are defined. Look at Person.java to see the
+ * implementation of the callbacks in the onPrePersist and anPreUpdate methods.
+ * 
  * This example is based upon BasicInserts1.
- *
+ * 
  * @author mrg
  */
 public class Callbacks
 {
-    public static void main(String[] arguments) throws InterruptedException
+    public Callbacks() throws InterruptedException
     {
         System.out.println("Initializing Cayenne");
 
@@ -35,11 +39,9 @@ public class Callbacks
 
         System.out.println("Persisting [1]");
 
-        // Commit the changes to the database.
+        // Commit the changes to the database. This will cause the pre-persist
+        // callback in the Person to fire setting the create date.
         dataContext.commitChanges();
-
-        // Sleep for 2 seconds.
-        Thread.sleep(2000);
 
         System.out.println("Modifying objects");
 
@@ -48,7 +50,13 @@ public class Callbacks
 
         System.out.println("Persisting [2]");
 
-        // Commit the changes to the database.
+        // Commit the changes to the database. This will cause the pre-update
+        // callback in the Person to fire setting the modification date.
         dataContext.commitChanges();
+    }
+
+    public static void main(String[] arguments) throws InterruptedException
+    {
+        new Callbacks();
     }
 }
