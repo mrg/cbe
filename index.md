@@ -28,7 +28,7 @@ Cayenne by Example illustrates some of the major features of the Cayenne framewo
 
 Before the examples, however, is an introduction to Cayenne Modeler, which is the primary tool for modeling your database and mapping Java classes to database entities.  Following the chapter on Cayenne Modeler is an introduction into Cayenne contexts and then the examples themselves.
 
-### Source Code
+### <a name="source">Source Code</a>
 
 In addition to this book, there is source code (complete Maven projects) for each example.  The source code for these examples is available at GitHub.  If you discover an error in the examples or this book and have a GitHub account, please open an issue so it can be fixed.
 

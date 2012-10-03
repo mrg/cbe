@@ -13,6 +13,7 @@ HTML in the included layout.
 * [Introduction](index.html)
   * [Apache Cayenne](index.html#cayenne)
   * [Cayenne by Example](index.html#cbe)
+    * [Source Code](index.html#source)
 * [Obtaining Cayenne](obtaining-cayenne.html)
   * [Downloading Cayenne](obtaining-cayenne.html#downloading)
   * [Using Maven](obtaining-cayenne.html#maven)
@@ -29,6 +30,9 @@ HTML in the included layout.
 * [Examples](examples.html)
 * Inserting Objects
   * Basic Inserts
+    * Basic Inserts 1
+    * Basic Inserts 2
+    * Basic Inserts 3
   * Enumerations
   * To-One Relationships
   * To-Many Relationships
@@ -64,7 +68,7 @@ HTML in the included layout.
 * Web Application
 * Differences with Hibernate
 * References, Resources, and Credits
-  
+
 {% endcapture %}
 
 {{ sidebar | markdownify }}

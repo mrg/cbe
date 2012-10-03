@@ -1,5 +1,6 @@
 auto: true
 pygments: true
+markdown: rdiscount
 
 title : Cayenne by Example
 tagline: Cayenne by Example illustrates some of the major features of the Apache Cayenne ORM framework through standalone examples.
