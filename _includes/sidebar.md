@@ -1,3 +1,11 @@
+<!---
+The sidebar is included by the page layout.  Because included
+files are not processed through Markdown syntax, the content
+is captured in the 'sidebar' variable, then ran through the
+'markdownify' plugin at the bottom to translate Markdown to
+HTML in the included layout.
+-->
+
 {% capture sidebar %}
 
 # Contents
