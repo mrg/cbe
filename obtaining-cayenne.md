@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Obtaining Cayenne
+title: Cayenne by Example - Obtaining Cayenne
 ---
 
 # Obtaining Cayenne

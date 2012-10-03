@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Introduction
+title: Cayenne by Example - Introduction
 ---
 
 # Introduction

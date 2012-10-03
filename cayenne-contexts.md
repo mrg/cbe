@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Cayenne Contexts
+title: Cayenne by Example - Cayenne's Contexts
 ---
 
-# Cayenne Contexts
+# Cayenne's Contexts
 
 The "context" concept is one of the signature features of Cayenne.  Although there are a few different types (BaseContext, CayenneContext, DataContext -- all implementations of the ObjectContext interface), the principal one for most people is the DataContext and we will generally refer to contexts as a DataContext unless specifically pointing out something from the others.
 

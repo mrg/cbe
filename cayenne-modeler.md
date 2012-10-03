@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Cayenne Modeler
+title: Cayenne by Example - Cayenne Modeler
 ---
 
 # Cayenne Modeler
