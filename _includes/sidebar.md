@@ -18,21 +18,44 @@ HTML in the included layout.
   * [Downloading Cayenne](obtaining-cayenne.html#downloading)
   * [Using Maven](obtaining-cayenne.html#maven)
 * [Cayenne Modeler](cayenne-modeler.html)
-  * Startup
-  * Main Window
+  * [Startup](cayenne-modeler.html#startup)
+  * [Main Window](cayenne-modeler.html#main_window)
+    * [Main Toolbar](cayenne-modeler.html#main_toolbar)
+    * [Navigation Pane](cayenne-modeler.html#navigation_pane)
+      * [DataDomain, DataMap, DataNode](cayenne-modeler.html#domain_map_node)
+    * Detail Pane
   * DataDomain Editor
+    * DataDomain Configuration
+    * Cache Configuration
   * DataMap Editor
+    * DbEntities
+      * Entity
+      * Attributes
+      * Relationships
+    * ObjEntities
+      * Entity
+      * Attributes
+      * Relationships
+      * Callbacks
+      * Listeners
   * DataNode Editor
+    * Main
+    * Adapter
+    * Password Encoder
   * Generate Classes
   * Reverse Engineer Schema
   * Preferences
+    * General
+    * Local Data Sources
+    * Classpath
+    * Templates
 * [Cayenne Contexts](cayenne-contexts.html)
 * [Examples](examples.html)
-* Inserting Objects
-  * Basic Inserts
-    * Basic Inserts 1
-    * Basic Inserts 2
-    * Basic Inserts 3
+* [Inserting Objects](inserting-objects.html)
+  * [Basic Inserts](basic-inserts.html)
+    * [Basic Inserts 1](basic-inserts.html#one)
+    * [Basic Inserts 2](basic-inserts.html#two)
+    * [Basic Inserts 3](basic-inserts.html#three)
   * Enumerations
   * To-One Relationships
   * To-Many Relationships
@@ -66,7 +89,7 @@ HTML in the included layout.
   * Delete Rules
   * Query Chain
 * Web Application
-* Differences with Hibernate
+* [Differences with Hibernate](differences-hibernate.html)
 * References, Resources, and Credits
 
 {% endcapture %}
