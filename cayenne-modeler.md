@@ -9,7 +9,7 @@ Cayenne Modeler is a cross-platform GUI application for modeling your database s
 
 The main purpose of Cayenne modeler, outside of shielding humans from the XML file formats, is to edit DataDomains, DataMaps, and DataNodes.  These Cayenne features will be described more fully later on, but they provide the main mapping from the database layer to the Java layer.
 
-## Startup
+## <a name="startup">Startup</a>
 
 When you run Cayenne Modeler you are presented with a splash screen.  You can create new projects, open existing projects, and also see a listing of your recent projects which you can select to open one of them.
 
@@ -19,7 +19,7 @@ When you run Cayenne Modeler you are presented with a splash screen.  You can cr
   Splash Screen
 </div>
 
-## Main Window
+## <a name="main_window">Main Window</a>
 
 Once a model is open (newly created or opening an existing one), the main Cayenne Modeler window is divided into a main toolbar on the top, navigation pane (for the DataDomain, DataMap, and DataNode browser) on the left, and context-specific detail views on the right.  The main window, especially the detail views, is where the majority of interaction occurs.
 
@@ -31,7 +31,7 @@ Once a model is open (newly created or opening an existing one), the main Cayenn
 
 When opening an existing project the navigation pane will show the existing DataDomains, DataMaps, and DataNodes already defined for the project.  When creating a brand new project, you'll need to create these entities using the toolbar.
 
-### Main Toolbar
+### <a name="main_toolbar">Main Toolbar</a>
 
 The main toolbar contains context-sensitive shortcuts for common tasks (most can be found in the menu, too).  It also contains a search field to search through the model, which can be very handy in large models.
 
@@ -114,11 +114,11 @@ The main toolbar contains context-sensitive shortcuts for common tasks (most can
 </table>
 
 
-### Navigation Pane
+### <a name="navigation_pane">Navigation Pane</a>
 
 The navigation pane sits on the left side of the main window and is used to navigate around DataDomains, DataMaps, and DataNodes in the model.  Selecting a DataDomain, DataMap, DataNode or any of their sub-entities displays a context-sensitive detail pane editor on the right side of the main window.
 
-#### DataDomain, DataMap, DataNode
+#### <a name="domain_map_node">DataDomain, DataMap, DataNode</a>
 
 The navigation pane is, in essence, a DataDomain, DataMap, and DataNode browser.  It allows you to select and edit the primary elements Cayenne uses to access the database and map database tables to Java classes.
 
