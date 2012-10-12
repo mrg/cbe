@@ -479,3 +479,27 @@ img.plain
 li p {
   margin: 0;
 }
+
+/* Project Box Table */
+table.pb
+{
+  width: 90%;
+}
+
+/* return link */
+a.return
+{
+  float: right;
+  font-weight: bold;
+  font-size: 120%;
+  background: #A7A7A7;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 6px;
+  border: 1px solid #373737;
+  color: white;
+}
+a:hover.return
+{
+  color: black;
+}
