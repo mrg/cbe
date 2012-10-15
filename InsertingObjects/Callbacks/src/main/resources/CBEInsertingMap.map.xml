@@ -5,14 +5,14 @@
   project-version="3.0.0.1">
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.inserting.model"/>
-	<db-entity name="People">
+	<db-entity name="PEOPLE">
 		<db-attribute name="create_date" type="TIMESTAMP"/>
 		<db-attribute name="first_name" type="VARCHAR" length="25"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="last_name" type="VARCHAR" length="25"/>
 		<db-attribute name="modify_date" type="TIMESTAMP"/>
 	</db-entity>
-	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="People">
+	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
 		<obj-attribute name="createDate" type="java.util.Date" lock="true" db-attribute-path="create_date"/>
 		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
 		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>

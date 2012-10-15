@@ -5,35 +5,35 @@
   project-version="3.0.0.1">
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.inserting.model"/>
-	<db-entity name="Addresses">
+	<db-entity name="ADDRESSES">
 		<db-attribute name="city" type="VARCHAR" length="50"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="state" type="VARCHAR" length="2"/>
 		<db-attribute name="street" type="VARCHAR" length="80"/>
 		<db-attribute name="zip" type="VARCHAR" length="10"/>
 	</db-entity>
-	<db-entity name="People">
+	<db-entity name="PEOPLE">
 		<db-attribute name="address_fk" type="BIGINT"/>
 		<db-attribute name="first_name" type="VARCHAR" length="25"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="last_name" type="VARCHAR" length="25"/>
 		<db-attribute name="username" type="VARCHAR" length="26"/>
 	</db-entity>
-	<obj-entity name="Address" className="cbe.inserting.model.Address" lock-type="optimistic" dbEntityName="Addresses">
+	<obj-entity name="Address" className="cbe.inserting.model.Address" lock-type="optimistic" dbEntityName="ADDRESSES">
 		<obj-attribute name="city" type="java.lang.String" lock="true" db-attribute-path="city"/>
 		<obj-attribute name="state" type="java.lang.String" lock="true" db-attribute-path="state"/>
 		<obj-attribute name="street" type="java.lang.String" lock="true" db-attribute-path="street"/>
 		<obj-attribute name="zip" type="java.lang.String" lock="true" db-attribute-path="zip"/>
 	</obj-entity>
-	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="People">
+	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
 		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
 		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
 		<obj-attribute name="username" type="java.lang.String" lock="true" db-attribute-path="username"/>
 	</obj-entity>
-	<db-relationship name="person" source="Addresses" target="People" toMany="true">
+	<db-relationship name="person" source="ADDRESSES" target="PEOPLE" toMany="true">
 		<db-attribute-pair source="id" target="address_fk"/>
 	</db-relationship>
-	<db-relationship name="address" source="People" target="Addresses" toMany="false">
+	<db-relationship name="address" source="PEOPLE" target="ADDRESSES" toMany="false">
 		<db-attribute-pair source="address_fk" target="id"/>
 	</db-relationship>
 	<obj-relationship name="person" source="Address" target="Person" lock="true" deleteRule="Deny" db-relationship-path="person"/>
