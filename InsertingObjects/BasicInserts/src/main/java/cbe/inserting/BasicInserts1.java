@@ -27,6 +27,7 @@ public class BasicInserts1
         // Set values for the new person.
         person.setFirstName("System");
         person.setLastName("Administrator");
+        person.setEmailAddress("admin@example.com");
 
         // Commit the changes to the database.
         dataContext.commitChanges();
