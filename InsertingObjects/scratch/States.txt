@@ -1,0 +1,55 @@
+Alabama|AL
+Georgia|GA
+Maryland|MD
+New Mexico|NM
+South Dakota|SD
+Alaska|AK
+Guam|GU
+Massachusetts|MA
+New York|NY
+Tennessee|TN
+American Samoa|AS
+Hawaii|HI
+Michigan|MI
+North Carolina|NC
+Texas|TX
+Arizona|AZ
+Idaho|ID
+Minnesota|MN
+North Dakota|ND
+Utah|UT
+Arkansas|AR
+Illinois|IL
+Mississippi|MS
+Ohio|OH
+Vermont|VT
+California|CA
+Indiana|IN
+Missouri|MO
+Oklahoma|OK
+Virgin Islands|VI
+Colorado|CO
+Iowa|IA
+Montana|MT
+Oregon|OR
+Virginia|VA
+Connecticut|CT
+Kansas|KS
+Nebraska|NE
+Pennsylvania|PA
+Washington|WA
+Delaware|DE
+Kentucky|KY
+Nevada|NV
+Puerto Rico|PR
+West Virginia|WV
+District of Columbia|DC
+Louisiana|LA
+New Hampshire|NH
+Rhode Island|RI
+Wisconsin|WI
+Florida|FL
+Maine|ME
+New Jersey|NJ
+South Carolina|SC
+Wyoming|WY

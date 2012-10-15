@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.inserting.model"/>
+	<db-entity name="Books">
+		<db-attribute name="author" type="VARCHAR" length="100"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="price" type="NUMERIC" length="8" scale="2"/>
+		<db-attribute name="title" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="Users">
+		<db-attribute name="first_name" type="VARCHAR" length="25"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="last_name" type="VARCHAR" length="25"/>
+		<db-attribute name="username" type="VARCHAR" length="26"/>
+	</db-entity>
+	<obj-entity name="Book" className="cbe.inserting.model.Book" lock-type="optimistic" dbEntityName="Books">
+		<obj-attribute name="author" type="java.lang.String" lock="true" db-attribute-path="author"/>
+		<obj-attribute name="price" type="java.math.BigDecimal" lock="true" db-attribute-path="price"/>
+		<obj-attribute name="title" type="java.lang.String" lock="true" db-attribute-path="title"/>
+		<attribute-override name="creator" db-attribute-path="creator"/>
+		<attribute-override name="description" db-attribute-path="description"/>
+		<attribute-override name="name" db-attribute-path="name"/>
+		<attribute-override name="platform" db-attribute-path="platform_type"/>
+		<attribute-override name="productType" db-attribute-path="product_type"/>
+		<attribute-override name="title" db-attribute-path="title"/>
+	</obj-entity>
+	<obj-entity name="User" className="cbe.inserting.model.User" lock-type="optimistic" dbEntityName="Users">
+		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
+		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
+		<obj-attribute name="username" type="java.lang.String" lock="true" db-attribute-path="username"/>
+	</obj-entity>
+</data-map>
