@@ -309,7 +309,7 @@ Full-Width Styles
 }
 
 #project_title {
-  margin: 0;
+  margin: 0 0 0 10px;
   color: #fff;
   font-size: 42px;
   font-weight: 700;
@@ -317,7 +317,8 @@ Full-Width Styles
 }
 
 #project_tagline {
-  color: #fff;
+  margin: 0 0 0 10px;
+  color: #eee;
   font-size: 24px;
   font-weight: 300;
   background: none;
