@@ -5,7 +5,13 @@ import org.apache.cayenne.access.DataContext;
 import cbe.inserting.model.Person;
 
 /**
- * Cayenne By Example - https://github.com/mrg/cbe
+ * Cayenne By Example Source Code:
+ *   https://github.com/mrg/cbe
+ *   https://github.com/mrg/cbe/tree/master/InsertingObjects/BasicInserts
+ *
+ * Cayenne By Example Documentation:
+ *   http://mrg.github.com/cbe/
+ *   http://mrg.github.com/cbe/basic-inserts.html
  *
  * This example builds upon BasicInserts2.
  *
