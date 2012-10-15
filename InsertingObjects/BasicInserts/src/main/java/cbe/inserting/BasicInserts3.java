@@ -35,7 +35,7 @@ public class BasicInserts3
         // Framework.
         dataContext = DataContext.createDataContext();
 
-        // Create People records (in the DataContext).
+        // Create Persons (in the DataContext).
         createPerson("Aaron", "Caldwell", "acaldwell@example.com");
         createPerson("Heidi", "Freeman", "hfreeman@example.com");
         createPerson("Marcus", "Kerr", "mkerr@example.com");
@@ -48,7 +48,7 @@ public class BasicInserts3
     }
 
     /**
-     * Helper method to create and initialize a person in a DataContext.
+     * Helper method to create and initialize a Person in a DataContext.
      */
     private void createPerson(String firstName, String lastName, String emailAddress)
     {
