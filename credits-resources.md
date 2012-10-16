@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Cayenne by Example - Basic Inserts
+title: Cayenne by Example - Credits and Resources
 ---
 
 # Credits
