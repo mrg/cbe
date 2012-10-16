@@ -90,7 +90,7 @@ HTML in the included layout.
   * Query Chain
 * Web Application
 * [Differences with Hibernate](differences-hibernate.html)
-* References, Resources, and Credits
+* [Credits and Resources](credits-resources.html)
 
 {% endcapture %}
 
