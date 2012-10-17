@@ -1,6 +1,9 @@
 ---
 test: true
 ---
+{% if page.root %}
+  {% capture root %}{{ page.root | append:'/' }}{% endcapture %}
+{% endif %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,7 +12,7 @@ test: true
     <meta name="description" content="{{ site.title }}: {{ site.tagline }}" />
     <meta name="author" content="{{ site.author.name }}">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ root }}stylesheets/stylesheet.css">
 
     <title>{{ page.title }}</title>
   </head>

@@ -1,5 +1,6 @@
 ---
 layout: page
+root: ".."
 title: Cayenne by Example - Inserting Objects
 ---
 

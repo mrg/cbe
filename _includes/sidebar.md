@@ -10,19 +10,19 @@ HTML in the included layout.
 
 # Contents
 
-* [Introduction](index.html)
-  * [Apache Cayenne](index.html#cayenne)
-  * [Cayenne by Example](index.html#cbe)
-    * [Source Code](index.html#source)
-* [Obtaining Cayenne](obtaining-cayenne.html)
-  * [Downloading Cayenne](obtaining-cayenne.html#downloading)
-  * [Using Maven](obtaining-cayenne.html#maven)
-* [Cayenne Modeler](cayenne-modeler.html)
-  * [Startup](cayenne-modeler.html#startup)
-  * [Main Window](cayenne-modeler.html#main_window)
-    * [Main Toolbar](cayenne-modeler.html#main_toolbar)
-    * [Navigation Pane](cayenne-modeler.html#navigation_pane)
-      * [DataDomain, DataMap, DataNode](cayenne-modeler.html#domain_map_node)
+* [Introduction]({{ root }}index.html)
+  * [Apache Cayenne]({{ root }}index.html#cayenne)
+  * [Cayenne by Example]({{ root }}index.html#cbe)
+    * [Source Code]({{ root }}index.html#source)
+* [Obtaining Cayenne]({{ root }}obtaining-cayenne.html)
+  * [Downloading Cayenne]({{ root }}obtaining-cayenne.html#downloading)
+  * [Using Maven]({{ root }}obtaining-cayenne.html#maven)
+* [Cayenne Modeler]({{ root }}cayenne-modeler.html)
+  * [Startup]({{ root }}cayenne-modeler.html#startup)
+  * [Main Window]({{ root }}cayenne-modeler.html#main_window)
+    * [Main Toolbar]({{ root }}cayenne-modeler.html#main_toolbar)
+    * [Navigation Pane]({{ root }}cayenne-modeler.html#navigation_pane)
+      * [DataDomain, DataMap, DataNode]({{ root }}cayenne-modeler.html#domain_map_node)
     * Detail Pane
   * DataDomain Editor
     * DataDomain Configuration
@@ -49,13 +49,13 @@ HTML in the included layout.
     * Local Data Sources
     * Classpath
     * Templates
-* [Cayenne Contexts](cayenne-contexts.html)
-* [Examples](examples.html)
-* [Inserting Objects](inserting-objects.html)
-  * [Basic Inserts](basic-inserts.html)
-    * [Basic Inserts 1](basic-inserts.html#one)
-    * [Basic Inserts 2](basic-inserts.html#two)
-    * [Basic Inserts 3](basic-inserts.html#three)
+* [Cayenne Contexts]({{ root }}cayenne-contexts.html)
+* [Examples]({{ root }}examples.html)
+* [Inserting Objects]({{ root }}inserting-objects)
+  * [Basic Inserts]({{ root }}inserting-objects/basic-inserts.html)
+    * [Basic Inserts 1]({{ root }}inserting-objects/basic-inserts.html#one)
+    * [Basic Inserts 2]({{ root }}inserting-objects/basic-inserts.html#two)
+    * [Basic Inserts 3]({{ root }}inserting-objects/basic-inserts.html#three)
   * Enumerations
   * To-One Relationships
   * To-Many Relationships
@@ -89,8 +89,8 @@ HTML in the included layout.
   * Delete Rules
   * Query Chain
 * Web Application
-* [Differences with Hibernate](differences-hibernate.html)
-* [Credits and Resources](credits-resources.html)
+* [Differences with Hibernate]({{ root }}differences-hibernate.html)
+* [Credits and Resources]({{ root }}credits-resources.html)
 
 {% endcapture %}
 
