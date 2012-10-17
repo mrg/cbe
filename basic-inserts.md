@@ -9,6 +9,10 @@ title: Cayenne by Example - Basic Inserts
 
 <table class="pb">
   <tr>
+    <td>Cayenne Version</td>
+    <td>3.0.2</td>
+  </tr>
+  <tr>
     <td>Source Directory</td>
     <td>InsertingObjects/BasicInserts/src/main/java</td>
   </tr>
