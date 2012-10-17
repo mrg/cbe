@@ -493,14 +493,20 @@ a.return
   float: right;
   font-weight: bold;
   font-size: 100%;
-  background: #A7A7A7;
+  background: #6B6B6B;
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 6px;
   border: 1px solid #373737;
   color: white;
+  box-shadow: 0 0 5px #373737;
+  -webkit-box-shadow: 0 0 5px #373737;
+  -moz-box-shadow: 0 0 5px #373737;
+  -o-box-shadow: 0 0 5px #373737;
+  -ms-box-shadow: 0 0 5px #373737;
 }
 a:hover.return
 {
-  color: black;
+  background: #168BDB;
+  color: white !important;
 }
