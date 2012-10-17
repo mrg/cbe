@@ -40,3 +40,5 @@ Each example also contains a "project box" which lists the location (relative to
 </table>
 
 These examples will also typically omit the common/mundane steps of creating the model and generating the Java classes.  Use Cayenne Modeler to explore the model and your favorite editor/viewer to explore the generated Java classes if you desire.
+
+**NOTE: The first example, [Basic Inserts](inserting-objects/basic-inserts.html), shows more detail than most since it is the introductory example, including what Cayenne-generated classes look like and detailed SQL/startup logs.**

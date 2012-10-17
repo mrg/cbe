@@ -30,3 +30,9 @@ to dep pk
 These examples will show how to create new Java objects and register them in a DataContext, set their values, and commit to the database.
 
 The examples will progress in complexity as more and more data is used to build a database to use for the later examples on fetching, updating, and deleting.
+
+**NOTE: The first example shows more detail than most, including what Cayenne-generated classes look like and detailed SQL/startup logs, since it is the introductory example.**
+
+## Inserting Objects Examples:
+
+* [Basic Inserts](basic-inserts.html)
