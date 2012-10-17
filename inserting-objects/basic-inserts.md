@@ -4,9 +4,7 @@ root: ".."
 title: Cayenne by Example - Basic Inserts
 ---
 
-{% include back-to-inserting-objects.html %}
-
-# Basic Inserts
+# Basic Inserts {% include back-to-inserting-objects.html %}
 
 <table class="pb">
   <tr>

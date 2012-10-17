@@ -490,9 +490,12 @@ table.pb
 /* return link */
 a.return
 {
+/* top:0px;
+ right:0px;
+  position: relative;*/
   float: right;
   font-weight: bold;
-  font-size: 100%;
+  font-size: 10pt;
   background: #6B6B6B;
   margin-right: 8px;
   margin-bottom: 8px;
