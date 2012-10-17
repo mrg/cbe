@@ -61,7 +61,7 @@ password: VARCHAR(40)      | password: String     |
 
 ## Cayenne-Generated Classes
 
-When you generate your Java classes using Cayenne Modeler, you end up with an abstract superclass, which you **SHOULD NOT EDIT**, and a subclass representing the concrete class you use and can edit.
+When you generate your Java classes using Cayenne Modeler, you end up with an abstract superclass, which you **SHOULD NOT EDIT**, and a concrete subclass which is actually used for your Java objects.  If you want to edit the Cayenne-generated classes, edit the concrete subclass -- Cayenne will only generate this class **once** when it is missing, but will always generate the abstract superclass (and overwrite any changes made there).
 
 The abstract superclass contains all of the setters and getters for your attributes and relationships (although no relationships are shown in this simple example).  Typically, these classes are generated in an "auto" package beneath your concrete subclasses and the class name has a leading underscore.  The generated `_Person` class looks like:
 
@@ -106,7 +106,7 @@ public abstract class _Person extends CayenneDataObject {
 }
 {% endhighlight %}
 
-The first section (lines 3-6) contain constants representing the attribute names.  Line 8 contains the key for the primary key.  Cayenne typically does not include getters/setters for the primary key, but you can override this behavior in in Cayenne Modeler.  Lines 10-36 contain the setters/getters for the attributes.  **NOTE: These attribute represent the Java names, not the database column names.**
+The first section (lines 3-6) contain constants representing the attribute names.  Line 8 contains the key for the primary key.  Cayenne typically does not include getters/setters for the primary key, but you can override this behavior in Cayenne Modeler.  Lines 10-36 contain the setters/getters for the attributes.  **NOTE: These attribute represent the Java names, not the database column names.**
 
 The concrete class is much simpler:
 
@@ -115,7 +115,7 @@ public class Person extends _Person {
 }
 {% endhighlight %}
 
-It inherits the attributes from the superclass and provides a blank class for you to edit.  For example, you may decide you need a derived `getFullName` method which combines the `firstName` and `lastName` attributes.  This will be demonstrated, and if you look at the code in the repository you will see it there, by overriding the `setPassword` method to automatically hash the value.
+`Person` inherits the attributes from the `_Person` superclass and provides a blank class for your custom behavior.  For example, you may decide you need a derived `getFullName` method which combines the `firstName` and `lastName` attributes.  This technique of adding custom behavior will be demonstrated in Basic Inserts 3 by overriding the `setPassword` method to automatically hash the value.  (If you look at the code in the repository you will already see it there.)
 
 ## <a name="one">Basic Inserts 1: A Single Insert</a>
 
