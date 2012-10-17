@@ -290,6 +290,38 @@ public class BasicInserts2
 }
 {% endhighlight %}
 
+Running this example produces (greatly trimmed output):
+
+{% highlight sql linenos %}
+--- transaction started.
+CREATE TABLE PEOPLE (email_address VARCHAR(50) NULL, first_name VARCHAR(25) NULL, id BIGINT NOT NULL, last_name VARCHAR(25) NULL, password VARCHAR(40) NULL, PRIMARY KEY (id))
+CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
+DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
+INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
+--- will run 2 queries.
+SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
+=== returned 1 row. - took 5 ms.
+UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
+=== updated 1 row.
+--- will run 1 query.
+INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (?, ?, ?, ?, ?)
+[bind: 1->email_address:'acaldwell@example.com', 2->first_name:'Aaron', 3->id:200, 4->last_name:'Caldwell', 5->password:NULL]
+=== updated 1 row.
+[bind: 1->email_address:'vwaters@example.com', 2->first_name:'Victoria', 3->id:201, 4->last_name:'Waters', 5->password:NULL]
+=== updated 1 row.
+[bind: 1->email_address:'mkerr@example.com', 2->first_name:'Marcus', 3->id:202, 4->last_name:'Kerr', 5->password:NULL]
+=== updated 1 row.
+[bind: 1->email_address:'hfreeman@example.com', 2->first_name:'Heidi', 3->id:203, 4->last_name:'Freeman', 5->password:NULL]
+=== updated 1 row.
+[bind: 1->email_address:'rnewton@example.com', 2->first_name:'Rose', 3->id:204, 4->last_name:'Newton', 5->password:NULL]
+=== updated 1 row.
+[bind: 1->email_address:'ureeves@example.com', 2->first_name:'Ulric', 3->id:205, 4->last_name:'Reeves', 5->password:NULL]
+=== updated 1 row.
++++ transaction committed.
+{% endhighlight %}
+
+This example is very similar to Basic Inserts 1, but this time it inserts six records within a single transaction.  Six `Person` objects were created in the `dataContext` (Java lines 12-17) before being committed to the database on Java line 20.  One thing to note here is that the order the `Person` objects were created in the `dataContext` does **NOT** match the order they were inserted into the database.  Cayenne does not guarantee or require the ordering to match.  At runtime, Cayenne evaluates every object in the `dataContext` and determines the order of operations to satisfy persisting the data to the database.
+
 ## <a name="three">Basic Inserts 3: Multiple Inserts with Overridden Method</a>
 
 This example is identical to Basic Inserts 2, except the `createPerson` method makes one additional call to to `setPassword` on line 15:
@@ -336,5 +368,37 @@ public class Person extends _Person
 {% endhighlight %}
 
 Unless the developer goes out of their way to circumvent the automatic hashing, then they'll never have to worry about a plain-text password accidentally being saved to the database.
+
+Running this version produces:
+
+{% highlight sql linenos %}
+--- transaction started.
+CREATE TABLE PEOPLE (email_address VARCHAR(50) NULL, first_name VARCHAR(25) NULL, id BIGINT NOT NULL, last_name VARCHAR(25) NULL, password VARCHAR(40) NULL, PRIMARY KEY (id))
+CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
+DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
+INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
+--- will run 2 queries.
+SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
+=== returned 1 row. - took 5 ms.
+UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
+=== updated 1 row.
+--- will run 1 query.
+INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (?, ?, ?, ?, ?)
+[bind: 1->email_address:'hfreeman@example.com', 2->first_name:'Heidi', 3->id:200, 4->last_name:'Freeman', 5->password:'cc7020db3fec12fe28d0a8380dad52...']
+=== updated 1 row.
+[bind: 1->email_address:'mkerr@example.com', 2->first_name:'Marcus', 3->id:201, 4->last_name:'Kerr', 5->password:'1b659a077a3e4c2cad0999a85760c3...']
+=== updated 1 row.
+[bind: 1->email_address:'rnewton@example.com', 2->first_name:'Rose', 3->id:202, 4->last_name:'Newton', 5->password:'83a08b1bb1a7ca0157bd40493f86b0...']
+=== updated 1 row.
+[bind: 1->email_address:'vwaters@example.com', 2->first_name:'Victoria', 3->id:203, 4->last_name:'Waters', 5->password:'c39fc265673f1e79c791136efb6b8e...']
+=== updated 1 row.
+[bind: 1->email_address:'acaldwell@example.com', 2->first_name:'Aaron', 3->id:204, 4->last_name:'Caldwell', 5->password:'4a34161c0ce98fe4ed52ff2e2baa81...']
+=== updated 1 row.
+[bind: 1->email_address:'ureeves@example.com', 2->first_name:'Ulric', 3->id:205, 4->last_name:'Reeves', 5->password:'2820da6db5ae050bb97daf86a51e31...']
+=== updated 1 row.
++++ transaction committed.
+{% endhighlight %}
+
+Since this version is identical to Basic Inserts 2, except for setting the password, the SQL is nearly identical.  As you can see in the output, the password is no longer bound to `NULL`, but has been passed through our overridden `setPassword` method to automatically hash the plain-text value prior to saving.  Another item to note in the SQL output is the insertion order is **NOT** identical to the order in Basic Inserts 2, even though it is the same set of records.  This is normal.
 
 {% include back-to-inserting-objects.html %}
