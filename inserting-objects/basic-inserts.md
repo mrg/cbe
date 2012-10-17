@@ -45,7 +45,9 @@ title: Cayenne by Example - Basic Inserts
   <tr>
 </table>
 
-The Basic Inserts example focuses on a single `PEOPLE` table and a corresponding `Person.java` class (the database table being named in the plural and the Java class in the singular). Open the model (located in the resource directory) in Cayenne Modeler to see full class names, optimistic locking attributes, primary key generation strategies, etc.
+The Basic Inserts example focuses on a single `PEOPLE` table and a corresponding `Person` class (the database table being named in the plural and the Java class in the singular). Open the model (located in the resource directory) in Cayenne Modeler to see full class names, optimistic locking attributes, primary key generation strategies, etc.
+
+## Database
 
 The `PEOPLE` table is defined as:
 
@@ -56,6 +58,64 @@ email_address: VARCHAR(50) | emailAddress: String |
 first_name: VARCHAR(25)    | firstName: String    |
 last_name: VARCHAR(25)     | lastName: String     |
 password: VARCHAR(40)      | password: String     |
+
+## Cayenne-Generated Classes
+
+When you generate your Java classes using Cayenne Modeler, you end up with an abstract superclass, which you **SHOULD NOT EDIT**, and a subclass representing the concrete class you use and can edit.
+
+The abstract superclass contains all of the setters and getters for your attributes and relationships (although no relationships are shown in this simple example).  Typically, these classes are generated in an "auto" package beneath your concrete subclasses and the class name has a leading underscore.  The generated `_Person` class looks like:
+
+{% highlight java linenos %}
+public abstract class _Person extends CayenneDataObject {
+
+    public static final String EMAIL_ADDRESS_PROPERTY = "emailAddress";
+    public static final String FIRST_NAME_PROPERTY = "firstName";
+    public static final String LAST_NAME_PROPERTY = "lastName";
+    public static final String PASSWORD_PROPERTY = "password";
+
+    public static final String ID_PK_COLUMN = "id";
+
+    public void setEmailAddress(String emailAddress) {
+        writeProperty("emailAddress", emailAddress);
+    }
+    public String getEmailAddress() {
+        return (String)readProperty("emailAddress");
+    }
+
+    public void setFirstName(String firstName) {
+        writeProperty("firstName", firstName);
+    }
+    public String getFirstName() {
+        return (String)readProperty("firstName");
+    }
+
+    public void setLastName(String lastName) {
+        writeProperty("lastName", lastName);
+    }
+    public String getLastName() {
+        return (String)readProperty("lastName");
+    }
+
+    public void setPassword(String password) {
+        writeProperty("password", password);
+    }
+    public String getPassword() {
+        return (String)readProperty("password");
+    }
+
+}
+{% endhighlight %}
+
+The first section (lines 3-6) contain constants representing the attribute names.  Line 8 contains the key for the primary key.  Cayenne typically does not include getters/setters for the primary key, but you can override this behavior in in Cayenne Modeler.  Lines 10-36 contain the setters/getters for the attributes.  **NOTE: These attribute represent the Java names, not the database column names.**
+
+The concrete class is much simpler:
+
+{% highlight java linenos %}
+public class Person extends _Person {
+}
+{% endhighlight %}
+
+It inherits the attributes from the superclass and provides a blank class for you to edit.  For example, you may decide you need a derived `getFullName` method which combines the `firstName` and `lastName` attributes.  This will be demonstrated, and if you look at the code in the repository you will see it there, by overriding the `setPassword` method to automatically hash the value.
 
 ## <a name="one">Basic Inserts 1: A Single Insert</a>
 
@@ -253,7 +313,7 @@ This example is identical to Basic Inserts 2, except the `createPerson` method m
     }
 {% endhighlight %}
 
-Normal methods, such as `setFirstName` and `setLastName` call the Cayenne-generated setter (or getter) in the base class (`_Person.java`).  However, Cayenne allows you to override methods or provide additional methods in the subclass (`Person.java`).  In the case of a password, we don't want to store a plain-text password, but instead want to store a hashed value.  Therefore, the `setPassword` method is overridden to automatically hash the plain-text value:
+Normal methods, such as `setFirstName` and `setLastName` call the Cayenne-generated setter (or getter) in the base class (`_Person`).  However, Cayenne allows you to override methods or provide additional methods in the subclass (`Person`).  In the case of a password, we don't want to store a plain-text password, but instead want to store a hashed value.  Therefore, the `setPassword` method is overridden to automatically hash the plain-text value:
 
 {% highlight java linenos %}
 public class Person extends _Person
