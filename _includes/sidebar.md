@@ -50,6 +50,7 @@ HTML in the included layout.
     * Classpath
     * Templates
 * [Cayenne Contexts]({{ root }}cayenne-contexts.html)
+* [Lifecycle Events]({{ root }}lifecycle-events.html)
 * [Examples]({{ root }}examples.html)
 * [Inserting Objects]({{ root }}inserting-objects)
   * [Basic Inserts]({{ root }}inserting-objects/basic-inserts.html)
@@ -66,7 +67,8 @@ HTML in the included layout.
   * To-Dependent PK
   * Meaningful PK
   * Flattened Relationships
-  * Callbacks and Listeners
+  * [Callbacks]({{ root }}inserting-objects/callbacks.html)
+  * Listeners
 * Fetching Objects
   * Select Queries
   * SQL Template Queries
