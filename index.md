@@ -30,7 +30,9 @@ Before the examples, however, is an introduction to Cayenne Modeler, which is th
 
 ### <a name="source">Source Code</a>
 
-In addition to this book, there is source code (complete Maven projects) for each example.  The source code for these examples is available at GitHub.  If you discover an error in the examples or this book and have a GitHub account, please open an issue so it can be fixed.
+In addition to this book, there is source code (complete Maven projects) for each example.  The source code for these examples is available at [GitHub](https://github.com/mrg/cbe).  If you discover an error in the examples or this book and have a GitHub account, please open an issue against the GitHub project so it can be fixed.
+
+### <a name="running">Running the Examples</a>
 
 To actually run the code you'll need to download and install the following if you don't already have them:
 
@@ -40,3 +42,5 @@ To actually run the code you'll need to download and install the following if yo
 Eclipse with the Maven plugin installed if you wish to edit/run the examples within Eclipse. Once you have downloaded the examples, import them into Eclipse using the Maven Import option.  [optional]
 
 That's it.  Maven will download everything else you need, such as the Cayenne dependencies and the H2 Database.
+
+To download Maven or the Maven Eclipse Plugin, see the links in the [Resources](credits-resources.html) section.   Downloading Cayenne separately or how to use it with Maven is covered in the next section.
