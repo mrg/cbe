@@ -213,6 +213,7 @@ ul li {
 ol li {
   list-style: decimal inside;
   padding-left: 20px;
+  text-indent: -1.2em;
 }
 
 dl dt {
