@@ -6,9 +6,16 @@ import cbe.inserting.model.Address;
 import cbe.inserting.model.Person;
 
 /**
- * Cayenne By Example - https://github.com/mrg/cbe
+ * Cayenne By Example Source Code:
+ *   https://github.com/mrg/cbe
+ *   https://github.com/mrg/cbe/tree/master/InsertingObjects/ToOne
  *
- * This example creates a to-one relationship (Person -> Address).
+ * Cayenne By Example Documentation:
+ *   http://mrg.github.com/cbe/
+ *   http://mrg.github.com/cbe/inserting-objects/to-one.html
+ *
+ * This example inserts a single Person object into the database along
+ * with their address using a to-one relationship (Person -> Address).
  *
  * It is based upon the BasicInserts1 example.
  *
