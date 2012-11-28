@@ -53,7 +53,7 @@ public class BasicInserts3
     private void createPerson(String firstName, String lastName, String emailAddress)
     {
         // Create a new Person object tracked by the DataContext.
-    	Person person = dataContext.newObject(Person.class);
+        Person person = dataContext.newObject(Person.class);
 
         // Set values for the new person.
         person.setFirstName(firstName);
