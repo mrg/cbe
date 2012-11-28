@@ -333,7 +333,7 @@ This example is identical to Basic Inserts 2, except the `createPerson` method m
     private void createPerson(String firstName, String lastName, String emailAddress)
     {
         // Create a new Person object tracked by the DataContext.
-    	Person person = dataContext.newObject(Person.class);
+        Person person = dataContext.newObject(Person.class);
 
         // Set values for the new person.
         person.setFirstName(firstName);
