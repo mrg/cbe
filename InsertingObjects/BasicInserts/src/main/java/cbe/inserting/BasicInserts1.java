@@ -11,7 +11,7 @@ import cbe.inserting.model.Person;
  *
  * Cayenne By Example Documentation:
  *   http://mrg.github.com/cbe/
- *   http://mrg.github.com/cbe/basic-inserts.html
+ *   http://mrg.github.com/cbe/inserting-objects/basic-inserts.html
  *
  * This example inserts a single Person object into the database.
  *
