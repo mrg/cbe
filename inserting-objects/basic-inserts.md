@@ -30,7 +30,8 @@ title: Cayenne by Example - Basic Inserts
       mvn clean compile<br/>
       mvn exec:java -Dexec.mainClass=cbe.inserting.BasicInserts1<br/>
       mvn exec:java -Dexec.mainClass=cbe.inserting.BasicInserts2<br/>
-      mvn exec:java -Dexec.mainClass=cbe.inserting.BasicInserts3</td>
+      mvn exec:java -Dexec.mainClass=cbe.inserting.BasicInserts3
+    </td>
   </tr>
   <tr>
     <td>View/Edit Model</td>
