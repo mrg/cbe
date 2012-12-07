@@ -70,6 +70,7 @@ HTML in the included layout.
   * Flattened Relationships
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
   * Listeners
+  * [Unit Testing]({{ root }}inserting-objects/unit-testing.html)
 * Fetching Objects
   * Select Queries
   * SQL Template Queries
