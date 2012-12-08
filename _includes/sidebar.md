@@ -70,7 +70,6 @@ HTML in the included layout.
   * Flattened Relationships
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
   * Listeners
-  * [Unit Testing]({{ root }}inserting-objects/unit-testing.html)
 * Fetching Objects
   * Select Queries
   * SQL Template Queries
@@ -92,7 +91,8 @@ HTML in the included layout.
   * Deleting Multiple Objects
   * Delete Rules
   * Query Chain
-* Web Application
+* [Unit Testing]({{ root }}unit-testing.html)
+* Web Applications
 * [Differences with Hibernate]({{ root }}differences-hibernate.html)
 * [Credits and Resources]({{ root }}credits-resources.html)
 
