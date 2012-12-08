@@ -1,6 +1,5 @@
 ---
 layout: page
-root: ".."
 title: Cayenne by Example - Unit Testing
 ---
 
