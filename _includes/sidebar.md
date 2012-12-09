@@ -15,6 +15,7 @@ HTML in the included layout.
   * [Cayenne by Example]({{ root }}index.html#cbe)
     * [Source Code]({{ root }}index.html#source)
     * [Running the Examples]({{ root }}index.html#running)
+    * [License]({{ root }}index.html#license)
 * [Obtaining Cayenne]({{ root }}obtaining-cayenne.html)
   * [Downloading Cayenne]({{ root }}obtaining-cayenne.html#downloading)
   * [Using Maven]({{ root }}obtaining-cayenne.html#maven)
