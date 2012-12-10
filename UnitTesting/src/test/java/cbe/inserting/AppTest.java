@@ -14,7 +14,23 @@ import cbe.testing.model.Address;
 import cbe.testing.model.Person;
 
 /**
- * Unit test.
+ * Cayenne By Example Source Code:
+ *   https://github.com/mrg/cbe
+ *   https://github.com/mrg/cbe/tree/master/UnitTesting
+ *
+ * Cayenne By Example Documentation:
+ *   http://mrg.github.com/cbe/
+ *   http://mrg.github.com/cbe/unit-testing.html
+ *
+ * This example shows how to register with a JNDI naming service for unit
+ * testing with Cayenne.  It contains two tests:
+ *   1) Create and test a single Person object.
+ *   2) Create and test a single Person/Address object with a to-one
+ *      relationship (Person -> Address).
+ *
+ * It is based upon the ToOne example.
+ *
+ * @author mrg
  */
 public class AppTest extends TestCase
 {
@@ -35,7 +51,9 @@ public class AppTest extends TestCase
     }
 
     /**
-     * @return the suite of tests being tested
+     * Register a data source with JNDI for all unit tests in this test suite.
+     *
+     * @return The suite of tests being tested.
      */
     public static Test suite() throws Exception
     {
