@@ -59,7 +59,7 @@ HTML in the included layout.
     * [Basic Inserts 1]({{ root }}inserting-objects/basic-inserts.html#one)
     * [Basic Inserts 2]({{ root }}inserting-objects/basic-inserts.html#two)
     * [Basic Inserts 3]({{ root }}inserting-objects/basic-inserts.html#three)
-  * Enumerations
+  * [Enumerations]({{ root }}inserting-objects/enumerations.html)
   * To-One Relationships
   * To-Many Relationships
   * Many-to-Many Relationships
