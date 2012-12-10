@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
   project-version="3.0.0.1">
 	<property name="defaultLockType" value="optimistic"/>
-	<property name="defaultPackage" value="cbe.inserting.model"/>
+	<property name="defaultPackage" value="cbe.testing.model"/>
 	<db-entity name="ADDRESSES">
 		<db-attribute name="city" type="VARCHAR" length="50"/>
 		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
@@ -19,13 +19,13 @@
 		<db-attribute name="last_name" type="VARCHAR" length="25"/>
 		<db-attribute name="username" type="VARCHAR" length="26"/>
 	</db-entity>
-	<obj-entity name="Address" className="cbe.inserting.model.Address" lock-type="optimistic" dbEntityName="ADDRESSES">
+	<obj-entity name="Address" className="cbe.testing.model.Address" lock-type="optimistic" dbEntityName="ADDRESSES">
 		<obj-attribute name="city" type="java.lang.String" lock="true" db-attribute-path="city"/>
 		<obj-attribute name="state" type="java.lang.String" lock="true" db-attribute-path="state"/>
 		<obj-attribute name="street" type="java.lang.String" lock="true" db-attribute-path="street"/>
 		<obj-attribute name="zip" type="java.lang.String" lock="true" db-attribute-path="zip"/>
 	</obj-entity>
-	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
+	<obj-entity name="Person" className="cbe.testing.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
 		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
 		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
 		<obj-attribute name="username" type="java.lang.String" lock="true" db-attribute-path="username"/>

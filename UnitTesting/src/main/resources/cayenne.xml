@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <domains project-version="3.0.0.1">
-<domain name="CBEInserting">
-	<map name="CBEInsertingMap" location="CBEInsertingMap.map.xml"/>
+<domain name="CBETesting">
+	<map name="CBETestingMap" location="CBETestingMap.map.xml"/>
 
-	<node name="CBEInsertingNode"
+	<node name="CBETestingNode"
 		 datasource="jdbc/cbe"
 		 factory="org.apache.cayenne.conf.JNDIDataSourceFactory"
 		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy">
-			<map-ref name="CBEInsertingMap"/>
+			<map-ref name="CBETestingMap"/>
 	 </node>
 </domain>
 </domains>
