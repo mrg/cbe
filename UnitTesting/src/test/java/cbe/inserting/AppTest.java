@@ -10,8 +10,8 @@ import junit.framework.TestSuite;
 import org.apache.cayenne.access.DataContext;
 import org.h2.jdbcx.JdbcDataSource;
 
-import cbe.inserting.model.Address;
-import cbe.inserting.model.Person;
+import cbe.testing.model.Address;
+import cbe.testing.model.Person;
 
 /**
  * Unit test.

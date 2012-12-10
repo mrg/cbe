@@ -1,9 +1,9 @@
-package cbe.inserting;
+package cbe.testing;
 
 import org.apache.cayenne.access.DataContext;
 
-import cbe.inserting.model.Address;
-import cbe.inserting.model.Person;
+import cbe.testing.model.Address;
+import cbe.testing.model.Person;
 
 /**
  * Cayenne By Example Source Code:
