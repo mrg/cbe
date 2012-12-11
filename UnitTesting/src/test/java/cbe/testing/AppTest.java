@@ -1,4 +1,4 @@
-package cbe.inserting;
+package cbe.testing;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
