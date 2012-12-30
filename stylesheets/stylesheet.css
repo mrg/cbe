@@ -131,6 +131,18 @@ a {
 /*  text-shadow: #0090ff 0px 0px 2px; */
 }
 
+#main_content p {
+  margin-right: 2em;
+}
+
+#main_content ul li {
+  margin-right: 2em;
+}
+
+#main_content ol li {
+  margin-right: 2em;
+}
+
 footer a:hover {
   color: #43adff;
 /*  text-shadow: #0090ff 0px 0px 2px; */
