@@ -172,7 +172,6 @@ img {
 }
 
 pre, code {
-  width: 96%;
   color: #222;
   background-color: #fff;
 
@@ -182,13 +181,10 @@ pre, code {
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-
-
-
 }
 
 pre {
-  width: 96%;
+  margin-right: 2em;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
   overflow: auto;
@@ -454,7 +450,6 @@ Small Device Styles
     max-width: 480px;
     font-size: 11px;
   }
-
 }
 
 
