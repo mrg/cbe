@@ -70,7 +70,7 @@ HTML in the included layout.
   * Meaningful PK
   * Flattened Relationships
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
-  * Listeners
+  * [Listeners]({{ root }}inserting-objects/listeners.html)
 * Fetching Objects
   * Select Queries
   * SQL Template Queries
