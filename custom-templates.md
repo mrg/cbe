@@ -1,3 +1,8 @@
+---
+layout: page
+title: Cayenne by Example - Custom Templates
+---
+
 Custom Templates
 ================
 
