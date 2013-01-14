@@ -94,6 +94,7 @@ HTML in the included layout.
   * Query Chain
 * [Unit Testing]({{ root }}unit-testing.html)
 * Web Applications
+* [Custom Templates]({{ root }}custom-templates.html)
 * [Differences with Hibernate]({{ root }}differences-hibernate.html)
 * [Credits and Resources]({{ root }}credits-resources.html)
 
