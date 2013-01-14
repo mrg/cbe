@@ -71,17 +71,4 @@ public#if("true" == "${object.getIsAbstract()}") abstract#end class ${entityUtil
 
     // Put utility-type methods here, which are typically static, such as
     // fetch* type methods, which fetch Cayenne objects from the database.
-
-    /***********************************************************************/
-    /*** JiBX Support                                                    ***/
-    /***********************************************************************/
-
-    // Put JiBX support methods here.
-
-    /***********************************************************************/
-    /*** Validation Support                                              ***/
-    /***********************************************************************/
-
-    // Put equivalenceHashCode and equivalentTo methods here, if the class
-    // implements Equivalence.
 }
