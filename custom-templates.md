@@ -20,11 +20,11 @@ To use these (or other) custom templates, put a copy in your project and add the
 
 When generating classes, use the **Advanced** option with the following suggested settings:
 
-**Generation Mode:** Entity and Embeddable generation
-**Generator Version:** 1.2
-**Subclass Template:** `subclass` (or your different template name)
-**Superclass Template:** `superclass` (or your different template name)
-**Output Pattern:** *.java
-**Make Pairs:** checked
-**Overwrite Subclasses:** unchecked
-**Use Package Path:** checked
+**Generation Mode:** Entity and Embeddable generation<br />
+**Generator Version:** 1.2<br />
+**Subclass Template:** `subclass` (or your different template name)<br />
+**Superclass Template:** `superclass` (or your different template name)<br />
+**Output Pattern:** *.java<br />
+**Make Pairs:** checked<br />
+**Overwrite Subclasses:** unchecked<br />
+**Use Package Path:** checked<br />
