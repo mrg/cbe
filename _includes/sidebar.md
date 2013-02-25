@@ -51,6 +51,12 @@ HTML in the included layout.
     * Local Data Sources
     * Classpath
     * Templates
+  * Recipes
+    * Modeling To-One Relationships
+    * Modeling To-Many Relationships
+    * Modeling Many-To-Many Relationships
+    * Modeling Enumerations
+    * Modeling Embeddables
 * [Cayenne Contexts]({{ root }}cayenne-contexts.html)
 * [Lifecycle Events]({{ root }}lifecycle-events.html)
 * [Examples]({{ root }}examples.html)
@@ -69,6 +75,7 @@ HTML in the included layout.
   * To-Dependent PK
   * Meaningful PK
   * Flattened Relationships
+  * Embeddables
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
   * [Listeners]({{ root }}inserting-objects/listeners.html)
 * Fetching Objects
