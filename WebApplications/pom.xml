@@ -13,6 +13,7 @@
     <properties>
         <cayenne.version>3.0.2</cayenne.version>
         <tapestry.version>5.3.6</tapestry.version>
+        <flyway.version>2.0.3</flyway.version>
         <jetty.version>7.5.1.v20110908</jetty.version>
         <jetty.port>7890</jetty.port>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,6 +40,14 @@
                 <version>${cayenne.version}</version>
                 <configuration>
                     <modelFile>src/main/resources/cayenne.xml</modelFile>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.googlecode.flyway</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>2.0.3</version>
+                <configuration>
                 </configuration>
             </plugin>
 
@@ -96,6 +105,11 @@
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
             <version>${tapestry.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.flyway</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
