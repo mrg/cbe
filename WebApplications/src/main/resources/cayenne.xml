@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="3.0.0.1">
+<domain name="CBE">
+	<map name="CBE" location="CBE.map.xml"/>
+
+	<node name="CBE"
+		 datasource="CBE.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+			<map-ref name="CBE"/>
+	 </node>
+</domain>
+</domains>
