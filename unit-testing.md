@@ -13,15 +13,15 @@ title: Cayenne by Example - Unit Testing
   <tr>
     <td>Source Directories</td>
     <td>
-      [UnitTesting/src/main/java](https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/java) (Cayenne classes)
+      <a href="https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/java">UnitTesting/src/main/java</a> (Cayenne classes)
       <br/>
-      [UnitTesting/src/test/java](https://github.com/mrg/cbe/tree/master/UnitTesting/src/test/java) (testing classes)
+      <a href="https://github.com/mrg/cbe/tree/master/UnitTesting/src/test/java">UnitTesting/src/test/java</a> (testing classes)
     </td>
   </tr>
   <tr>
     <td>Resource Directory</td>
     <td>
-      [UnitTesting/src/main/resources](https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/resources) (Cayenne Model)
+      <a href="https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/resources">UnitTesting/src/main/resources</a> (Cayenne Model)
     </td>
   </tr>
     <td>Inputs</td>
