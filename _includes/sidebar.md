@@ -100,7 +100,7 @@ HTML in the included layout.
   * Delete Rules
   * Query Chain
 * [Unit Testing]({{ root }}unit-testing.html)
-* Web Applications
+* [Web Applications]({{ root }}web-applications.html)
 * [Custom Templates]({{ root }}custom-templates.html)
 * [Differences with Hibernate]({{ root }}differences-hibernate.html)
 * [Credits and Resources]({{ root }}credits-resources.html)
