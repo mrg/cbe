@@ -11,17 +11,17 @@ title: Cayenne by Example - Unit Testing
     <td>3.0.2</td>
   </tr>
   <tr>
-    <td>Source Directory</td>
+    <td>Source Directories</td>
     <td>
-      UnitTesting/src/main/java</b> (Cayenne Object classes)
+      [UnitTesting/src/main/java](https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/java) (Cayenne classes)
       <br/>
-      UnitTesting/src/test/java <b>(testing classes)</b>
+      [UnitTesting/src/test/java](https://github.com/mrg/cbe/tree/master/UnitTesting/src/test/java) (testing classes)
     </td>
   </tr>
   <tr>
     <td>Resource Directory</td>
     <td>
-      UnitTesting/src/main/resources (Cayenne Model files)
+      [UnitTesting/src/main/resources](https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/resources) (Cayenne Model)
     </td>
   </tr>
     <td>Inputs</td>
