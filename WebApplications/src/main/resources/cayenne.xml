@@ -4,8 +4,8 @@
 	<map name="CBE" location="CBE.map.xml"/>
 
 	<node name="CBE"
-		 datasource="CBE.driver.xml"
-		 factory="org.apache.cayenne.conf.DriverDataSourceFactory">
+		 datasource="jdbc/cbe"
+		 factory="org.apache.cayenne.conf.JNDIDataSourceFactory">
 			<map-ref name="CBE"/>
 	 </node>
 </domain>
