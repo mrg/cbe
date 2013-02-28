@@ -12,12 +12,20 @@ title: Cayenne by Example - Basic Inserts
     <td>3.0.2</td>
   </tr>
   <tr>
+    <td>Project Directory</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/BasicInserts">InsertingObjects/BasicInserts</a>
+    </td>
+  </tr>
+  <tr>
     <td>Source Directory</td>
-    <td>InsertingObjects/BasicInserts/src/main/java</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/BasicInserts/src/main/java">InsertingObjects/BasicInserts/src/main/java</a>
+    </td>
   </tr>
   <tr>
     <td>Resource Directory</td>
-    <td>InsertingObjects/BasicInserts/src/main/resources</td>
+    <td><a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/BasicInserts/src/main/resources">InsertingObjects/BasicInserts/src/main/resources</a></td>
   </tr>
     <td>Inputs</td>
     <td>N/A</td>
@@ -41,7 +49,7 @@ title: Cayenne by Example - Basic Inserts
     <td>Status</td>
     <td>
       Code: Completed<br/>
-      Documentation: In-Progress
+      Documentation: In-Progress (mostly done)
     </td>
   <tr>
 </table>
@@ -175,7 +183,7 @@ org.apache.cayenne.conf.DriverDataSourceFactory$LoginHandler init
 loading user name and password.
 org.apache.cayenne.access.QueryLogger logPoolCreated
 Created connection pool: jdbc:h2:mem:cbe
-	Driver class: org.h2.Driver
+    Driver class: org.h2.Driver
 	Min. connections in the pool: 1
 	Max. connections in the pool: 10
 org.apache.cayenne.conf.RuntimeLoadDelegate shouldLoadDataNode
