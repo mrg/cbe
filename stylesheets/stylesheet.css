@@ -132,15 +132,12 @@ a {
 }
 
 #main_content p {
-  margin-right: 2em;
 }
 
 #main_content ul li {
-  margin-right: 2em;
 }
 
 #main_content ol li {
-  margin-right: 2em;
 }
 
 footer a:hover {
@@ -184,7 +181,6 @@ pre, code {
 }
 
 pre {
-  margin-right: 2em;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
   overflow: auto;
@@ -382,6 +378,7 @@ Full-Width Styles
 
 #main_content {
   margin-left: 320px;
+  margin-right: 2em;
 }
 
 #sidebar
@@ -468,7 +465,7 @@ div.caption
 
 table
 {
-    margin-left: auto; 
+/*    margin-left: auto; */
     margin-right: 2em;
 }
 
@@ -492,10 +489,10 @@ li p {
 /* Project Box Table */
 table.pb
 {
-  width: 90%;
+  width: 100%;
 }
 
-/* return link */
+/* return link -- FIXME: this will probably go away once a breadcrumb is added */
 a.return
 {
 /* top:0px;
@@ -505,7 +502,7 @@ a.return
   font-weight: bold;
   font-size: 10pt;
   background: #6B6B6B;
-  margin-right: 8px;
+  margin-right: -1.6em;
   margin-bottom: 8px;
   padding: 6px;
   border: 1px solid #373737;
