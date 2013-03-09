@@ -14,15 +14,32 @@ breadcrumb:
     <td>3.0.2</td>
   </tr>
   <tr>
-    <td>Source Directory</td>
+    <td>Project Directory</td>
     <td>
-      WebApplications/src/main/java</b> (Cayenne Object classes)
+      <a href="https://github.com/mrg/cbe/tree/master/WebApplications">WebApplications</a>
     </td>
   </tr>
   <tr>
-    <td>Resource Directory</td>
+    <td>Source Directory</td>
     <td>
-      WebApplications/src/main/resources (Cayenne Model files)
+      <a href="https://github.com/mrg/cbe/tree/master/WebApplications/src/main/java">
+        WebApplications/src/main/java
+      </a>
+      (Cayenne and Tapestry classes)
+    </td>
+  </tr>
+  <tr>
+    <td>Resource Directories</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/WebApplications/src/main/resources">
+        WebApplications/src/main/resources
+      </a>
+      (Cayenne Model and Tapestry templates)
+      <br/>
+      <a href="https://github.com/mrg/cbe/tree/master/WebApplications/src/main/webapp">
+        WebApplications/src/main/webapp
+      </a>
+      (web-specific resources, such as CSS, JavaScript, web.xml)
     </td>
   </tr>
     <td>Inputs</td>
@@ -35,7 +52,7 @@ breadcrumb:
       cd WebApplications<br/>
       mvn clean compile<br/>
       mvn jetty:run<br/>
-      http://localhost:7890/cbe/
+      Open URL <a href="http://localhost:7890/cbe/">http://localhost:7890/cbe/</a>
     </td>
   </tr>
   <tr>
