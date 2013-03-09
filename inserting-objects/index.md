@@ -2,10 +2,12 @@
 layout: page
 root: ".."
 title: Cayenne by Example - Inserting Objects
+heading: Inserting Objects
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Inserting Objects
 ---
-
-# Inserting Objects
-
 
 <!---
 Insert into 1 table -- individual insert, group insert
@@ -36,3 +38,16 @@ The examples will progress in complexity as more and more data is used to build 
 ## Inserting Objects Examples:
 
 * [Basic Inserts](basic-inserts.html)
+* [Enumerations](enumerations.html)
+* To-One Relationships
+* To-Many Relationships
+* Many-to-Many Relationships
+* Flattened Relationships
+* To-Dependent PK
+* Meaningful PKs
+* [Callbacks](callbacks.html)
+* [Listeners](listeners.html)
+* Embeddables
+* BLOBs
+* Validation
+

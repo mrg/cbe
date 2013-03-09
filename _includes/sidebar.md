@@ -69,15 +69,14 @@ HTML in the included layout.
   * To-One Relationships
   * To-Many Relationships
   * Many-to-Many Relationships
-  * Initialize New Objects
-  * BLOBs
-  * Validation
+  * Flattened Relationships
   * To-Dependent PK
   * Meaningful PK
-  * Flattened Relationships
-  * Embeddables
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
   * [Listeners]({{ root }}inserting-objects/listeners.html)
+  * Embeddables
+  * BLOBs
+  * Validation
 * Fetching Objects
   * Select Queries
   * SQL Template Queries
