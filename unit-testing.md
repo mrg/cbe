@@ -14,6 +14,12 @@ breadcrumb:
     <td>3.0.2</td>
   </tr>
   <tr>
+    <td>Project Directory</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/UnitTesting">UnitTesting</a>
+    </td>
+  </tr>
+  <tr>
     <td>Source Directories</td>
     <td>
       <a href="https://github.com/mrg/cbe/tree/master/UnitTesting/src/main/java">UnitTesting/src/main/java</a> (Cayenne classes)
