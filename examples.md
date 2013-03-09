@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Examples
+heading: Examples
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Examples
 ---
-
-# Examples
 
 The examples are grouped into major sections for inserting, updating, and deleting, plus some other more specialized examples after that.
 

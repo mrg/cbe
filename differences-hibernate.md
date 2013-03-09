@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Differences with Hibernate
+heading: Differences with Hibernate
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Differences with Hibernate
 ---
-
-# Differences with Hibernate
 
 Stubbing out -- needs more details.
 

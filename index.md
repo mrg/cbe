@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Introduction
+heading: Introduction
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Introduction
 ---
-
-# Introduction
-
 ## <a name="cayenne">Apache Cayenne</a>
 
 [Apache Cayenne](http://cayenne.apache.org/) (or simply Cayenne, for short) is an Object-Relational Mapping (ORM) framework for Java programmers.  Cayenne maps Java classes to database tables and automatically generates SQL to move data back-and-forth between Java objects and the database, which is a tedious task if done manually.  An ORM simplifies accessing a relational database (such as Oracle, MySQL, PostgreSQL, SQL Server, H2, etc) and insulates developers from writing common SQL and data marshaling code.

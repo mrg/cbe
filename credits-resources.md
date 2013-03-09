@@ -1,9 +1,14 @@
 ---
 layout: page
 title: Cayenne by Example - Credits and Resources
+heading: Credits and Resources
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Credits and Resources
 ---
 
-# Credits
+## Credits
 
 Book content and examples by:
 
@@ -11,7 +16,7 @@ Book content and examples by:
 
 
 
-# Resources
+## Resources
 
 Software and other resources used putting the book and examples together:
 

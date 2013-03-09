@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Cayenne Modeler
+heading: Cayenne Modeler
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Cayenne Modeler
 ---
-
-# Cayenne Modeler
 
 Cayenne Modeler is a cross-platform GUI application for modeling your database schema and mapping the database to Java classes.  It is often someone's first experience with using the Cayenne framework.  It provides a friendlier introduction to Cayenne without having to learn the underlying XML mapping files or having to learn the proper way to structure Java classes to work with Cayenne.  Of course, you can always manipulate the XML model files by hand if you choose to, but most developers rarely look at them and rely mainly on Cayenne Modeler for managing the model files.
 

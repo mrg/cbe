@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Lifecycle Events
+heading: Lifecycle Events
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Lifecycle Events
 ---
-
-# Lifecycle Events
 
 Cayenne supports lifecycle events for DataObjects interacting with their context during creation, loading, saving, or deleting.   These lifecycle events give you the opportunity to inject handlers into the lifecycle of your data objects.  Lifecycle events are typically defined in Cayenne Modeler, but can also be defined programmatically.
 

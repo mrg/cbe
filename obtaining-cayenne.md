@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Obtaining Cayenne
+heading: Obtaining Cayenne
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Obtaining Cayenne
 ---
-
-# Obtaining Cayenne
 
 There are three main ways to obtain Cayenne and Cayenne Modeler:
 

@@ -1,10 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Custom Templates
+heading: Custom Templates
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Custom Templates
 ---
-
-Custom Templates
-================
 
 Cayenne includes default [Velocity](http://velocity.apache.org/)-based templates used to generate your Cayenne classes from the model.  These default templates are sufficient for most uses, but you can create custom templates if desired.
 

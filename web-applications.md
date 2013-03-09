@@ -1,9 +1,12 @@
 ---
 layout: page
 title: Cayenne by Example - Web Applications
+heading: Web Applications
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Web Applications
 ---
-
-# Web Applications
 
 <table class="pb">
   <tr>
