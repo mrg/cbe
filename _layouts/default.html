@@ -41,7 +41,10 @@ test: true
         {% include sidebar.md %}
       </div>
       <div id="main_content">
+        <h1>{{ page.heading }}</h1>
+        {% include breadcrumb.md %}
         {{ content }}
+        {% include breadcrumb.md %}
       </div>
     </div>
 

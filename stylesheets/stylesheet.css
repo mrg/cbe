@@ -518,3 +518,24 @@ a:hover.return
   background: #168BDB;
   color: white !important;
 }
+
+
+ul.breadcrumb
+{
+  font-size: 9pt;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.breadcrumb li
+{
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+ul.breadcrumb-top
+{
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+}
+

@@ -2,9 +2,14 @@
 layout: page
 root: ".."
 title: Cayenne by Example - Enumerations
+heading: Enumerations
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Inserting Objects
+    link: .
+  - name: Enumerations
 ---
-
-# Enumerations {% include back-to-inserting-objects.html %}
 
 <table class="pb">
   <tr>
@@ -110,5 +115,3 @@ public enum RoleType implements ExtendedEnumeration
 {% endhighlight %}
 
 To be continued... 
-
-{% include back-to-inserting-objects.html %}
