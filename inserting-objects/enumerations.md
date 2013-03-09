@@ -45,7 +45,7 @@ breadcrumb:
   <tr>
     <td>Compiling/Running</td>
     <td>
-      cd InsertingObjects/BasicInserts<br/>
+      cd InsertingObjects/Enumerations<br/>
       mvn clean compile<br/>
       mvn exec:java -Dexec.mainClass=cbe.inserting.Enumerations
     </td>
