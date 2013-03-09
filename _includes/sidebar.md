@@ -89,6 +89,9 @@ HTML in the included layout.
   * Invalidate and Refetch
   * Prefetching and Lazy Loading
   * Raw Row Fetching
+  * [Aggregate Functions]({{ root }}fetching-objects/aggregate-functions.html)
+    * [Counting]({{ root }}fetching-objects/counting.html)
+    * [And More]({{ root }}fetching-objects/aggregates.html)
 * Updating Objects
   * Fetch and Update
   * Optimistic Locking
