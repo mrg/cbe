@@ -538,4 +538,9 @@ ul.breadcrumb-top
   margin-top: -1.5em;
   margin-bottom: 1em;
 }
+ul.breadcrumb-bottom
+{
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
 
