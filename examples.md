@@ -23,14 +23,24 @@ All of the examples will share these common elements, however:
 
 Each example also contains a "project box" which lists the location (relative to the [GitHub project](https://github.com/mrg/cbe)) for the Java code and the resources (Cayenne Model and data files) with instructions on how to compile and run them if you choose.  Even if you don't have a GitHub account, you can still download the project as a .tar.gz or a .zip archive to run the examples using the links at the top of the page.  You can also use GitHub to explore the code if you don't want to download the project.  A project box resembles the following:
 
-<table>
+<table class="pb">
+  <tr>
+    <td>Cayenne Version</td>
+    <td>Version of Cayenne used by the examples.</td>
+  </tr>
+  <tr>
+    <td>Project Directory</td>
+    <td>
+      Top-level project directory for the examples.
+    </td>
+  </tr>
   <tr>
     <td>Source Directory</td>
-    <td>Example/Project/src/main/java</td>
+    <td>Example/Project/src/main/java (main location of the example's sources)</td>
   </tr>
   <tr>
     <td>Resource Directory</td>
-    <td>Example/Project/src/main/resources</td>
+    <td>Example/Project/src/main/resources (main location of the example's resources)</td>
   </tr>
     <td>Inputs</td>
     <td>Input files relative to the Resource Directory.</td>
@@ -40,6 +50,13 @@ Each example also contains a "project box" which lists the location (relative to
     <td>Compiling/Running</td>
     <td>cd Example/Project<br/>mvn clean compile<br/>mvn exec:java -Dexec.mainClass=Project1</td>
   </tr>
+  </tr>
+    <td>Status</td>
+    <td>
+      Code: Status of the example's code.<br/>
+      Documentation: Status of the example's documentation.
+    </td>
+  <tr>
 </table>
 
 These examples will also typically omit the common/mundane steps of creating the model and generating the Java classes.  Use Cayenne Modeler to explore the model and your favorite editor/viewer to explore the generated Java classes if you desire.
