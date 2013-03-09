@@ -2,9 +2,14 @@
 layout: page
 root: ".."
 title: Cayenne by Example - Basic Inserts
+heading: Basic Inserts
+breadcrumb:
+  - name: Cayenne By Example
+    link: ..
+  - name: Inserting Objects
+    link: .
+  - name: Basic Inserts
 ---
-
-# Basic Inserts {% include back-to-inserting-objects.html %}
 
 <table class="pb">
   <tr>
@@ -410,4 +415,3 @@ INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (
 
 Since this version is identical to Basic Inserts 2, except for setting the password, the SQL is nearly identical.  As you can see in the output, the password is no longer bound to `NULL`, but has been passed through our overridden `setPassword` method to automatically hash the plain-text value prior to saving.  Another item to note in the SQL output is the insertion order is **NOT** identical to the order in Basic Inserts 2, even though it is the same set of records.  This is normal.
 
-{% include back-to-inserting-objects.html %}
