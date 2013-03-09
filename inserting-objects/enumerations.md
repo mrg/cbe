@@ -17,12 +17,26 @@ breadcrumb:
     <td>3.0.2</td>
   </tr>
   <tr>
+    <td>Project Directory</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/Enumerations">InsertingObjects/Enumerations</a>
+    </td>
+  </tr>
+  <tr>
     <td>Source Directory</td>
-    <td>InsertingObjects/Enumerations/src/main/java</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/Enumerations/src/main/java">
+        InsertingObjects/Enumerations/src/main/java
+      </a>
+    </td>
   </tr>
   <tr>
     <td>Resource Directory</td>
-    <td>InsertingObjects/Enumerations/src/main/resources</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/InsertingObjects/Enumerations/src/main/resources">
+        InsertingObjects/Enumerations/src/main/resources
+      </a>
+    </td>
   </tr>
     <td>Inputs</td>
     <td>N/A</td>
