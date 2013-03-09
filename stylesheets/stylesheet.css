@@ -540,7 +540,9 @@ ul.breadcrumb-top
 }
 ul.breadcrumb-bottom
 {
+  border-top: 1px dotted #bbbbbb;
   margin-top: 1.5em;
   margin-bottom: 1em;
+  padding-top: 0.5em;
 }
 
