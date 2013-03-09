@@ -8,6 +8,53 @@ breadcrumb:
   - name: Custom Templates
 ---
 
+<table class="pb">
+  <tr>
+    <td>Cayenne Version</td>
+    <td>3.0.2</td>
+  </tr>
+  <tr>
+    <td>Project Directory</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/Templates">Templates (contains Velocity templates)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Source Directories</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/Templates/src/main/java">Templates/src/main/java</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Resource Directory</td>
+    <td>
+      <a href="https://github.com/mrg/cbe/tree/master/Templates/src/main/resources">Templates/src/main/resources</a>
+    </td>
+  </tr>
+    <td>Inputs</td>
+    <td>N/A</td>
+  <tr>
+  </tr>
+  <tr>
+    <td>Compiling/Running</td>
+    <td>
+      cd Templates<br/>
+      mvn cayenne:cgen
+    </td>
+  </tr>
+  <tr>
+    <td>View/Edit Model</td>
+    <td>mvn cayenne-modeler:run</td>
+  </tr>
+  </tr>
+    <td>Status</td>
+    <td>
+      Code: Completed<br/>
+      Documentation: In-Progress
+    </td>
+  <tr>
+</table>
+
 Cayenne includes default [Velocity](http://velocity.apache.org/)-based templates used to generate your Cayenne classes from the model.  These default templates are sufficient for most uses, but you can create custom templates if desired.
 
 This [GitHub directory](https://github.com/mrg/cbe/tree/master/Templates) contains example custom templates, `superclass.vm` and `subclass.vm`, for Cayenne superclasses and subclasses.  These are based upon the original templates, but have the following changes:
