@@ -5,35 +5,35 @@
   project-version="3.0.0.1">
 	<property name="defaultPackage" value="cbe.inserting.model"/>
 	<db-entity name="ROLES">
-		<db-attribute name="name" type="VARCHAR" length="20"/>
-		<db-attribute name="pk" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="20"/>
 	</db-entity>
 	<db-entity name="USERS">
-		<db-attribute name="name" type="VARCHAR" length="60"/>
-		<db-attribute name="pk" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="60"/>
 	</db-entity>
 	<db-entity name="USERS_TO_ROLES">
-		<db-attribute name="role_fk" type="BIGINT" isMandatory="true"/>
-		<db-attribute name="user_fk" type="BIGINT" isMandatory="true"/>
+		<db-attribute name="ROLE_FK" type="BIGINT" isMandatory="true"/>
+		<db-attribute name="USER_FK" type="BIGINT" isMandatory="true"/>
 	</db-entity>
 	<obj-entity name="Role" className="cbe.inserting.model.Role" dbEntityName="ROLES">
-		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
 	<obj-entity name="User" className="cbe.inserting.model.User" dbEntityName="USERS">
-		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 	</obj-entity>
-	<db-relationship name="userJoin" source="ROLES" target="USERS_TO_ROLES" toMany="true">
-		<db-attribute-pair source="pk" target="role_fk"/>
+	<db-relationship name="USER_JOIN" source="ROLES" target="USERS_TO_ROLES" toMany="true">
+		<db-attribute-pair source="ID" target="ROLE_FK"/>
 	</db-relationship>
-	<db-relationship name="roleJoin" source="USERS" target="USERS_TO_ROLES" toMany="true">
-		<db-attribute-pair source="pk" target="user_fk"/>
+	<db-relationship name="ROLE_JOIN" source="USERS" target="USERS_TO_ROLES" toMany="true">
+		<db-attribute-pair source="ID" target="USER_FK"/>
 	</db-relationship>
-	<db-relationship name="role" source="USERS_TO_ROLES" target="ROLES" toMany="false">
-		<db-attribute-pair source="role_fk" target="pk"/>
+	<db-relationship name="ROLE" source="USERS_TO_ROLES" target="ROLES" toMany="false">
+		<db-attribute-pair source="ROLE_FK" target="ID"/>
 	</db-relationship>
-	<db-relationship name="user" source="USERS_TO_ROLES" target="USERS" toMany="false">
-		<db-attribute-pair source="user_fk" target="pk"/>
+	<db-relationship name="USER" source="USERS_TO_ROLES" target="USERS" toMany="false">
+		<db-attribute-pair source="USER_FK" target="ID"/>
 	</db-relationship>
-	<obj-relationship name="users" source="Role" target="User" deleteRule="Deny" db-relationship-path="userJoin.user"/>
-	<obj-relationship name="roles" source="User" target="Role" deleteRule="Deny" db-relationship-path="roleJoin.role"/>
+	<obj-relationship name="users" source="Role" target="User" deleteRule="Deny" db-relationship-path="USER_JOIN.USER"/>
+	<obj-relationship name="roles" source="User" target="Role" deleteRule="Deny" db-relationship-path="ROLE_JOIN.ROLE"/>
 </data-map>
