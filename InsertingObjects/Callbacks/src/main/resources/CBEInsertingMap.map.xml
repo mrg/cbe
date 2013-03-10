@@ -6,17 +6,17 @@
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.inserting.model"/>
 	<db-entity name="PEOPLE">
-		<db-attribute name="create_date" type="TIMESTAMP"/>
-		<db-attribute name="first_name" type="VARCHAR" length="25"/>
-		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
-		<db-attribute name="last_name" type="VARCHAR" length="25"/>
-		<db-attribute name="modify_date" type="TIMESTAMP"/>
+		<db-attribute name="CREATE_DATE" type="TIMESTAMP"/>
+		<db-attribute name="FIRST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="LAST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="MODIFY_DATE" type="TIMESTAMP"/>
 	</db-entity>
 	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
-		<obj-attribute name="createDate" type="java.util.Date" lock="true" db-attribute-path="create_date"/>
-		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="first_name"/>
-		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="last_name"/>
-		<obj-attribute name="modifyDate" type="java.util.Date" lock="true" db-attribute-path="modify_date"/>
+		<obj-attribute name="createDate" type="java.util.Date" lock="true" db-attribute-path="CREATE_DATE"/>
+		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="FIRST_NAME"/>
+		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="LAST_NAME"/>
+		<obj-attribute name="modifyDate" type="java.util.Date" lock="true" db-attribute-path="MODIFY_DATE"/>
 		<pre-persist method-name="onPrePersist"/>
 		<pre-update method-name="onPreUpdate"/>
 	</obj-entity>
