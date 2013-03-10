@@ -39,9 +39,9 @@ The examples will progress in complexity as more and more data is used to build 
 
 * [Basic Inserts](basic-inserts.html)
 * [Enumerations](enumerations.html)
-* To-One Relationships
-* To-Many Relationships
-* Many-to-Many Relationships
+* [To-One Relationships](to-one.html)
+* [To-Many Relationships](to-many.html)
+* [Many-to-Many Relationships](many-to-many.html)
 * Flattened Relationships
 * To-Dependent PK
 * Meaningful PKs

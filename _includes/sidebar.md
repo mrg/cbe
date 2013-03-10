@@ -66,9 +66,9 @@ HTML in the included layout.
     * [Basic Inserts 2]({{ root }}inserting-objects/basic-inserts.html#two)
     * [Basic Inserts 3]({{ root }}inserting-objects/basic-inserts.html#three)
   * [Enumerations]({{ root }}inserting-objects/enumerations.html)
-  * To-One Relationships
-  * To-Many Relationships
-  * Many-to-Many Relationships
+  * [To-One Relationships]({{ root }}inserting-objects/to-one.html)
+  * [To-Many Relationships]({{ root }}inserting-objects/to-many.html)
+  * [Many-to-Many Relationships]({{ root }}inserting-objects/many-to-many.html)
   * Flattened Relationships
   * To-Dependent PK
   * Meaningful PK
