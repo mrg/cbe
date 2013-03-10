@@ -65,8 +65,13 @@ breadcrumb:
   <tr>
 </table>
 
-Cayenne doesn't natively support aggregate database functions, but you can incorporate these examples into your application if you need this functionality.
+Cayenne doesn't natively support aggregate database functions, but you can incorporate this example into your application if you need this functionality.
 
-* [Counting](counting.html) - Perform a COUNT(*) of database records using a Cayenne query.
-* [More Aggregates](aggregates.html) - Includes the COUNT(*) example and adds SUM(column), AVG(column), MIN(column), and MAX(column) of database records using a Cayenne query.
+This example is a bit different in that it doesn't illustrate native Cayenne functionality, but uses a custom `AggregatesUtil` class to implement the functionality.  The documentation is more about showing how to use `AggregatesUtil` than explaining how it works, but you can certainly explore the class to learn more about working with Cayenne at a lower level (custom SQL is generated).
+
+The `AggregatesUtil` class includes methods to perform a COUNT(*), SUM(column), AVG(column), MIN(column), and MAX(column) of database records using a Cayenne query.  These methods return `long` or `BigDecimal` results instead of normal Cayenne objects.
+
+TBD...more to come.
+
+*The `AggregatesUtil` class (and supporting classes) was inspired by Andrey Razumovsky (where "inspired by" means "mostly stolen from") who posted the original code on the Cayenne mailing list.*
 
