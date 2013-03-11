@@ -87,7 +87,7 @@ public abstract class _Person extends CayenneDataObject {
     public static final String LAST_NAME_PROPERTY = "lastName";
     public static final String PASSWORD_PROPERTY = "password";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setEmailAddress(String emailAddress) {
         writeProperty("emailAddress", emailAddress);
@@ -212,7 +212,7 @@ Detected and installed adapter: org.apache.cayenne.dba.h2.H2Adapter
 org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy processSchemaUpdate
 No schema detected, will create mapped tables
 org.apache.cayenne.access.QueryLogger logQuery
-CREATE TABLE PEOPLE (first_name VARCHAR(25) NULL, id BIGINT NOT NULL, last_name VARCHAR(25) NULL, PRIMARY KEY (id))
+CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
 org.apache.cayenne.access.QueryLogger logQuery
 CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
 org.apache.cayenne.access.QueryLogger logQuery
@@ -234,9 +234,9 @@ org.apache.cayenne.access.QueryLogger logUpdateCount
 org.apache.cayenne.access.QueryLogger logQueryStart
 --- will run 1 query.
 org.apache.cayenne.access.QueryLogger logQuery
-INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (?, ?, ?, ?, ?)
+INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
 org.apache.cayenne.access.QueryLogger logQueryParameters
-[bind: 1->email_address:'admin@example.com', 2->first_name:'System', 3->id:200, 4->last_name:'Administrator', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'admin@example.com', 2->FIRST_NAME:'System', 3->ID:200, 4->LAST_NAME:'Administrator', 5->PASSWORD:NULL]
 org.apache.cayenne.access.QueryLogger logUpdateCount
 === updated 1 row.
 org.apache.cayenne.access.QueryLogger logCommitTransaction
@@ -308,7 +308,7 @@ Running this example produces (greatly trimmed output):
 
 {% highlight sql linenos %}
 --- transaction started.
-CREATE TABLE PEOPLE (email_address VARCHAR(50) NULL, first_name VARCHAR(25) NULL, id BIGINT NOT NULL, last_name VARCHAR(25) NULL, password VARCHAR(40) NULL, PRIMARY KEY (id))
+CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
 CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
 DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
 INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
@@ -318,18 +318,18 @@ SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
 UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
 === updated 1 row.
 --- will run 1 query.
-INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (?, ?, ?, ?, ?)
-[bind: 1->email_address:'acaldwell@example.com', 2->first_name:'Aaron', 3->id:200, 4->last_name:'Caldwell', 5->password:NULL]
+INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
+[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:200, 4->LAST_NAME:'Caldwell', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->email_address:'vwaters@example.com', 2->first_name:'Victoria', 3->id:201, 4->last_name:'Waters', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:201, 4->LAST_NAME:'Waters', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->email_address:'mkerr@example.com', 2->first_name:'Marcus', 3->id:202, 4->last_name:'Kerr', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'mkerr@example.com', 2->FIRST_NAME:'Marcus', 3->ID:202, 4->LAST_NAME:'Kerr', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->email_address:'hfreeman@example.com', 2->first_name:'Heidi', 3->id:203, 4->last_name:'Freeman', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'hfreeman@example.com', 2->FIRST_NAME:'Heidi', 3->ID:203, 4->LAST_NAME:'Freeman', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->email_address:'rnewton@example.com', 2->first_name:'Rose', 3->id:204, 4->last_name:'Newton', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'rnewton@example.com', 2->FIRST_NAME:'Rose', 3->ID:204, 4->LAST_NAME:'Newton', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->email_address:'ureeves@example.com', 2->first_name:'Ulric', 3->id:205, 4->last_name:'Reeves', 5->password:NULL]
+[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:205, 4->LAST_NAME:'Reeves', 5->PASSWORD:NULL]
 === updated 1 row.
 +++ transaction committed.
 {% endhighlight %}
@@ -387,7 +387,7 @@ Running this version produces:
 
 {% highlight sql linenos %}
 --- transaction started.
-CREATE TABLE PEOPLE (email_address VARCHAR(50) NULL, first_name VARCHAR(25) NULL, id BIGINT NOT NULL, last_name VARCHAR(25) NULL, password VARCHAR(40) NULL, PRIMARY KEY (id))
+CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
 CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
 DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
 INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
@@ -397,21 +397,21 @@ SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
 UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
 === updated 1 row.
 --- will run 1 query.
-INSERT INTO PEOPLE (email_address, first_name, id, last_name, password) VALUES (?, ?, ?, ?, ?)
-[bind: 1->email_address:'hfreeman@example.com', 2->first_name:'Heidi', 3->id:200, 4->last_name:'Freeman', 5->password:'cc7020db3fec12fe28d0a8380dad52...']
+INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
+[bind: 1->EMAIL_ADDRESS:'hfreeman@example.com', 2->FIRST_NAME:'Heidi', 3->ID:200, 4->LAST_NAME:'Freeman', 5->PASSWORD:'cc7020db3fec12fe28d0a8380dad52...']
 === updated 1 row.
-[bind: 1->email_address:'mkerr@example.com', 2->first_name:'Marcus', 3->id:201, 4->last_name:'Kerr', 5->password:'1b659a077a3e4c2cad0999a85760c3...']
+[bind: 1->EMAIL_ADDRESS:'mkerr@example.com', 2->FIRST_NAME:'Marcus', 3->ID:201, 4->LAST_NAME:'Kerr', 5->PASSWORD:'1b659a077a3e4c2cad0999a85760c3...']
 === updated 1 row.
-[bind: 1->email_address:'rnewton@example.com', 2->first_name:'Rose', 3->id:202, 4->last_name:'Newton', 5->password:'83a08b1bb1a7ca0157bd40493f86b0...']
+[bind: 1->EMAIL_ADDRESS:'rnewton@example.com', 2->FIRST_NAME:'Rose', 3->ID:202, 4->LAST_NAME:'Newton', 5->PASSWORD:'83a08b1bb1a7ca0157bd40493f86b0...']
 === updated 1 row.
-[bind: 1->email_address:'vwaters@example.com', 2->first_name:'Victoria', 3->id:203, 4->last_name:'Waters', 5->password:'c39fc265673f1e79c791136efb6b8e...']
+[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:203, 4->LAST_NAME:'Waters', 5->PASSWORD:'c39fc265673f1e79c791136efb6b8e...']
 === updated 1 row.
-[bind: 1->email_address:'acaldwell@example.com', 2->first_name:'Aaron', 3->id:204, 4->last_name:'Caldwell', 5->password:'4a34161c0ce98fe4ed52ff2e2baa81...']
+[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:204, 4->LAST_NAME:'Caldwell', 5->PASSWORD:'4a34161c0ce98fe4ed52ff2e2baa81...']
 === updated 1 row.
-[bind: 1->email_address:'ureeves@example.com', 2->first_name:'Ulric', 3->id:205, 4->last_name:'Reeves', 5->password:'2820da6db5ae050bb97daf86a51e31...']
+[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:205, 4->LAST_NAME:'Reeves', 5->PASSWORD:'2820da6db5ae050bb97daf86a51e31...']
 === updated 1 row.
 +++ transaction committed.
 {% endhighlight %}
 
-Since this version is identical to Basic Inserts 2, except for setting the password, the SQL is nearly identical.  As you can see in the output, the password is no longer bound to `NULL`, but has been passed through our overridden `setPassword` method to automatically hash the plain-text value prior to saving.  Another item to note in the SQL output is the insertion order is **NOT** identical to the order in Basic Inserts 2, even though it is the same set of records.  This is normal.
+Since this version is identical to Basic Inserts 2, except for setting the password, the SQL is nearly identical.  As you can see in the output, the password is no longer bound to `NULL`, but has been passed through our overridden `setPassword` method to automatically hash the plain-text value prior to saving.  (Although Cayenne has truncated the *logged* value showing a "..." for a long string value.)  Another item to note in the SQL output is the insertion order is **NOT** identical to the order in Basic Inserts 2, even though it is the same set of records.  This is normal.
 
