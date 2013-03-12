@@ -17,7 +17,7 @@ public abstract class _User extends CayenneDataObject {
     public static final String NAME_PROPERTY = "name";
     public static final String ROLES_PROPERTY = "roles";
 
-    public static final String PK_PK_COLUMN = "pk";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setName(String name) {
         writeProperty("name", name);

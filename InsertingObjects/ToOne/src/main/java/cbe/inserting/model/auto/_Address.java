@@ -20,7 +20,7 @@ public abstract class _Address extends CayenneDataObject {
     public static final String ZIP_PROPERTY = "zip";
     public static final String PERSON_PROPERTY = "person";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setCity(String city) {
         writeProperty("city", city);

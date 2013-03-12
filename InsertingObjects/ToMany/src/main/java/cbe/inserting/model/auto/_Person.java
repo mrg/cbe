@@ -21,7 +21,7 @@ public abstract class _Person extends CayenneDataObject {
     public static final String ADDRESS_PROPERTY = "address";
     public static final String SETTINGS_PROPERTY = "settings";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setFirstName(String firstName) {
         writeProperty("firstName", firstName);

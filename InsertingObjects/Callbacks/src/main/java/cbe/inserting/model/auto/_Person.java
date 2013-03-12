@@ -17,7 +17,7 @@ public abstract class _Person extends CayenneDataObject {
     public static final String LAST_NAME_PROPERTY = "lastName";
     public static final String MODIFY_DATE_PROPERTY = "modifyDate";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setCreateDate(Date createDate) {
         writeProperty("createDate", createDate);

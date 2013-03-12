@@ -18,7 +18,7 @@ public abstract class _Person extends CayenneDataObject {
     public static final String PASSWORD_PROPERTY = "password";
     public static final String ROLE_PROPERTY = "role";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setEmailAddress(String emailAddress) {
         writeProperty("emailAddress", emailAddress);

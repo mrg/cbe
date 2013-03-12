@@ -16,7 +16,7 @@ public abstract class _Setting extends CayenneDataObject {
     public static final String VALUE_PROPERTY = "value";
     public static final String PERSON_PROPERTY = "person";
 
-    public static final String ID_PK_COLUMN = "id";
+    public static final String ID_PK_COLUMN = "ID";
 
     public void setKey(String key) {
         writeProperty("key", key);
