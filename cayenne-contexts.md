@@ -10,7 +10,7 @@ breadcrumb:
 
 The "context" concept is one of the signature features of Cayenne.  Although there are a few different types (BaseContext, CayenneContext, DataContext -- all implementations of the ObjectContext interface), the principal one for most people is the DataContext and we will generally refer to contexts as a DataContext unless specifically pointing out something from the others.
 
-The DataContext is where your DataObjects -- the Java objects which map to your database records -- live.  The DataContext is used to perform queries, inserts, updates, deletes, and generally manage your database transactions.  All DataObjects managed by Cayenne are managed by a DataContext.  All DataObjects know the DataContext they live in and all DataContexts know which DataObjects they are tracking.
+DataContexts are **containers**.  They are collections where your DataObjects -- the Java objects which map to your database records -- live.  In some ways, they represent a unit of work -- they hold **all** the changes you want to make and commit as a single transaction or you can throw all the changes away.  A DataContext is used to perform queries, inserts, updates, deletes, and generally manage your database transactions.  All DataObjects managed by Cayenne are managed by a DataContext.  All DataObjects know the DataContext they live in and all DataContexts know which DataObjects they are tracking.
 
 A DataContext gives you the ability to:
 
