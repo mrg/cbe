@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.inserting.model"/>
+	<db-entity name="ADDRESSES">
+		<db-attribute name="CITY" type="VARCHAR" length="100"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="STATE" type="VARCHAR" length="2"/>
+		<db-attribute name="STREET" type="VARCHAR" length="100"/>
+		<db-attribute name="ZIP_CODE" type="VARCHAR" length="10"/>
+	</db-entity>
+	<db-entity name="PEOPLE">
+		<db-attribute name="EMAIL_ADDRESS" type="VARCHAR" length="50"/>
+		<db-attribute name="FIRST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="LAST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="PASSWORD" type="VARCHAR" length="40"/>
+	</db-entity>
+	<obj-entity name="Address" className="cbe.inserting.model.Address" lock-type="optimistic" dbEntityName="ADDRESSES">
+		<obj-attribute name="city" type="java.lang.String" lock="true" db-attribute-path="CITY"/>
+		<obj-attribute name="state" type="java.lang.String" lock="true" db-attribute-path="STATE"/>
+		<obj-attribute name="street" type="java.lang.String" lock="true" db-attribute-path="STREET"/>
+		<obj-attribute name="zipCode" type="java.lang.String" lock="true" db-attribute-path="ZIP_CODE"/>
+	</obj-entity>
+	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
+		<obj-attribute name="emailAddress" type="java.lang.String" lock="true" db-attribute-path="EMAIL_ADDRESS"/>
+		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="FIRST_NAME"/>
+		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="LAST_NAME"/>
+		<obj-attribute name="password" type="java.lang.String" lock="true" db-attribute-path="PASSWORD"/>
+	</obj-entity>
+	<db-relationship name="PERSON" source="ADDRESSES" target="PEOPLE" toMany="false">
+		<db-attribute-pair source="ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="ADDRESS" source="PEOPLE" target="ADDRESSES" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="ID" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="person" source="Address" target="Person" deleteRule="Deny" db-relationship-path="PERSON"/>
+	<obj-relationship name="address" source="Person" target="Address" deleteRule="Cascade" db-relationship-path="ADDRESS"/>
+</data-map>
