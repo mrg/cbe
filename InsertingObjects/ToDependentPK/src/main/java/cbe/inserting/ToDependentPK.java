@@ -53,7 +53,8 @@ public class ToDependentPK
         // Associate this address with the person.
         person.setAddress(address);
 
-        // Commit the changes to the database.
+        // Commit the changes to the database.  It is here that the
+        // person's PK is pushed into the address's PK.
         dataContext.commitChanges();
     }
 
