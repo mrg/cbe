@@ -70,7 +70,7 @@ HTML in the included layout.
   * [To-Many Relationships]({{ root }}inserting-objects/to-many.html)
   * [Many-to-Many Relationships]({{ root }}inserting-objects/many-to-many.html)
   * Flattened Relationships
-  * To-Dependent PK
+  * [To-Dependent PK]({{ root }}inserting-objects/to-dependent-pk.html)
   * Meaningful PK
   * [Callbacks]({{ root }}inserting-objects/callbacks.html)
   * [Listeners]({{ root }}inserting-objects/listeners.html)
