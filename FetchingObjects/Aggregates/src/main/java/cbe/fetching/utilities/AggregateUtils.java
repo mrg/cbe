@@ -21,7 +21,7 @@ import org.apache.cayenne.query.SelectQuery;
  *
  * @author mrg
  */
-public class AggregatesUtil
+public class AggregateUtils
 {
     // Aggregate function names.
     public static final String AVG   = "AVG";

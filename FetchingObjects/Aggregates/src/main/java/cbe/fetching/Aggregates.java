@@ -7,7 +7,7 @@ import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
 
 import cbe.fetching.model.Book;
-import cbe.fetching.utilities.AggregatesUtil;
+import cbe.fetching.utilities.AggregateUtils;
 import cbe.fetching.utilities.Populator;
 
 /**
@@ -29,11 +29,11 @@ public class Aggregates
         SelectQuery query = new SelectQuery(Book.class);
 
         // Run the aggregate queries.
-        BigDecimal min = AggregatesUtil.min(dataContext, query, Book.PRICE_PROPERTY);
-        BigDecimal max = AggregatesUtil.max(dataContext, query, Book.PRICE_PROPERTY);
-        BigDecimal sum = AggregatesUtil.sum(dataContext, query, Book.PRICE_PROPERTY);
-        BigDecimal avg = AggregatesUtil.avg(dataContext, query, Book.PRICE_PROPERTY);
-        long count = AggregatesUtil.count(dataContext, query);
+        BigDecimal min = AggregateUtils.min(dataContext, query, Book.PRICE_PROPERTY);
+        BigDecimal max = AggregateUtils.max(dataContext, query, Book.PRICE_PROPERTY);
+        BigDecimal sum = AggregateUtils.sum(dataContext, query, Book.PRICE_PROPERTY);
+        BigDecimal avg = AggregateUtils.avg(dataContext, query, Book.PRICE_PROPERTY);
+        long count = AggregateUtils.count(dataContext, query);
 
         // Print the results.
         System.out.println("Minimum Book Price: " + min);
@@ -46,11 +46,11 @@ public class Aggregates
         query.setQualifier(ExpressionFactory.likeIgnoreCaseExp(Book.AUTHOR_PROPERTY, "J%"));
 
         // Run the aggregate queries.
-        min = AggregatesUtil.min(dataContext, query, Book.PRICE_PROPERTY);
-        max = AggregatesUtil.max(dataContext, query, Book.PRICE_PROPERTY);
-        sum = AggregatesUtil.sum(dataContext, query, Book.PRICE_PROPERTY);
-        avg = AggregatesUtil.avg(dataContext, query, Book.PRICE_PROPERTY);
-        count = AggregatesUtil.count(dataContext, query);
+        min = AggregateUtils.min(dataContext, query, Book.PRICE_PROPERTY);
+        max = AggregateUtils.max(dataContext, query, Book.PRICE_PROPERTY);
+        sum = AggregateUtils.sum(dataContext, query, Book.PRICE_PROPERTY);
+        avg = AggregateUtils.avg(dataContext, query, Book.PRICE_PROPERTY);
+        count = AggregateUtils.count(dataContext, query);
 
         // Print the results.
         System.out.println("Minimum 'J' Author Book Price: " + min);
@@ -62,7 +62,7 @@ public class Aggregates
         // Make the query use DISTINCT and get a distinct count of authors whose
         // name begins with "J" by counting on the Book's Author property.
         query.setDistinct(true);
-        count = AggregatesUtil.count(dataContext, query, Book.AUTHOR_PROPERTY);
+        count = AggregateUtils.count(dataContext, query, Book.AUTHOR_PROPERTY);
         System.out.println("Number of 'J' Authors: " + count);
     }
 }
