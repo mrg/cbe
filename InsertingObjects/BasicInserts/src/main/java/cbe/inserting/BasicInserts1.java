@@ -1,6 +1,7 @@
 package cbe.inserting;
 
-import org.apache.cayenne.access.DataContext;
+import org.apache.cayenne.ObjectContext;
+import org.apache.cayenne.configuration.server.ServerRuntime;
 
 import cbe.inserting.model.Person;
 
@@ -19,13 +20,14 @@ import cbe.inserting.model.Person;
  */
 public class BasicInserts1
 {
-    DataContext dataContext = null;
-
+    ObjectContext dataContext = null;
+    ServerRuntime runtime     = new ServerRuntime("cayenne-cbe-inserting.xml");
+    
     public BasicInserts1()
     {
         // Create a new DataContext. This will also initialize the Cayenne
         // Framework.
-        dataContext = DataContext.createDataContext();
+        dataContext = runtime.getContext();
 
         // Create a new Person object tracked by the DataContext.
         Person person = dataContext.newObject(Person.class);
