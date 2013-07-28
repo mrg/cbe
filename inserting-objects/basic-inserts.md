@@ -14,7 +14,7 @@ breadcrumb:
 <table class="pb">
   <tr>
     <td>Cayenne Version</td>
-    <td>3.0.2</td>
+    <td>3.1</td>
   </tr>
   <tr>
     <td>Project Directory</td>
@@ -133,18 +133,17 @@ public class Person extends _Person {
 
 ## <a name="one">Basic Inserts 1: A Single Insert</a>
 
-This example is about as simple as you can get.  It inserts a single `PEOPLE` record into the database.  It creates a `DataContext` (line 9), creates and registers a new Java `Person` object in the `DataContext` (line 12), sets values in the `Person` (lines 15-17), and then commits the `Person` to the `PEOPLE` database table (line 20).
-
 {% highlight java linenos %}
 public class BasicInserts1
 {
-    DataContext dataContext = null;
-
+    ObjectContext dataContext = null;
+    ServerRuntime runtime     = new ServerRuntime("cayenne-cbe-inserting.xml");
+    
     public BasicInserts1()
     {
         // Create a new DataContext. This will also initialize the Cayenne
         // Framework.
-        dataContext = DataContext.createDataContext();
+        dataContext = runtime.getContext();
 
         // Create a new Person object tracked by the DataContext.
         Person person = dataContext.newObject(Person.class);
@@ -165,110 +164,89 @@ public class BasicInserts1
 }
 {% endhighlight %}
 
+This example is about as simple as you can get.  It inserts a single record into the `PEOPLE` table in the database.
+
+* Line 4: The Cayenne runtime is initialized with the name of the Cayenne Model file.
+* Line 10: A `DataContext` (which implements `ObjectContext`) is created from the runtime.
+* Line 13: A new Java `Person` object is created and registered in the `DataContext`.
+* Lines 16-18: Set values in the `Person` (lines 15-17).
+* Line 21: Commit the `Person` to the database.
+
 As you can see, the `DataContext` is used not only to create new objects (the `Person`), but also to track changes made to the `Person` and commit those changes (inside a transaction) to the database.  Some ORMs are object-centric and require you to call a save/insert/update/delete type method on each object (and call them in the correct order), but Cayenne manages all objects registered in a `DataContext` and knows if they need to be inserted, updated, or deleted when you call `commitChanges` and the order of operations for committing those changes to the database.
 
 When the program is run, it produces output similar to the following (timestamps and INFO prefixes have been stripped):
 
 {% highlight sql linenos %}
-org.apache.cayenne.conf.RuntimeLoadDelegate startedLoading
-started configuration loading.
-org.apache.cayenne.conf.RuntimeLoadDelegate shouldLoadDataDomain
-loaded domain: CBEInserting
-org.apache.cayenne.conf.RuntimeLoadDelegate loadDataMap
-loaded <map name='CBEInsertingMap' location='CBEInsertingMap.map.xml'>.
-org.apache.cayenne.conf.RuntimeLoadDelegate shouldLoadDataNode
-loading <node name='CBEInsertingNode' datasource='CBEInsertingNode.driver.xml' factory='org.apache.cayenne.conf.DriverDataSourceFactory' schema-update-strategy='org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy'>.
-org.apache.cayenne.conf.RuntimeLoadDelegate shouldLoadDataNode
-using factory: org.apache.cayenne.conf.DriverDataSourceFactory
-org.apache.cayenne.conf.DriverDataSourceFactory load
-loading driver information from 'CBEInsertingNode.driver.xml'.
-org.apache.cayenne.conf.DriverDataSourceFactory$DriverHandler init
-loading driver org.h2.Driver
-org.apache.cayenne.conf.DriverDataSourceFactory$LoginHandler init
-loading user name and password.
-org.apache.cayenne.access.QueryLogger logPoolCreated
-Created connection pool: jdbc:h2:mem:cbe
-    Driver class: org.h2.Driver
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.configuration.XMLDataChannelDescriptorLoader load
+INFO: Loading XML configuration resource from file:/Users/mrg/Projects/cbe/InsertingObjects/BasicInserts/target/classes/cayenne-cbe-inserting.xml
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.configuration.XMLDataChannelDescriptorLoader$DataSourceChildrenHandler createChildTagHandler
+INFO: loading user name and password.
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger logPoolCreated
+INFO: Created connection pool: jdbc:h2:mem:cbe
+	Driver class: org.h2.Driver
 	Min. connections in the pool: 1
 	Max. connections in the pool: 10
-org.apache.cayenne.conf.RuntimeLoadDelegate shouldLoadDataNode
-loaded datasource.
-org.apache.cayenne.conf.RuntimeLoadDelegate initAdapter
-no adapter set, using automatic adapter.
-org.apache.cayenne.conf.RuntimeLoadDelegate shouldLinkDataMap
-loaded map-ref: CBEInsertingMap.
-org.apache.cayenne.conf.RuntimeLoadDelegate finishedLoading
-finished configuration loading in 148 ms.
-org.apache.cayenne.access.QueryLogger logConnect
-Opening connection: jdbc:h2:mem:cbe
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger logConnect
+INFO: Opening connection: jdbc:h2:mem:cbe
 	Login: null
 	Password: *******
-org.apache.cayenne.access.QueryLogger logConnectSuccess
-+++ Connecting: SUCCESS.
-org.apache.cayenne.access.QueryLogger logBeginTransaction
---- transaction started.
-org.apache.cayenne.access.QueryLogger log
-Detected and installed adapter: org.apache.cayenne.dba.h2.H2Adapter
-org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy processSchemaUpdate
-No schema detected, will create mapped tables
-org.apache.cayenne.access.QueryLogger logQuery
-CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
-org.apache.cayenne.access.QueryLogger logQuery
-CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
-org.apache.cayenne.access.QueryLogger logQuery
-DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
-org.apache.cayenne.access.QueryLogger logQuery
-INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
-org.apache.cayenne.access.QueryLogger log
-Detected and installed adapter: org.apache.cayenne.dba.h2.H2Adapter
-org.apache.cayenne.access.QueryLogger logQueryStart
---- will run 2 queries.
-org.apache.cayenne.access.QueryLogger logQuery
-SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
-org.apache.cayenne.access.QueryLogger logSelectCount
-=== returned 1 row. - took 5 ms.
-org.apache.cayenne.access.QueryLogger logQuery
-UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
-org.apache.cayenne.access.QueryLogger logUpdateCount
-=== updated 1 row.
-org.apache.cayenne.access.QueryLogger logQueryStart
---- will run 1 query.
-org.apache.cayenne.access.QueryLogger logQuery
-INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
-org.apache.cayenne.access.QueryLogger logQueryParameters
-[bind: 1->EMAIL_ADDRESS:'admin@example.com', 2->FIRST_NAME:'System', 3->ID:200, 4->LAST_NAME:'Administrator', 5->PASSWORD:NULL]
-org.apache.cayenne.access.QueryLogger logUpdateCount
-=== updated 1 row.
-org.apache.cayenne.access.QueryLogger logCommitTransaction
-+++ transaction committed.
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger logConnectSuccess
+INFO: +++ Connecting: SUCCESS.
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger log
+INFO: Detected and installed adapter: org.apache.cayenne.dba.h2.H2Adapter
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger logBeginTransaction
+INFO: --- transaction started.
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy processSchemaUpdate
+INFO: No schema detected, will create mapped tables
+Jul 28, 2013 12:29:47 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logSelectCount
+INFO: === returned 1 row. - took 4 ms.
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logUpdateCount
+INFO: === updated 1 row.
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQuery
+INFO: INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logQueryParameters
+INFO: [bind: 1->EMAIL_ADDRESS:'admin@example.com', 2->FIRST_NAME:'System', 3->ID:200, 4->LAST_NAME:'Administrator', 5->PASSWORD:NULL]
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logUpdateCount
+INFO: === updated 1 row.
+Jul 28, 2013 12:29:48 PM org.apache.cayenne.log.CommonsJdbcEventLogger logCommitTransaction
+INFO: +++ transaction committed.
 {% endhighlight %}
 
 Further examples will skip the initialization of Cayenne to focus on the main example, but for this first example, each step will be explained.
 
-* Lines 1-2: Cayenne starts to initialize itself when the first `DataContext` is created.  This won't happen for additional `DataContext` creations.  This loads the `cayenne.xml` file (in the resources directory).  Cayenne searches the Java `CLASSPATH` to locate this file.
-* Lines 3-4: The `cayenne.xml` file specified a `DataDomain` called `CBEInserting` which needed to be loaded and initialized.
-* Lines 5-27: The `DataDomain` specified a `DataMap` named `CBEInsertingMap` which needed to be loaded from `CBEInsertingMap.map.xml`.  A `DataMap` contains the mappings for the Java classes, database tables, and relationships, stored procedures, named queries, etc.
-* Lines 7-25: The `DataDomain` specified a `DataNode` named `CBEInsertingNode` which needed to be loaded from `CBEInsertingNode.driver.xml`.  A `DataNode` contains database connection information and is mapped to a `DataMap` so that Cayenne knows how to route queries to the database.  Although this example only has one `DataNode`, Cayenne supports multiple `DataNode` connections to different databases and can route queries accordingly.  You can see that loading the `DataNode` initializes the username, password, connection limits, etc.  Note: This example uses Cayenne's built-in database connection facility and the output/configuration differs if you choose another strategy (such as using a JNDI connection).
-* Line 26: The `DataMap` is linked to the `DataNode` so the Cayenne knows how to route queries.
-* Line 27: The `DataMap` is initialized.
-* Lines 28-29: The Cayenne model (`DataDomains`, `DataMaps`, and `DataNodes`) is initialized, but only the model -- the database still hasn't been accessed.
-* Lines 30-51: Cayenne needs to access the database from the `dataContext.commitChanges` call.  Because this is the first access to the database, Cayenne needs to login to the database.  Because we are using the `CreateIfNoSchemaStrategy` strategy, which is useful for unit tests or examples such as this, Cayenne will automatically create the database schema from the Cayenne model if the schema is missing.  You can see Cayenne creating the `PEOPLE` table on line 43 and the `AUTO_PK_SUPPORT` support table on line 45, which is used by Cayenne's built-in primary key generator (although other primary key generation options are available, such as MySQL's auto increment).
-* Line 49: Cayenne's `AUTO_PK_SUPPORT` primary key generation starts at 200 by default.
-* Lines 52-61: Cayenne needs a primary key for the `Person` it is about to insert, so it fetches the current primary key value from `AUTO_PK_SUPPORT` and then increments it by 20.  Cayenne by default caches 20 primary keys to improve insert performance.  Line 61 reports that one record in `AUTO_PK_SUPPORT` was updated.
-* Lines 62-71: Cayenne is finally ready to insert our single record into the database.  Line 65 issues the `INSERT` to the database, line 67 binds the values to insert (notice the `id` of 200, which came from the `AUTO_PK_SUPPORT` table).  Line 69 confirms one row was updated.  Line 71 confirms the transaction was committed, which began way back on line 37.
+* Lines 1-9: Cayenne starts to initialize itself when the first `DataContext` is created (when `runtime.getContext()` is called).  This won't happen for additional `DataContext` creations.  This loads the `cayenne-cbe-inserting.xml` file (in the resources directory).  Cayenne searches the Java `CLASSPATH` to locate this file.
+* Lines 10-15: An actual connection to the database is established (by the `commitChanges()` call).
+* lines 16-17: The database adapter is installed.
+* Lines 18-45: The `commitChanges()` call wraps all work in a database transaction.
+* Lines 20-29: Cayenne creates the database schema if missing because `CreateIfNoSchemaStrategy` was specified.  This is normally **NOT** the case in a real application, but is convenient for these examples.  You can see Cayenne creating the `PEOPLE` table (line 23) and the `AUTO_PK_SUPPORT` support tables (lines 25-29), which is used by Cayenne's built-in primary key generator (although other primary key generation options are available, such as MySQL's auto increment).
+* Lines 30-37: Cayenne needs a primary key for the `Person` it is about to insert, so it fetches the current primary key value from `AUTO_PK_SUPPORT` and then increments it by 20.  Cayenne by default caches 20 primary keys to improve insert performance.
+* Lines 38-45: Cayenne is finally ready to insert our single record into the database.  Line 39 issues the `INSERT` to the database, line 41 binds the values to insert (notice the `id` of 200, which came from the `AUTO_PK_SUPPORT` table).  Line 43 confirms one row was updated.  Line 45 confirms the transaction was committed, which began way back on line 18.
 
 ## <a name="two">Basic Inserts 2: Multiple Inserts</a>
 
 {% highlight java linenos %}
 public class BasicInserts2
 {
-    DataContext dataContext = null;
+    ObjectContext dataContext = null;
+    ServerRuntime runtime     = new ServerRuntime("cayenne-cbe-inserting.xml");
 
     public BasicInserts2()
     {
          // Create a new DataContext. This will also initialize the Cayenne
          // Framework.
-         dataContext = DataContext.createDataContext();
+         dataContext = runtime.getContext();
 
          // Create Persons (in the DataContext).
          createPerson("Aaron", "Caldwell", "acaldwell@example.com");
@@ -312,16 +290,14 @@ CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL
 CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
 DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
 INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
---- will run 2 queries.
 SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
 === returned 1 row. - took 5 ms.
 UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
 === updated 1 row.
---- will run 1 query.
 INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
-[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:200, 4->LAST_NAME:'Caldwell', 5->PASSWORD:NULL]
+[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:200, 4->LAST_NAME:'Waters', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:201, 4->LAST_NAME:'Waters', 5->PASSWORD:NULL]
+[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:201, 4->LAST_NAME:'Reeves', 5->PASSWORD:NULL]
 === updated 1 row.
 [bind: 1->EMAIL_ADDRESS:'mkerr@example.com', 2->FIRST_NAME:'Marcus', 3->ID:202, 4->LAST_NAME:'Kerr', 5->PASSWORD:NULL]
 === updated 1 row.
@@ -329,12 +305,12 @@ INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (
 === updated 1 row.
 [bind: 1->EMAIL_ADDRESS:'rnewton@example.com', 2->FIRST_NAME:'Rose', 3->ID:204, 4->LAST_NAME:'Newton', 5->PASSWORD:NULL]
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:205, 4->LAST_NAME:'Reeves', 5->PASSWORD:NULL]
+[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:205, 4->LAST_NAME:'Caldwell', 5->PASSWORD:NULL]
 === updated 1 row.
 +++ transaction committed.
 {% endhighlight %}
 
-This example is very similar to Basic Inserts 1, but this time it inserts six records within a single transaction.  Six `Person` objects were created in the `dataContext` (Java lines 12-17) before being committed to the database on Java line 20.  One thing to note here is that the order the `Person` objects were created in the `dataContext` does **NOT** match the order they were inserted into the database.  Cayenne does not guarantee or require the ordering to match.  At runtime, Cayenne evaluates every object in the `dataContext` and determines the order of operations to satisfy persisting the data to the database.
+This example is very similar to Basic Inserts 1, but this time it inserts six records within a single transaction.  Six `Person` objects were created in the `dataContext` (Java lines 12-17) before being committed to the database on Java line 21.  One thing to note here is that the order the `Person` objects were created in the `dataContext` does **NOT** match the order they were inserted into the database.  Cayenne does not guarantee or require the ordering to match.  At runtime, Cayenne evaluates every object in the `dataContext` and determines the order of operations to satisfy persisting the data to the database.
 
 ## <a name="three">Basic Inserts 3: Multiple Inserts with Overridden Method</a>
 
@@ -387,28 +363,28 @@ Running this version produces:
 
 {% highlight sql linenos %}
 --- transaction started.
+--- transaction started.
+No schema detected, will create mapped tables
 CREATE TABLE PEOPLE (EMAIL_ADDRESS VARCHAR(50) NULL, FIRST_NAME VARCHAR(25) NULL, ID BIGINT NOT NULL, LAST_NAME VARCHAR(25) NULL, PASSWORD VARCHAR(40) NULL, PRIMARY KEY (ID))
 CREATE TABLE AUTO_PK_SUPPORT (  TABLE_NAME CHAR(100) NOT NULL,  NEXT_ID BIGINT NOT NULL,  PRIMARY KEY(TABLE_NAME))
 DELETE FROM AUTO_PK_SUPPORT WHERE TABLE_NAME IN ('PEOPLE')
 INSERT INTO AUTO_PK_SUPPORT (TABLE_NAME, NEXT_ID) VALUES ('PEOPLE', 200)
---- will run 2 queries.
 SELECT NEXT_ID FROM AUTO_PK_SUPPORT WHERE TABLE_NAME = 'PEOPLE'
 === returned 1 row. - took 5 ms.
 UPDATE AUTO_PK_SUPPORT SET NEXT_ID = NEXT_ID + 20 WHERE TABLE_NAME = 'PEOPLE'
 === updated 1 row.
---- will run 1 query.
 INSERT INTO PEOPLE (EMAIL_ADDRESS, FIRST_NAME, ID, LAST_NAME, PASSWORD) VALUES (?, ?, ?, ?, ?)
 [bind: 1->EMAIL_ADDRESS:'hfreeman@example.com', 2->FIRST_NAME:'Heidi', 3->ID:200, 4->LAST_NAME:'Freeman', 5->PASSWORD:'cc7020db3fec12fe28d0a8380dad52...']
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'mkerr@example.com', 2->FIRST_NAME:'Marcus', 3->ID:201, 4->LAST_NAME:'Kerr', 5->PASSWORD:'1b659a077a3e4c2cad0999a85760c3...']
+[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:201, 4->LAST_NAME:'Waters', 5->PASSWORD:'c39fc265673f1e79c791136efb6b8e...']
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'rnewton@example.com', 2->FIRST_NAME:'Rose', 3->ID:202, 4->LAST_NAME:'Newton', 5->PASSWORD:'83a08b1bb1a7ca0157bd40493f86b0...']
+[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:202, 4->LAST_NAME:'Reeves', 5->PASSWORD:'2820da6db5ae050bb97daf86a51e31...']
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'vwaters@example.com', 2->FIRST_NAME:'Victoria', 3->ID:203, 4->LAST_NAME:'Waters', 5->PASSWORD:'c39fc265673f1e79c791136efb6b8e...']
+[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:203, 4->LAST_NAME:'Caldwell', 5->PASSWORD:'4a34161c0ce98fe4ed52ff2e2baa81...']
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'acaldwell@example.com', 2->FIRST_NAME:'Aaron', 3->ID:204, 4->LAST_NAME:'Caldwell', 5->PASSWORD:'4a34161c0ce98fe4ed52ff2e2baa81...']
+[bind: 1->EMAIL_ADDRESS:'mkerr@example.com', 2->FIRST_NAME:'Marcus', 3->ID:204, 4->LAST_NAME:'Kerr', 5->PASSWORD:'1b659a077a3e4c2cad0999a85760c3...']
 === updated 1 row.
-[bind: 1->EMAIL_ADDRESS:'ureeves@example.com', 2->FIRST_NAME:'Ulric', 3->ID:205, 4->LAST_NAME:'Reeves', 5->PASSWORD:'2820da6db5ae050bb97daf86a51e31...']
+[bind: 1->EMAIL_ADDRESS:'rnewton@example.com', 2->FIRST_NAME:'Rose', 3->ID:205, 4->LAST_NAME:'Newton', 5->PASSWORD:'83a08b1bb1a7ca0157bd40493f86b0...']
 === updated 1 row.
 +++ transaction committed.
 {% endhighlight %}
