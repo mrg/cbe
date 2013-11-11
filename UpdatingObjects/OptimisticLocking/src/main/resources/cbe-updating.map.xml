@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.updating.model"/>
+	<db-entity name="PEOPLE">
+		<db-attribute name="EMAIL_ADDRESS" type="VARCHAR" length="50"/>
+		<db-attribute name="FIRST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="LAST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="PASSWORD" type="VARCHAR" length="40"/>
+	</db-entity>
+	<obj-entity name="Person" className="cbe.updating.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
+		<obj-attribute name="emailAddress" type="java.lang.String" lock="true" db-attribute-path="EMAIL_ADDRESS"/>
+		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="FIRST_NAME"/>
+		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="LAST_NAME"/>
+		<obj-attribute name="password" type="java.lang.String" lock="true" db-attribute-path="PASSWORD"/>
+	</obj-entity>
+</data-map>
