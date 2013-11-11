@@ -12,7 +12,9 @@ Stubbing out -- needs more details.
 
 ## No LIE
 
-Hibernate will throw a LazyInitializationException when you attempt to fault a record into memory after Hibernate's session has closed.  This typically happens in web applications between two-or-more request/response cycles from/to the user's browser.  Cayenne will automatically open a database connection and fault objects into memory on-demand and does not suffer from this limitation.
+If an object that has a lazily loaded relationship calls that relationship, Hibernate requires the DB session to be open. If the session is not open, Hibernate will throw a Lazy Initialization Exception. The Hibernate community is not in agreement on how to handle a Lazy Loading. The two main camps are to either keep the transaction open until all after the relationship in question is loaded, or write a custom getter for the lazy loaded relationship at the DAO level. Both of these approaches have their drawback.
+
+Cayenne lazily loads all relationships by default. When a lazily loaded relationship is fetched and there is no database session, Cayenne opens a new session and preforms the query. Prefetching is available for cases in which eager loading is desirable.
 
 ## No TOE
 
