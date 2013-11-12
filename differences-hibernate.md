@@ -12,9 +12,9 @@ Stubbing out -- needs more details.
 
 ## No LIE
 
-If an object that has a lazily loaded relationship calls that relationship, Hibernate requires the DB session to be open. If the session is not open, Hibernate will throw a Lazy Initialization Exception. The Hibernate community is not in agreement on how to handle a Lazy Loading. The two main camps are to either keep the transaction open until all after the relationship in question is loaded, or write a custom getter for the lazy loaded relationship at the DAO level. Both of these approaches have their drawback.
+If an object that has a lazily loaded relationship calls that relationship, Hibernate requires the DB session to be open. If the session is not open, Hibernate will throw a Lazy Initialization Exception. The Hibernate community is not in agreement on how to handle a Lazy Loading. The two main camps are to either keep the transaction open until all after the relationship in question is loaded, or write a custom getter for the lazy loaded relationship at the DAO level. Keeping the session open forces the the view layer to deal with data access, defeating the purpose of a segregated data access layer. Loading the relationships with DAO methods is cumbersome and hard to maintain.  
 
-Cayenne lazily loads all relationships by default. When a lazily loaded relationship is fetched and there is no database session, Cayenne opens a new session and preforms the query. Prefetching is available for cases in which eager loading is desirable.
+Cayenne lazily loads all relationships by default. When a lazily loaded relationship is fetched and there is no database session, Cayenne opens a new session and preforms the query. Prefetching is available for cases in which eager loading is desirable. Cayenne keeps the segregation of the data access and view because the super-class of object that is being asked for the relationship handles the data interaction, similar to the custom getter case in Hibernate, without the need for extra methods/maintenance. 
 
 ## No TOE
 
