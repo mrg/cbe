@@ -1,14 +1,20 @@
 package cbe.fetching;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.math.BigDecimal;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
 
 import org.apache.cayenne.access.DataContext;
+import org.apache.cayenne.configuration.server.ServerRuntime;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
+import org.h2.tools.RunScript;
 
 import cbe.fetching.model.Book;
 import cbe.fetching.utilities.AggregateUtils;
-import cbe.fetching.utilities.Populator;
 
 /**
  * Cayenne By Example - https://github.com/mrg/cbe
@@ -17,13 +23,18 @@ import cbe.fetching.utilities.Populator;
  */
 public class Aggregates
 {
-    public static void main(String[] arguments)
+    public static void main(String[] arguments) throws FileNotFoundException, SQLException, URISyntaxException
     {
-        // Populate the database.
-        Populator.populateDatabase();
+        // Create a Cayenne ServerRuntime with our Cayenne Model.
+        ServerRuntime runtime = new ServerRuntime("cayenne-cbe.xml");
 
-        // Create a new DataContext for the queries.
-        DataContext dataContext = DataContext.createDataContext();
+        // Create a new DataContext. This will also initialize the Cayenne
+        // Framework.
+        DataContext dataContext = (DataContext) runtime.getContext();
+
+        // Populate the database.
+        FileReader data = new FileReader(new File(Aggregates.class.getClassLoader().getResource("data.sql").toURI()));
+        RunScript.execute(runtime.getDataSource("cbe").getConnection(), data);
 
         // Create a Query for Book records.
         SelectQuery query = new SelectQuery(Book.class);

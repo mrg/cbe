@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domain project-version="6">
+	<map name="cbe"/>
+
+	<node name="cbe"
+		 factory="org.apache.cayenne.configuration.server.XMLPoolingDataSourceFactory"
+		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy"
+		>
+		<map-ref name="cbe"/>
+		<data-source>
+			<driver value="org.h2.Driver"/>
+			<url value="jdbc:h2:mem:cbe"/>
+			<connectionPool min="1" max="10"/>
+			<login/>
+		</data-source>
+	</node>
+</domain>

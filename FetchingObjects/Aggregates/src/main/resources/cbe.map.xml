@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
-  project-version="3.0.0.1">
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
 	<property name="defaultLockType" value="optimistic"/>
 	<property name="defaultPackage" value="cbe.fetching.model"/>
 	<db-entity name="BOOKS">
 		<db-attribute name="AUTHOR" type="VARCHAR" length="75"/>
 		<db-attribute name="BOOK_PRICE" type="NUMERIC" length="6" scale="2"/>
-		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
 		<db-attribute name="TITLE" type="VARCHAR" length="75"/>
 	</db-entity>
 	<obj-entity name="Book" className="cbe.fetching.model.Book" lock-type="optimistic" dbEntityName="BOOKS">
