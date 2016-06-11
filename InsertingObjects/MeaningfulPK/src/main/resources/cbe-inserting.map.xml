@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultLockType" value="optimistic"/>
+	<property name="defaultPackage" value="cbe.inserting.model"/>
+	<db-entity name="PEOPLE">
+		<db-attribute name="FIRST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="LAST_NAME" type="VARCHAR" length="25"/>
+		<db-attribute name="SSN" type="VARCHAR" isPrimaryKey="true" isMandatory="true" length="12"/>
+	</db-entity>
+	<obj-entity name="Person" className="cbe.inserting.model.Person" lock-type="optimistic" dbEntityName="PEOPLE">
+		<obj-attribute name="firstName" type="java.lang.String" lock="true" db-attribute-path="FIRST_NAME"/>
+		<obj-attribute name="lastName" type="java.lang.String" lock="true" db-attribute-path="LAST_NAME"/>
+		<obj-attribute name="socialSecurityNumber" type="java.lang.String" lock="true" db-attribute-path="SSN"/>
+	</obj-entity>
+</data-map>
