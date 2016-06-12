@@ -33,21 +33,23 @@ public class MeaningfulPK
         // Framework.
         dataContext = runtime.getContext();
 
-        // Create a new Person object tracked by the DataContext.
-        Person person = dataContext.newObject(Person.class);
+        // Create new Person objects tracked by the DataContext.
+        Person person1 = dataContext.newObject(Person.class);
+        Person person2 = dataContext.newObject(Person.class);
+        Person person3 = dataContext.newObject(Person.class);
 
         // Set values.
-        person.setFirstName("John");
-        person.setLastName("Smith");
-        person.setSocialSecurityNumber("111-11-1111");
+        person1.setFirstName("John");
+        person1.setLastName("Smith");
+        person1.setSocialSecurityNumber("111-11-1111");
 
-        person.setFirstName("Jane");
-        person.setLastName("Smith");
-        person.setSocialSecurityNumber("999-99-9999");
+        person2.setFirstName("Jane");
+        person2.setLastName("Smith");
+        person2.setSocialSecurityNumber("999-99-9999");
 
-        person.setFirstName("Tom");
-        person.setLastName("Smith");
-        person.setSocialSecurityNumber("123-45-6789");
+        person3.setFirstName("Tom");
+        person3.setLastName("Smith");
+        person3.setSocialSecurityNumber("123-45-6789");
 
         // Commit the changes to the database.
         dataContext.commitChanges();
